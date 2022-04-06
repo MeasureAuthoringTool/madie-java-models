@@ -4,3 +4,7 @@ target/
 *.iws
 *.iml
 *.ipr
+
+### macOs files
+.DS_Store
+src/.DS_Store
