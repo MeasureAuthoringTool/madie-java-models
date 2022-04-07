@@ -1,10 +1,6 @@
-name: Java CI
+name: CI
 
-on:
-  push:
-    branches: [ main, develop ]
-    pull_request:
-      branches: [ main, develop ]
+on: [push]
 
 jobs:
   build:
@@ -16,19 +12,6 @@ jobs:
         with:
           java-version: '16'
           distribution: 'adopt'
-
-#      - name: Cache local Maven repository
-#        uses: actions/cache@v3
-#        env:
-#          cache-name: cache-mvn
-#        with:
-#          path: ~/.m2/repository
-#          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/pom.xml') }}
-#          restore-keys: |
-#            ${{ runner.os }}-build-${{ env.cache-name }}-
-#            ${{ runner.os }}-build-
-#            ${{ runner.os }}-
-
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
 
