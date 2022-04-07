@@ -41,6 +41,7 @@ public class CqlLibrary {
               + "spaces or other special characters.")
   @Indexed(unique = true, name = "UniqueCqlLibraryName")
   private String cqlLibraryName;
+  private String description;
 
   @NotNull(
       groups = {ValidationOrder1.class},
@@ -50,6 +51,9 @@ public class CqlLibrary {
       message = "Model must be one of the supported types in MADiE.",
       groups = {ValidationOrder4.class})
   private String model;
+  private String version;
+  private String steward;
+  private boolean experimental;
 
   private String cql;
   private Instant createdAt;
