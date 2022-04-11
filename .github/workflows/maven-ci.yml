@@ -15,14 +15,6 @@ jobs:
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
 
-      - name: Extract project version
-        run: echo ::set-output name=version::$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
-        id: project
-        # run iff it is a SNAPSHOT version
-      - name: Show Maven project version
-        if: contains(steps.project.outputs.version, '-NOTASnapshot')
-        run: echo 'PASSED'
-
   publish-snapshot:
     needs: build
     runs-on: ubuntu-latest
@@ -34,7 +26,14 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '16'
+
+      - name: Extract project version
+        run: echo ::set-output name=version::$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
+        id: project
+
+      # publish snapshot iff the project version in pom.xml contains '-SNAPSHOT'
       - name: Publish SNAPSHOT version to GitHub Packages
+        if: contains(steps.project.outputs.version, '-SNAPSHOT')
         run: mvn -B --no-transfer-progress deploy -DskipTests
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
