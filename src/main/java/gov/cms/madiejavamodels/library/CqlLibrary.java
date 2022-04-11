@@ -56,6 +56,9 @@ public class CqlLibrary {
   private boolean experimental;
 
   private String cql;
+  private String elmJson;
+  private String elmXml;
+
   private Instant createdAt;
   private String createdBy;
   private Instant lastModifiedAt;
