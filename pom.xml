@@ -6,7 +6,6 @@
 
   <groupId>gov.cms.madie</groupId>
   <artifactId>madie-java-models</artifactId>
-<!--  check if version updated automatically-->
   <version>0.1-SNAPSHOT</version>
 
   <name>madie-java-models</name>
