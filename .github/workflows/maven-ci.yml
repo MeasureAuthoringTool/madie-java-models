@@ -20,7 +20,7 @@ jobs:
         id: project
         # run iff it is a SNAPSHOT version
       - name: Show Maven project version
-        if: contains(steps.project.outputs.version, '-SNAPSHOT')
+        if: contains(steps.project.outputs.version, '-NOTASnapshot')
         run: echo 'PASSED'
 
   publish-snapshot:
