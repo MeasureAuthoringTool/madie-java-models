@@ -10,4 +10,4 @@ Java based MADiE models used by MADiE microservices
 </dependency>
 ```
 Where,\
-**X**: Measure version , **Y**: Minor version, **Z**: Patch version 
+**X**: Major version , **Y**: Minor version, **Z**: Patch version 
