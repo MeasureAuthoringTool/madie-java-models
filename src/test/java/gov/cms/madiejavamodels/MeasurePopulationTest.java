@@ -1,33 +1,43 @@
 package gov.cms.madiejavamodels;
 
 import gov.cms.madiejavamodels.measure.MeasurePopulation;
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 
 public class MeasurePopulationTest {
   @Test
   public void testPopulationToCode() {
-    assert MeasurePopulation.INITIAL_POPULATION.toCode() == "initial-population";
-    assert MeasurePopulation.NUMERATOR.toCode() == "numerator";
-    assert MeasurePopulation.NUMERATOR_EXCLUSION.toCode() == "numerator-exclusion";
-    assert MeasurePopulation.DENOMINATOR.toCode() == "denominator";
-    assert MeasurePopulation.DENOMINATOR_EXCLUSION.toCode() == "denominator-exclusion";
-    assert MeasurePopulation.DENOMINATOR_EXCEPTION.toCode() == "denominator-exception";
-    assert MeasurePopulation.MEASURE_POPULATION.toCode() == "measure-population";
-    assert MeasurePopulation.MEASURE_POPULATION_EXCLUSION.toCode() == "measure-population-exclusion";
-    assert MeasurePopulation.MEASURE_OBSERVATION.toCode() == "measure-observation";
+    assertEquals(MeasurePopulation.INITIAL_POPULATION.toCode(),
+      "initial-population");
+    assertEquals(MeasurePopulation.NUMERATOR.toCode(),
+      "numerator");
+    assertEquals(MeasurePopulation.NUMERATOR_EXCLUSION.toCode(),
+      "numerator-exclusion");
+    assertEquals(MeasurePopulation.DENOMINATOR.toCode(),
+      "denominator");
+    assertEquals(MeasurePopulation.DENOMINATOR_EXCLUSION.toCode(),
+      "denominator-exclusion");
+    assertEquals(MeasurePopulation.DENOMINATOR_EXCEPTION.toCode(),
+      "denominator-exception");
+    assertEquals(MeasurePopulation.MEASURE_POPULATION.toCode(),
+      "measure-population");
+    assertEquals(MeasurePopulation.MEASURE_POPULATION_EXCLUSION.toCode(),
+      "measure-population-exclusion");
+    assertEquals(MeasurePopulation.MEASURE_OBSERVATION.toCode(),
+      "measure-observation");
   }
 
   @Test
   public void testPopulationGetDisplay() {
-    assert MeasurePopulation.INITIAL_POPULATION.getDisplay() == "Initial Population";
-    assert MeasurePopulation.NUMERATOR.getDisplay() == "Numerator";
-    assert MeasurePopulation.NUMERATOR_EXCLUSION.getDisplay() == "Numerator Exclusion";
-    assert MeasurePopulation.DENOMINATOR.getDisplay() == "Denominator";
-    assert MeasurePopulation.DENOMINATOR_EXCLUSION.getDisplay() == "Denominator Exclusion";
-    assert MeasurePopulation.DENOMINATOR_EXCEPTION.getDisplay() == "Denominator Exception";
-    assert MeasurePopulation.MEASURE_POPULATION.getDisplay() == "Measure Population";
-    assert MeasurePopulation.MEASURE_POPULATION_EXCLUSION.getDisplay() == "Measure Population Exclusion";
-    assert MeasurePopulation.MEASURE_OBSERVATION.getDisplay() == "Measure Observation";
+    assertEquals(MeasurePopulation.INITIAL_POPULATION.getDisplay(), "Initial Population");
+    assertEquals(MeasurePopulation.NUMERATOR.getDisplay(), "Numerator");
+    assertEquals(MeasurePopulation.NUMERATOR_EXCLUSION.getDisplay(), "Numerator Exclusion");
+    assertEquals(MeasurePopulation.DENOMINATOR.getDisplay(), "Denominator");
+    assertEquals(MeasurePopulation.DENOMINATOR_EXCLUSION.getDisplay(), "Denominator Exclusion");
+    assertEquals(MeasurePopulation.DENOMINATOR_EXCEPTION.getDisplay(), "Denominator Exception");
+    assertEquals(MeasurePopulation.MEASURE_POPULATION.getDisplay(), "Measure Population");
+    assertEquals(MeasurePopulation.MEASURE_POPULATION_EXCLUSION.getDisplay(), "Measure Population Exclusion");
+    assertEquals(MeasurePopulation.MEASURE_OBSERVATION.getDisplay(),"Measure Observation");
   }
 }
