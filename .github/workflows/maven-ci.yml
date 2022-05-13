@@ -39,4 +39,4 @@ jobs:
         if: contains(steps.project.outputs.version, '-SNAPSHOT')
         run: mvn -B --no-transfer-progress deploy -DskipTests
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT_FOR_ACTIONS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
