@@ -21,9 +21,9 @@
 
   <distributionManagement>
     <repository>
-      <id>madie-java-models</id>
+      <id>github</id>
       <name>MADiE java models</name>
-      <url>https://maven.pkg.github.com/measureauthoringtool/madie-java-models</url>
+      <url>https://maven.pkg.github.com/MeasureAuthoringTool/madie-java-models</url>
     </repository>
   </distributionManagement>
 
