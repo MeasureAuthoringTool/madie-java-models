@@ -14,7 +14,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.groups.Default;
 import java.time.Instant;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -71,8 +71,8 @@ public class Measure {
   private String createdBy;
   private Instant lastModifiedAt;
   private String lastModifiedBy;
-  private LocalDate measurementPeriodStart;
-  private LocalDate measurementPeriodEnd;
+  private Date measurementPeriodStart;
+  private Date measurementPeriodEnd;
 
   private String model;
 
