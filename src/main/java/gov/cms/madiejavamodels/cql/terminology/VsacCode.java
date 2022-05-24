@@ -1,17 +1,17 @@
 package gov.cms.madiejavamodels.cql.terminology;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@Builder
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-@ToString
 public class VsacCode {
   private String message;
   private String status;

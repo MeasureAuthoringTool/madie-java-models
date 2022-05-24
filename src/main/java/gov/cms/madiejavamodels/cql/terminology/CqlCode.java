@@ -3,12 +3,12 @@ package gov.cms.madiejavamodels.cql.terminology;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Builder;
 import lombok.Data;
-import lombok.ToString;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
+@NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-@ToString
 public class CqlCode {
   String codeId;
   CqlCodeSystem codeSystem;
@@ -22,6 +22,7 @@ public class CqlCode {
 
   @Data
   @Builder
+  @NoArgsConstructor
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class CqlCodeSystem {
     String oid;
@@ -36,6 +37,7 @@ public class CqlCode {
   }
 
   @Data
+  @NoArgsConstructor
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class LineInfo {
     int line;
