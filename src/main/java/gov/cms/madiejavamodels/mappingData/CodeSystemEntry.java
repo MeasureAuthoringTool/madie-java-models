@@ -1,16 +1,18 @@
 package gov.cms.madiejavamodels.mappingData;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.ToString;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
+@Builder(toBuilder = true)
+@NoArgsConstructor
+@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Builder
-@ToString
 public class CodeSystemEntry {
   private String oid;
   private String url;
@@ -18,6 +20,9 @@ public class CodeSystemEntry {
   private List<Version> version;
 
   @Data
+  @Builder(toBuilder = true)
+  @NoArgsConstructor
+  @AllArgsConstructor
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Version {
     String vsac;

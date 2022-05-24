@@ -1,17 +1,17 @@
 package gov.cms.madiejavamodels.cql.terminology;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-@ToString
 public class VsacCode {
   private String message;
   private String status;
@@ -20,6 +20,8 @@ public class VsacCode {
   private VsacError errors;
 
   @Data
+  @NoArgsConstructor
+  @AllArgsConstructor
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class VsacData {
     private int resultCount;
@@ -27,6 +29,8 @@ public class VsacCode {
   }
 
   @Data
+  @NoArgsConstructor
+  @AllArgsConstructor
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class VsacError {
     private int errorCount;
@@ -34,6 +38,8 @@ public class VsacCode {
   }
 
   @Data
+  @NoArgsConstructor
+  @AllArgsConstructor
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class VsacErrorResultSet {
     private String errDesc;
@@ -41,6 +47,8 @@ public class VsacCode {
   }
 
   @Data
+  @NoArgsConstructor
+  @AllArgsConstructor
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class VsacDataResultSet {
     private String csName;
