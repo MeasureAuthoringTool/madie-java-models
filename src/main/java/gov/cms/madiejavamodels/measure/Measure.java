@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 
 import javax.validation.GroupSequence;
@@ -64,6 +65,8 @@ public class Measure {
 
   private String cql;
   private String elmJson;
+  @Transient
+  private String elmXml;
   private List<TestCase> testCases;
   @Valid
   private List<Group> groups;
