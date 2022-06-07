@@ -17,7 +17,7 @@ public class CodeSystemEntry {
   private String oid;
   private String url;
   private String name;
-  private List<Version> version;
+  private List<Version> versions;
 
   @Data
   @Builder(toBuilder = true)
