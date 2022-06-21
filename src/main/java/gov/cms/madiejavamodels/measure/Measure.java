@@ -9,6 +9,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 
+import gov.cms.madiejavamodels.validators.EnumValidator;
+import gov.cms.madiejavamodels.common.ModelType;
+
 import javax.validation.GroupSequence;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -24,8 +27,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Measure {
 
-  @Id
-  private String id;
+  @Id private String id;
 
   private String measureHumanReadableId;
   private String measureSetId;
@@ -35,41 +37,43 @@ public class Measure {
 
   @Indexed(unique = true)
   @NotBlank(
-    groups = {ValidationOrder1.class},
-    message = "Measure Library Name is required.")
+      groups = {ValidationOrder1.class},
+      message = "Measure Library Name is required.")
   @Pattern(
-    regexp = "^[A-Z][a-zA-Z0-9]*$",
-    groups = {
-      ValidationOrder2.class,
-    },
-    message = "Measure Library Name is invalid.")
+      regexp = "^[A-Z][a-zA-Z0-9]*$",
+      groups = {
+        ValidationOrder2.class,
+      },
+      message = "Measure Library Name is invalid.")
   private String cqlLibraryName;
 
   @NotBlank(
-    groups = {ValidationOrder1.class},
-    message = "Measure Name is required.")
+      groups = {ValidationOrder1.class},
+      message = "Measure Name is required.")
   @Length(
-    min = 1,
-    max = 500,
-    groups = {ValidationOrder2.class},
-    message = "Measure Name can not be more than 500 characters.")
+      min = 1,
+      max = 500,
+      groups = {ValidationOrder2.class},
+      message = "Measure Name can not be more than 500 characters.")
   @Pattern(
-    regexp = "^[^_]+$",
-    groups = {ValidationOrder3.class},
-    message = "Measure Name can not contain underscores.")
+      regexp = "^[^_]+$",
+      groups = {ValidationOrder3.class},
+      message = "Measure Name can not contain underscores.")
   @Pattern(
-    regexp = ".*[a-zA-Z]+.*",
-    groups = {ValidationOrder4.class},
-    message = "A measure name must contain at least one letter.")
+      regexp = ".*[a-zA-Z]+.*",
+      groups = {ValidationOrder4.class},
+      message = "A measure name must contain at least one letter.")
   private String measureName;
 
+  private boolean active = true;
+  // TODO: determine if theres a way to set this from backend or if we should always trust user
+  // input for this field
+  private boolean cqlErrors;
   private String cql;
   private String elmJson;
-  @Transient
-  private String elmXml;
+  @Transient private String elmXml;
   private List<TestCase> testCases;
-  @Valid
-  private List<Group> groups;
+  @Valid private List<Group> groups;
   private Instant createdAt;
   private String createdBy;
   private Instant lastModifiedAt;
@@ -77,6 +81,10 @@ public class Measure {
   private Date measurementPeriodStart;
   private Date measurementPeriodEnd;
 
+  @EnumValidator(
+      enumClass = ModelType.class,
+      message = "MADiE was unable to complete your request, please try again.",
+      groups = {ValidationOrder5.class})
   private String model;
 
   @NotBlank(
@@ -87,28 +95,22 @@ public class Measure {
   private MeasureMetaData measureMetaData = new MeasureMetaData();
 
   @GroupSequence({
-    ValidationOrder1.class,
-    ValidationOrder2.class,
-    ValidationOrder3.class,
-    ValidationOrder4.class,
-    ValidationOrder5.class,
+    Measure.ValidationOrder1.class,
+    Measure.ValidationOrder2.class,
+    Measure.ValidationOrder3.class,
+    Measure.ValidationOrder4.class,
+    Measure.ValidationOrder5.class,
     Default.class
   })
-  public interface ValidationSequence {
-  }
+  public interface ValidationSequence {}
 
-  public interface ValidationOrder1 {
-  }
+  public interface ValidationOrder1 {}
 
-  public interface ValidationOrder2 {
-  }
+  public interface ValidationOrder2 {}
 
-  public interface ValidationOrder3 {
-  }
+  public interface ValidationOrder3 {}
 
-  public interface ValidationOrder4 {
-  }
+  public interface ValidationOrder4 {}
 
-  public interface ValidationOrder5 {
-  }
+  public interface ValidationOrder5 {}
 }
