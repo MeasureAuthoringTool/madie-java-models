@@ -87,11 +87,6 @@ public class Measure {
       groups = {ValidationOrder5.class})
   private String model;
 
-  @NotBlank(
-    groups = {ValidationOrder5.class},
-    message = "Measure Scoring is required.")
-  private String measureScoring;
-
   private MeasureMetaData measureMetaData = new MeasureMetaData();
 
   @GroupSequence({
