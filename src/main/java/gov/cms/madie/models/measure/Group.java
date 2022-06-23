@@ -1,5 +1,6 @@
 package gov.cms.madie.models.measure;
 
+import gov.cms.madie.models.validators.EnumValidator;
 import gov.cms.madie.models.validators.ValidGroupScoringPopulation;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,8 +21,12 @@ public class Group implements GroupScoringPopulation {
   private String id;
 
   @NotNull(
-    message = "Scoring is required.",
-    groups = {Measure.ValidationOrder5.class})
+      message = "Scoring is required.",
+      groups = {Measure.ValidationOrder5.class})
+  @EnumValidator(
+      enumClass = MeasureScoring.class,
+      message = "Scoring must be a valid MADiE scoring type",
+      groups = {Measure.ValidationOrder5.class})
   private String scoring;
 
   private Map<MeasurePopulation, String> population;

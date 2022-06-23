@@ -1,6 +1,8 @@
 package gov.cms.madie.models.measure;
 
+import gov.cms.madie.models.validators.EnumValidator;
 import gov.cms.madie.models.validators.ValidScoringPopulation;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,6 +18,9 @@ import java.util.List;
 public class TestCaseGroupPopulation {
   private String groupId;
 
+  @EnumValidator(
+      enumClass = MeasureScoring.class,
+      message = "Scoring must be a valid MADiE scoring type")
   private String scoring;
 
   private List<TestCasePopulationValue> populationValues;
