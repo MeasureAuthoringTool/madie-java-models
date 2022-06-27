@@ -1,21 +1,23 @@
 package gov.cms.madie.models.library;
 
-import gov.cms.madie.models.common.ModelType;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import gov.cms.madie.models.validators.EnumValidator;
+import gov.cms.madie.models.utils.VersionJsonSerializer;
+import gov.cms.madie.models.common.ModelType;
+
+import java.time.Instant;
+import javax.validation.GroupSequence;
+import javax.validation.constraints.*;
+import javax.validation.groups.Default;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
-
-import javax.validation.GroupSequence;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-import javax.validation.groups.Default;
-import java.time.Instant;
 
 @Data
 @Builder(toBuilder = true)
@@ -41,7 +43,6 @@ public class CqlLibrary {
               + "spaces or other special characters.")
   @Indexed(unique = true, name = "UniqueCqlLibraryName")
   private String cqlLibraryName;
-  private String description;
 
   @NotNull(
       groups = {ValidationOrder1.class},
@@ -51,24 +52,30 @@ public class CqlLibrary {
       message = "Model must be one of the supported types in MADiE.",
       groups = {ValidationOrder4.class})
   private String model;
-  private String version;
-  private String steward;
-  private boolean experimental;
 
+  @JsonSerialize(using = VersionJsonSerializer.VersionSerializer.class)
+  @JsonDeserialize(using = VersionJsonSerializer.VersionDeserializer.class)
+  private Version version;
+
+  private boolean draft;
+  private String groupId;
+  private boolean cqlErrors;
   private String cql;
-  private String elmJson;
-  private String elmXml;
-
+  @Transient private String elmJson;
+  @Transient private String elmXml;
   private Instant createdAt;
   private String createdBy;
   private Instant lastModifiedAt;
   private String lastModifiedBy;
+  private String publisher;
+  private String description;
+  private boolean experimental;
 
   @GroupSequence({
-    ValidationOrder1.class,
-    ValidationOrder2.class,
-    ValidationOrder3.class,
-    ValidationOrder4.class,
+    CqlLibrary.ValidationOrder1.class,
+    CqlLibrary.ValidationOrder2.class,
+    CqlLibrary.ValidationOrder3.class,
+    CqlLibrary.ValidationOrder4.class,
     Default.class
   })
   public interface ValidationSequence {}
