@@ -14,16 +14,16 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class ScoringPopulationValidator
-  implements ConstraintValidator<ValidScoringPopulation, TestCaseGroupPopulation> {
+    implements ConstraintValidator<ValidScoringPopulation, TestCaseGroupPopulation> {
 
   @Override
   public boolean isValid(
-    TestCaseGroupPopulation testCaseGroupPopulation, ConstraintValidatorContext context) {
+      TestCaseGroupPopulation testCaseGroupPopulation, ConstraintValidatorContext context) {
     if (testCaseGroupPopulation == null) {
       return true;
     }
     if (testCaseGroupPopulation.getScoring() == null
-      || testCaseGroupPopulation.getScoring().trim().isEmpty()) {
+        || testCaseGroupPopulation.getScoring().trim().isEmpty()) {
       return false;
     }
 
@@ -34,16 +34,17 @@ public class ScoringPopulationValidator
     }
 
     List<MeasurePopulation> requiredPopulations =
-      ScoringPopulationDefinition.SCORING_POPULATION_MAP.get(scoring).stream()
-        .map(MeasurePopulationOption::getMeasurePopulation)
-        .collect(Collectors.toList());
+        ScoringPopulationDefinition.SCORING_POPULATION_MAP.get(scoring).stream()
+            .filter(MeasurePopulationOption::isRequired)
+            .map(MeasurePopulationOption::getMeasurePopulation)
+            .collect(Collectors.toList());
     List<MeasurePopulation> receivedPopulations =
-      populationValues.stream()
-        .map(TestCasePopulationValue::getName)
-        .distinct()
-        .filter(Objects::nonNull)
-        .collect(Collectors.toList());
-    return receivedPopulations.size() == requiredPopulations.size()
-      && requiredPopulations.containsAll(receivedPopulations);
+        populationValues.stream()
+            .map(TestCasePopulationValue::getName)
+            .distinct()
+            .filter(Objects::nonNull)
+            .collect(Collectors.toList());
+    return receivedPopulations.size() >= requiredPopulations.size()
+        && receivedPopulations.containsAll(requiredPopulations);
   }
 }
