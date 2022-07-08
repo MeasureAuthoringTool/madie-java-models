@@ -32,4 +32,8 @@ public class Group implements GroupScoringPopulation {
   private Map<MeasurePopulation, String> population;
 
   private String groupDescription;
+
+  private String improvementNotation;
+
+  private String rateAggregation;
 }
