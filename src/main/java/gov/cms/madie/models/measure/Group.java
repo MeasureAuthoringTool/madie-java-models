@@ -40,4 +40,6 @@ public class Group implements GroupScoringPopulation {
 
   private List<MeasureGroupTypes> measureGroupTypes;
 
+  private List<Stratification> stratifications;
+
 }
