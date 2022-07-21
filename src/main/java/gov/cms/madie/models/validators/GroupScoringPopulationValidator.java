@@ -40,20 +40,20 @@ public class GroupScoringPopulationValidator
       List<MeasurePopulationOption> measurePopulationOptions = ScoringPopulationDefinition.SCORING_POPULATION_MAP.get(scoring);
       return measurePopulationOptions.stream()
         .allMatch(option -> {
-            Population population = populations.stream()
-              .filter(p -> Objects.equals(option.getMeasurePopulation(), p.getName()))
-              .findAny()
-              .orElse(null);
-            return (!option.isRequired()
-              || Objects.equals(option.getMeasurePopulation(), population.getName()))
-              && (!Objects.equals(option.getMeasurePopulation(), population.getName())
-              || StringUtils.hasText(population.getDefinition()));
-          })
+          Population population = populations.stream()
+            .filter(p -> Objects.equals(option.getMeasurePopulation(), p.getName()))
+            .findAny()
+            .orElse(null);
+          return (!option.isRequired() //IP, "ip", false
+            || Objects.equals(option.getMeasurePopulation(), population.getName()))
+            && (!Objects.equals(option.getMeasurePopulation(), population.getName())
+            || StringUtils.hasText(population.getDefinition()));
+        })
         && populations.stream()
         .allMatch(
           p ->
             measurePopulationOptions.stream()
-              .anyMatch(option -> option.getMeasurePopulation().equals(p)));
+              .anyMatch(option -> option.getMeasurePopulation().equals(p.getName())));
     } catch (Exception ex) {
       log.error("An error occurred while validation measure group", ex);
       return false;

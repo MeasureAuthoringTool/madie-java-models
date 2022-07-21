@@ -6,7 +6,6 @@
 
   <groupId>gov.cms.madie</groupId>
   <artifactId>madie-java-models</artifactId>
-<!--  TODO: revert back to 0.1-SNAPSHOT once all services updated-->
   <version>0.1.2-SNAPSHOT</version>
 
   <name>madie-java-models</name>
