@@ -44,10 +44,9 @@ public class GroupScoringPopulationValidator
             .filter(p -> Objects.equals(option.getMeasurePopulation(), p.getName()))
             .findAny()
             .orElse(null);
-          return (!option.isRequired() //IP, "ip", false
-            || Objects.equals(option.getMeasurePopulation(), population.getName()))
-            && (!Objects.equals(option.getMeasurePopulation(), population.getName())
-            || StringUtils.hasText(population.getDefinition()));
+          boolean isPopulationNameMatched = Objects.equals(option.getMeasurePopulation(), population.getName());
+          return (!option.isRequired() || isPopulationNameMatched)
+            && (!isPopulationNameMatched || StringUtils.hasText(population.getDefinition()));
         })
         && populations.stream()
         .allMatch(
