@@ -9,9 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class TestCasePopulationValue {
-
+public class Population {
   private PopulationType name;
-  private Boolean expected;
-  private Boolean actual;
+  private String definition;
 }

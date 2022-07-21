@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.NotNull;
-import java.util.Map;
+import java.util.List;
 
 @Data
 @Builder
@@ -29,7 +29,7 @@ public class Group implements GroupScoringPopulation {
       groups = {Measure.ValidationOrder5.class})
   private String scoring;
 
-  private Map<MeasurePopulation, String> population;
+  private List<Population> populations;
 
   private String groupDescription;
 
