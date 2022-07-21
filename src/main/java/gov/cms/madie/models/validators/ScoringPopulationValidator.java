@@ -1,6 +1,6 @@
 package gov.cms.madie.models.validators;
 
-import gov.cms.madie.models.measure.MeasurePopulation;
+import gov.cms.madie.models.measure.PopulationType;
 import gov.cms.madie.models.measure.MeasurePopulationOption;
 import gov.cms.madie.models.measure.TestCaseGroupPopulation;
 import gov.cms.madie.models.measure.TestCasePopulationValue;
@@ -33,12 +33,12 @@ public class ScoringPopulationValidator
       return false;
     }
 
-    List<MeasurePopulation> requiredPopulations =
+    List<PopulationType> requiredPopulations =
         ScoringPopulationDefinition.SCORING_POPULATION_MAP.get(scoring).stream()
             .filter(MeasurePopulationOption::isRequired)
             .map(MeasurePopulationOption::getMeasurePopulation)
             .collect(Collectors.toList());
-    List<MeasurePopulation> receivedPopulations =
+    List<PopulationType> receivedPopulations =
         populationValues.stream()
             .map(TestCasePopulationValue::getName)
             .distinct()

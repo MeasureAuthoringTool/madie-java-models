@@ -1,9 +1,9 @@
 package gov.cms.madie.models.measure;
 
-import java.util.Map;
+import java.util.List;
 
 public interface GroupScoringPopulation {
   String getScoring();
 
-  Map<MeasurePopulation, ?> getPopulation();
+  List<Population> getPopulations();
 }
