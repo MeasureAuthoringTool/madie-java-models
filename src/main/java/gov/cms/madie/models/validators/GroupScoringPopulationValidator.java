@@ -37,22 +37,32 @@ public class GroupScoringPopulationValidator
 
     try {
       MeasureScoring scoring = MeasureScoring.valueOfText(gsp.getScoring());
+      // get the allowed list of populations for selected scoring
       List<MeasurePopulationOption> measurePopulationOptions = ScoringPopulationDefinition.SCORING_POPULATION_MAP.get(scoring);
-      return measurePopulationOptions.stream()
-        .allMatch(option -> {
-          Population population = populations.stream()
-            .filter(p -> Objects.equals(option.getMeasurePopulation(), p.getName()))
+
+      // make sure populations are from allowed list of populations for scoring
+      // and each required population has definition
+      boolean allPopulationMatched = populations.stream()
+        .allMatch(population -> {
+          // population name can't be null
+          if (population.getName() == null) {
+            return false;
+          }
+          MeasurePopulationOption populationOption = measurePopulationOptions.stream()
+            .filter(option -> Objects.equals(option.getMeasurePopulation(), population.getName()))
             .findAny()
             .orElse(null);
-          boolean isPopulationNameMatched = Objects.equals(option.getMeasurePopulation(), population.getName());
-          return (!option.isRequired() || isPopulationNameMatched)
-            && (!isPopulationNameMatched || StringUtils.hasText(population.getDefinition()));
-        })
-        && populations.stream()
-        .allMatch(
-          p ->
-            measurePopulationOptions.stream()
-              .anyMatch(option -> option.getMeasurePopulation().equals(p.getName())));
+
+          // no match found for population
+          if (populationOption == null) {
+            return false;
+          } else if (populationOption.isRequired()) {
+            // required population must have definition
+            return StringUtils.hasText(population.getDefinition());
+          }
+          return true;
+        });
+      return allPopulationMatched;
     } catch (Exception ex) {
       log.error("An error occurred while validation measure group", ex);
       return false;
