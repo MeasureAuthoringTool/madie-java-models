@@ -97,34 +97,22 @@ public class GroupScoringPopulationValidatorTest {
   }
 
   @Test
-  public void testValidatorPopulationForRatioScoring() {
-    group.setScoring("Ratio");
-    group.getPopulations().add(denominator);
-    group.getPopulations().add(numerator);
-    boolean output = validator.isValid(group, validatorContext);
-    assertTrue(output);
-  }
-
-  @Test
-  public void testValidatorRatioScoringWithTwoIPs() {
-    group.setScoring("Ratio");
-    // add second IP
-    group.getPopulations().add(ip2);
-    group.getPopulations().add(denominator);
-    group.getPopulations().add(numerator);
-    group.getPopulations().add(numeratorExclusion);
-    boolean output = validator.isValid(group, validatorContext);
-    assertTrue(output);
-  }
-
-  @Test
-  public void testValidatorOptionalPopulationCanHaveEmptyDefinition() {
+  public void testValidatorPopulationDefinitionCanNotBeEmptyEvenIfOptionalPopulation() {
     group.setScoring("Ratio");
     // set optional numeratorExclusion define to null
     numeratorExclusion.setDefinition(null);
     group.getPopulations().add(denominator);
     group.getPopulations().add(numerator);
     group.getPopulations().add(numeratorExclusion);
+    boolean output = validator.isValid(group, validatorContext);
+    assertFalse(output);
+  }
+
+  @Test
+  public void testValidatorPopulationForRatioScoring() {
+    group.setScoring("Ratio");
+    group.getPopulations().add(denominator);
+    group.getPopulations().add(numerator);
     boolean output = validator.isValid(group, validatorContext);
     assertTrue(output);
   }

@@ -21,7 +21,7 @@ jobs:
     permissions:
       contents: read
       packages: write
-    if: github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/MAT-4427-redoo'
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 16
