@@ -10,6 +10,7 @@ import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Map;
 
 @Data
 @Builder
@@ -29,7 +30,7 @@ public class Group implements GroupScoringPopulation {
       groups = {Measure.ValidationOrder5.class})
   private String scoring;
 
-  private List<Population> populations;
+  private Map<MeasurePopulation, String> population;
 
   private String groupDescription;
 
