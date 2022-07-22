@@ -15,9 +15,9 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * 1. Required populations must be present in population map 2. Populations keys that are present
- * must have a value 3. No extraneous populations that are not associated with the scoring can be
- * present
+ * 1. Required populations must be present in population list
+ * 2. Population keys that are present must have a value
+ * 3. No extraneous populations that are not associated with the scoring can be present
  */
 @Slf4j
 public class GroupScoringPopulationValidator
