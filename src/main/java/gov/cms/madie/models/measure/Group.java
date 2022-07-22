@@ -30,7 +30,7 @@ public class Group implements GroupScoringPopulation {
       groups = {Measure.ValidationOrder5.class})
   private String scoring;
 
-  private Map<MeasurePopulation, String> population;
+  private List<Population> populations;
 
   private String groupDescription;
 
