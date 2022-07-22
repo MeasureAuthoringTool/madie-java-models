@@ -2,7 +2,7 @@ package gov.cms.madie.models.measure;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public enum PopulationType {
+public enum MeasurePopulation {
   @JsonProperty("initialPopulation")
   INITIAL_POPULATION,
   @JsonProperty("numerator")

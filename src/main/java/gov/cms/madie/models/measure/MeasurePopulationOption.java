@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MeasurePopulationOption {
-  PopulationType measurePopulation;
+  MeasurePopulation measurePopulation;
   boolean required;
 }
