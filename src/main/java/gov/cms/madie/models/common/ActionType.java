@@ -5,5 +5,6 @@ public enum ActionType {
   VERSIONED_MAJOR,
   VERSIONED_MINOR,
   DELETED,
-  IMPORTED
+  IMPORTED,
+  UPDATED
 }
