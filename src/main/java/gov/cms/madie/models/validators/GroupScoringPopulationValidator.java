@@ -47,14 +47,15 @@ public class GroupScoringPopulationValidator
               .filter(population -> Objects.equals(option.getMeasurePopulation(), population.getName()))
               .findAny()
               .orElse(null);
-            // required population must be present
-            if (matchingPopulation == null && option.isRequired()) {
-              return false;
-            } else if (matchingPopulation == null && !option.isRequired()) {
-              return true;
+            // required population must be present and has definition selected
+            if(option.isRequired()) {
+              if (matchingPopulation == null) {
+                return false;
+              } else {
+                return StringUtils.hasText(matchingPopulation.getDefinition());
+              }
             }
-            // both optional and required populations must have cql define selected
-            return StringUtils.hasText(matchingPopulation.getDefinition());
+            return true;
           })
         && populations.stream()
         .allMatch(

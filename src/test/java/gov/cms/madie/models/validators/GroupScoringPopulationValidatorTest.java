@@ -97,7 +97,7 @@ public class GroupScoringPopulationValidatorTest {
   }
 
   @Test
-  public void testValidatorPopulationDefinitionCanNotBeEmptyEvenIfOptionalPopulation() {
+  public void testValidatorPopulationDefinitionCanBeEmptyForOptionalPopulation() {
     group.setScoring("Ratio");
     // set optional numeratorExclusion define to null
     numeratorExclusion.setDefinition(null);
@@ -105,7 +105,7 @@ public class GroupScoringPopulationValidatorTest {
     group.getPopulations().add(numerator);
     group.getPopulations().add(numeratorExclusion);
     boolean output = validator.isValid(group, validatorContext);
-    assertFalse(output);
+    assertTrue(output);
   }
 
   @Test
