@@ -49,11 +49,7 @@ public class GroupScoringPopulationValidator
               .orElse(null);
             // required population must be present and has definition selected
             if(option.isRequired()) {
-              if (matchingPopulation == null) {
-                return false;
-              } else {
-                return StringUtils.hasText(matchingPopulation.getDefinition());
-              }
+              return matchingPopulation != null && StringUtils.hasText(matchingPopulation.getDefinition());
             }
             return true;
           })
