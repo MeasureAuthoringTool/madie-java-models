@@ -39,5 +39,7 @@ public class Group implements GroupScoringPopulation {
   private String rateAggregation;
 
   private List<MeasureGroupTypes> measureGroupTypes;
+  
+  private String scoringUnit;
 
 }
