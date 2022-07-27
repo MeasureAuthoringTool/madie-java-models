@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Map;
@@ -38,6 +39,7 @@ public class Group implements GroupScoringPopulation {
 
   private String rateAggregation;
 
+  @NotEmpty
   private List<MeasureGroupTypes> measureGroupTypes;
 
   private List<Stratification> stratifications;
