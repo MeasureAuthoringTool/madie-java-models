@@ -42,4 +42,6 @@ public class Group implements GroupScoringPopulation {
   @NotEmpty
   private List<MeasureGroupTypes> measureGroupTypes;
 
+  private List<Stratification> stratifications;
+
 }
