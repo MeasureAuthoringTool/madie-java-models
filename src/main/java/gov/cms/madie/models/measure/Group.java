@@ -40,6 +40,6 @@ public class Group implements GroupScoringPopulation {
 
   private List<MeasureGroupTypes> measureGroupTypes;
   
-  private String scoringUnit;
+  private Object scoringUnit;
 
 }
