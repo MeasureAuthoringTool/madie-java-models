@@ -107,13 +107,4 @@ public class GroupScoringPopulationValidatorTest {
     boolean output = validator.isValid(group, validatorContext);
     assertTrue(output);
   }
-
-  @Test
-  public void testValidatorPopulationForRatioScoring() {
-    group.setScoring("Ratio");
-    group.getPopulations().add(denominator);
-    group.getPopulations().add(numerator);
-    boolean output = validator.isValid(group, validatorContext);
-    assertTrue(output);
-  }
 }
