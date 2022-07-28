@@ -80,6 +80,7 @@ public class Measure {
   private String lastModifiedBy;
   private Date measurementPeriodStart;
   private Date measurementPeriodEnd;
+  private String populationBasis;
 
   @EnumValidator(
       enumClass = ModelType.class,
