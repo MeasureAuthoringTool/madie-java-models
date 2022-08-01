@@ -46,4 +46,9 @@ public class Group implements GroupScoringPopulation {
 
   //private List<Stratification> stratifications;
 
+  @NotNull(
+      message = "Population Basis is required.",
+      groups = {Measure.ValidationOrder5.class})
+  private String populationBasis;
+
 }
