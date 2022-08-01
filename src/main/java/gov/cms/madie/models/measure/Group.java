@@ -44,7 +44,7 @@ public class Group implements GroupScoringPopulation {
   
   private Object scoringUnit;
 
-  //private List<Stratification> stratifications;
+  private List<Stratification> stratifications;
 
   @NotNull(
       message = "Population Basis is required.",
