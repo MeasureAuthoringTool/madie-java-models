@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 public class MeasureObservation {
   private String id;
   @NotBlank(
-      message = "Observation definition is required.",
+      message = "Measure Observation definition is required.",
       groups = {Measure.ValidationOrder5.class}
   )
   private String definition;
