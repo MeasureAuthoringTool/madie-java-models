@@ -1,4 +1,4 @@
-package gov.cms.madie.models;
+package gov.cms.madie.models.measure;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

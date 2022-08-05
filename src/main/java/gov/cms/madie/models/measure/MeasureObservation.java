@@ -1,6 +1,5 @@
 package gov.cms.madie.models.measure;
 
-import gov.cms.madie.models.AggregateMethodType;
 import gov.cms.madie.models.validators.EnumValidator;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
