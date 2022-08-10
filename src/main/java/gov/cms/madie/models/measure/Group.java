@@ -2,6 +2,7 @@ package gov.cms.madie.models.measure;
 
 import gov.cms.madie.models.validators.EnumValidator;
 import gov.cms.madie.models.validators.ValidGroupScoringPopulation;
+import gov.cms.madie.models.validators.ValidMeasureObservation;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,13 +12,13 @@ import org.springframework.data.annotation.Id;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
-import java.util.Map;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @ValidGroupScoringPopulation
+@ValidMeasureObservation
 public class Group implements GroupScoringPopulation {
   @Id
   private String id;
@@ -33,6 +34,8 @@ public class Group implements GroupScoringPopulation {
 
   private List<Population> populations;
 
+  private List<MeasureObservation> measureObservations;
+
   private String groupDescription;
 
   private String improvementNotation;
@@ -41,7 +44,7 @@ public class Group implements GroupScoringPopulation {
 
   @NotEmpty
   private List<MeasureGroupTypes> measureGroupTypes;
-  
+
   private Object scoringUnit;
 
   private List<Stratification> stratifications;
