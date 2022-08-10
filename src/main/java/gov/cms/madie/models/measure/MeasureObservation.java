@@ -26,7 +26,7 @@ public class MeasureObservation {
       groups = {Measure.ValidationOrder5.class})
   @EnumValidator(
       enumClass = AggregateMethodType.class,
-      message = "Aggregate Method must be a valid MADiE Aggregate Method type",
+      message = "Aggregate Method must be a valid Measure Observation Aggregate Method type",
       groups = {Measure.ValidationOrder5.class})
   private String aggregateMethod;
 }
