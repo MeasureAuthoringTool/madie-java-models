@@ -15,4 +15,5 @@ public class Population {
   private String id;
   private PopulationType name;
   private String definition;
+  private AssociationType associationType;
 }
