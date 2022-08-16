@@ -51,8 +51,7 @@ public class Group implements GroupScoringPopulation {
   private List<Stratification> stratifications;
 
   @NotBlank(
-     message = "Population Basis is required."
-      )
+     message = "Population Basis is required.")
   private String populationBasis;
 
 }
