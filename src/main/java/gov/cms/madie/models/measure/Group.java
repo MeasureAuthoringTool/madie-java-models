@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -49,9 +50,8 @@ public class Group implements GroupScoringPopulation {
 
   private List<Stratification> stratifications;
 
-  @NotNull(
-      message = "Population Basis is required.",
-      groups = {Measure.ValidationOrder5.class})
+  @NotBlank(
+     message = "Population Basis is required.")
   private String populationBasis;
 
 }
