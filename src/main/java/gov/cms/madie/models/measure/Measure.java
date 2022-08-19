@@ -46,6 +46,16 @@ public class Measure {
       },
       message = "Measure Library Name is invalid.")
   private String cqlLibraryName;
+  
+  @NotBlank(
+      groups = {ValidationOrder1.class},
+      message = "eCQM Abbreviated Title is required.")
+  @Length(
+      min = 1,
+      max = 32,
+      groups = {ValidationOrder2.class},
+      message = "eCQM Abbreviated Title cannot be more than 32 characters.")
+  private String eCqmTitle;
 
   @NotBlank(
       groups = {ValidationOrder1.class},
