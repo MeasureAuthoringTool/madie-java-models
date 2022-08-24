@@ -48,14 +48,14 @@ public class Measure {
   private String cqlLibraryName;
   
   @NotBlank(
-      groups = {ValidationOrder1.class},
+      groups = {ValidationOrder6.class},
       message = "eCQM Abbreviated Title is required.")
   @Length(
       min = 1,
       max = 32,
-      groups = {ValidationOrder2.class},
+      groups = {ValidationOrder7.class},
       message = "eCQM Abbreviated Title cannot be more than 32 characters.")
-  private String eCqmTitle;
+  private String ecqmTitle;
 
   @NotBlank(
       groups = {ValidationOrder1.class},
@@ -105,6 +105,8 @@ public class Measure {
     Measure.ValidationOrder3.class,
     Measure.ValidationOrder4.class,
     Measure.ValidationOrder5.class,
+    Measure.ValidationOrder6.class,
+    Measure.ValidationOrder7.class,
     Default.class
   })
   public interface ValidationSequence {}
@@ -118,4 +120,8 @@ public class Measure {
   public interface ValidationOrder4 {}
 
   public interface ValidationOrder5 {}
+  
+  public interface ValidationOrder6 {}
+  
+  public interface ValidationOrder7 {}
 }
