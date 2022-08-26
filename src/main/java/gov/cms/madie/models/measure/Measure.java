@@ -1,5 +1,6 @@
 package gov.cms.madie.models.measure;
 
+import gov.cms.madie.models.validators.ValidCqlDefinitionReturnType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,6 +26,7 @@ import java.util.List;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
+@ValidCqlDefinitionReturnType
 public class Measure {
 
   @Id private String id;
