@@ -7,7 +7,7 @@ import java.util.Map;
 
 @Getter
 public enum ModelType {
-  QI_CORE("QI-Core");
+  QI_CORE("QI-Core v4.1.1");
 
   private String value;
   private static final Map<String, ModelType> MODEL_TYPE_BY_VALUE = new HashMap<>();
