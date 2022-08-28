@@ -33,4 +33,5 @@ public class CqlLibraryDraft {
               + "spaces or other special characters.")
   @Indexed(unique = true, name = "UniqueCqlLibraryName")
   private String cqlLibraryName;
+  private String cql;
 }
