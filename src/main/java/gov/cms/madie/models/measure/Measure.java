@@ -98,6 +98,11 @@ public class Measure {
   private String model;
 
   private MeasureMetaData measureMetaData = new MeasureMetaData();
+  
+  @NotBlank(
+      groups = {ValidationOrder1.class},
+      message = "Version ID is required.")
+  private String versionId;
 
   @GroupSequence({
     Measure.ValidationOrder1.class,
@@ -107,6 +112,7 @@ public class Measure {
     Measure.ValidationOrder5.class,
     Measure.ValidationOrder6.class,
     Measure.ValidationOrder7.class,
+    Measure.ValidationOrder8.class,
     Default.class
   })
   public interface ValidationSequence {}
@@ -124,4 +130,6 @@ public class Measure {
   public interface ValidationOrder6 {}
   
   public interface ValidationOrder7 {}
+  
+  public interface ValidationOrder8 {}
 }
