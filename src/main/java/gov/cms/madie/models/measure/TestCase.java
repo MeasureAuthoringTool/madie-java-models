@@ -60,7 +60,7 @@ public class TestCase {
   @Valid
   private List<TestCaseGroupPopulation> groupPopulations;
 
-  @GroupSequence({ValidationOrder1.class, Default.class})
+  @GroupSequence({ValidationOrder1.class, ValidationOrder2.class, Default.class})
   public interface ValidationSequence {
   }
 
