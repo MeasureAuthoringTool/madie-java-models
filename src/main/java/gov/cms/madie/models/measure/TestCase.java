@@ -10,6 +10,7 @@ import org.springframework.data.annotation.Transient;
 
 import javax.validation.GroupSequence;
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import javax.validation.groups.Default;
 import java.time.Instant;
 import java.util.List;
@@ -22,9 +23,12 @@ public class TestCase {
   private String id;
   private String name;
 
+  @NotBlank(
+      groups = {ValidationOrder1.class},
+      message = "Test Case Title is required.")
   @Length(
     max = 250,
-    groups = {ValidationOrder1.class},
+    groups = {ValidationOrder2.class},
     message = "Test Case Title can not be more than 250 characters.")
   private String title;
 
@@ -61,5 +65,8 @@ public class TestCase {
   }
 
   public interface ValidationOrder1 {
+  }
+
+  public interface ValidationOrder2 {
   }
 }
