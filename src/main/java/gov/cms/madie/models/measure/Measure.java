@@ -103,6 +103,7 @@ public class Measure {
       groups = {ValidationOrder1.class},
       message = "Version ID is required.")
   private String versionId;
+  private String cmsId;
 
   @GroupSequence({
     Measure.ValidationOrder1.class,
