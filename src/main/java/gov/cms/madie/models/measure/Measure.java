@@ -10,6 +10,7 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 
 import gov.cms.madie.models.validators.EnumValidator;
+import gov.cms.madie.models.access.AclSpecification;
 import gov.cms.madie.models.common.ModelType;
 
 import javax.validation.GroupSequence;
@@ -25,7 +26,7 @@ import java.util.List;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class Measure {
+public class Measure extends ResourceAcl {
 
   @Id private String id;
 
@@ -34,6 +35,7 @@ public class Measure {
   private String version;
   private String revisionNumber;
   private String state;
+  
 
   @Indexed(unique = true)
   @NotBlank(
