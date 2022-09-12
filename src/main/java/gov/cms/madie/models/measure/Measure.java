@@ -1,31 +1,26 @@
 package gov.cms.madie.models.measure;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Length;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
-import org.springframework.data.mongodb.core.index.Indexed;
-
-import gov.cms.madie.models.validators.EnumValidator;
-import gov.cms.madie.models.access.AclSpecification;
-import gov.cms.madie.models.common.ModelType;
-
+import java.time.Instant;
+import java.util.Date;
+import java.util.List;
 import javax.validation.GroupSequence;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.groups.Default;
-import java.time.Instant;
-import java.util.Date;
-import java.util.List;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.index.Indexed;
+import gov.cms.madie.models.common.ModelType;
+import gov.cms.madie.models.validators.EnumValidator;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Data
-@Builder(toBuilder = true)
+@SuperBuilder(toBuilder = true)
 @NoArgsConstructor
-@AllArgsConstructor
 public class Measure extends ResourceAcl {
 
   @Id private String id;
@@ -98,6 +93,7 @@ public class Measure extends ResourceAcl {
       message = "MADiE was unable to complete your request, please try again.",
       groups = {ValidationOrder5.class})
   private String model;
+
 
   private MeasureMetaData measureMetaData = new MeasureMetaData();
   
