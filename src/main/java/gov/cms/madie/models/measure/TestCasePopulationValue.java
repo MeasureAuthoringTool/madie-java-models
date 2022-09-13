@@ -10,9 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TestCasePopulationValue {
-
+  private String id;
   private PopulationType name;
-
   private Object expected;
   private Object actual;
 }
