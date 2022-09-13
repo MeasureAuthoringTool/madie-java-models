@@ -23,5 +23,7 @@ public class TestCaseGroupPopulation {
       message = "Scoring must be a valid MADiE scoring type")
   private String scoring;
 
+  private String populationBasis;
+
   private List<TestCasePopulationValue> populationValues;
 }

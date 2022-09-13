@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class TestCasePopulationValue {
 
   private PopulationType name;
-  private Boolean expected;
-  private Boolean actual;
+
+  private Object expected;
+  private Object actual;
 }
