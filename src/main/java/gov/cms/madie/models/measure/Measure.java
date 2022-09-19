@@ -95,6 +95,7 @@ public class Measure extends ResourceAcl {
   private String model;
 
 
+  @Valid
   private MeasureMetaData measureMetaData = new MeasureMetaData();
   
   @NotBlank(
