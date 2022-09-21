@@ -14,4 +14,5 @@ public class MeasureMetaData {
   private String disclaimer;
   private String rationale;
   private String guidance;
+  private String clinicalRecommendation;
 }
