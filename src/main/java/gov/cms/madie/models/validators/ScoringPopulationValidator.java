@@ -16,16 +16,16 @@ import java.util.stream.Collectors;
 
 @Slf4j
 public class ScoringPopulationValidator
-  implements ConstraintValidator<ValidScoringPopulation, TestCaseGroupPopulation> {
+    implements ConstraintValidator<ValidScoringPopulation, TestCaseGroupPopulation> {
 
   @Override
   public boolean isValid(
-    TestCaseGroupPopulation testCaseGroupPopulation, ConstraintValidatorContext context) {
+      TestCaseGroupPopulation testCaseGroupPopulation, ConstraintValidatorContext context) {
     if (testCaseGroupPopulation == null) {
       return true;
     }
     if (testCaseGroupPopulation.getScoring() == null
-      || testCaseGroupPopulation.getScoring().trim().isEmpty()) {
+        || testCaseGroupPopulation.getScoring().trim().isEmpty()) {
       return false;
     }
 
@@ -36,17 +36,17 @@ public class ScoringPopulationValidator
     }
 
     List<PopulationType> requiredPopulations =
-      ScoringPopulationDefinition.SCORING_POPULATION_MAP.get(scoring).stream()
-        .filter(MeasurePopulationOption::isRequired)
-        .map(MeasurePopulationOption::getMeasurePopulation)
-        .collect(Collectors.toList());
+        ScoringPopulationDefinition.SCORING_POPULATION_MAP.get(scoring).stream()
+            .filter(MeasurePopulationOption::isRequired)
+            .map(MeasurePopulationOption::getMeasurePopulation)
+            .collect(Collectors.toList());
     List<PopulationType> receivedPopulations =
-      populationValues.stream()
-          .filter(Objects::nonNull)
-        .map(TestCasePopulationValue::getName)
-        .distinct()
-        .filter(Objects::nonNull)
-        .collect(Collectors.toList());
+        populationValues.stream()
+            .filter(Objects::nonNull)
+            .map(TestCasePopulationValue::getName)
+            .distinct()
+            .filter(Objects::nonNull)
+            .collect(Collectors.toList());
     final String popBasis = testCaseGroupPopulation.getPopulationBasis();
 
     boolean allValuesMatchPopulationBasis = popBasis == null || populationValues.stream().allMatch(popVal -> {
@@ -66,7 +66,7 @@ public class ScoringPopulationValidator
       }
     });
     return receivedPopulations.size() >= requiredPopulations.size()
-      && receivedPopulations.containsAll(requiredPopulations)
+        && receivedPopulations.containsAll(requiredPopulations)
         && allValuesMatchPopulationBasis;
   }
 }
