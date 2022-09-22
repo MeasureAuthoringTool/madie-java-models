@@ -146,19 +146,143 @@ class ScoringPopulationValidatorTest {
     assertTrue(output);
   }
 
-//  @Test
-//  public void testValidatorReturnsFalseForExpectedValueMismatchPopulationBasisNonBoolean() {
-//    var testCaseGroupPopulation =
-//      TestCaseGroupPopulation.builder()
-//        .groupId("GroupId")
-//        .populationValues(
-//          List.of(
-//            TestCasePopulationValue.builder()
-//              .name(PopulationType.INITIAL_POPULATION)
-//              .build()))
-//        .scoring(MeasureScoring.COHORT.toString())
-//        .build();
-//    boolean output = validator.isValid(testCaseGroupPopulation, validatorContext);
-//    assertTrue(output);
-//  }
+  @Test
+  public void testValidatorReturnsTrueForMissingPopulationBasis() {
+    var testCaseGroupPopulation =
+      TestCaseGroupPopulation.builder()
+        .groupId("GroupId")
+        .populationValues(
+          List.of(
+            TestCasePopulationValue.builder()
+              .name(PopulationType.INITIAL_POPULATION)
+              .expected("BAD")
+              .build()))
+        .scoring(MeasureScoring.COHORT.toString())
+        .build();
+    boolean output = validator.isValid(testCaseGroupPopulation, validatorContext);
+    assertTrue(output);
+  }
+
+  @Test
+  public void testValidatorReturnsFalseForExpectedValueMismatchPopulationBasisNonBoolean() {
+    var testCaseGroupPopulation =
+      TestCaseGroupPopulation.builder()
+        .groupId("GroupId")
+          .populationBasis("Encounter")
+        .populationValues(
+          List.of(
+            TestCasePopulationValue.builder()
+              .name(PopulationType.INITIAL_POPULATION)
+              .expected("BAD")
+              .build()))
+        .scoring(MeasureScoring.COHORT.toString())
+        .build();
+    boolean output = validator.isValid(testCaseGroupPopulation, validatorContext);
+    assertFalse(output);
+  }
+
+  @Test
+  public void testValidatorReturnsTrueForExpectedValueMismatchPopulationBasisNonBoolean() {
+    var testCaseGroupPopulation =
+      TestCaseGroupPopulation.builder()
+        .groupId("GroupId")
+          .populationBasis("Encounter")
+        .scoring(MeasureScoring.COHORT.toString())
+        .build();
+    List<TestCasePopulationValue> pops = new ArrayList<>();
+    pops.add(null);
+    testCaseGroupPopulation.setPopulationValues(pops);
+    boolean output = validator.isValid(testCaseGroupPopulation, validatorContext);
+    assertFalse(output);
+  }
+
+  @Test
+  public void testValidatorReturnsTrueForNullExpectedValue() {
+    var testCaseGroupPopulation =
+        TestCaseGroupPopulation.builder()
+            .groupId("GroupId")
+            .populationBasis("Encounter")
+            .populationValues(
+                List.of(
+                    TestCasePopulationValue.builder()
+                        .name(PopulationType.INITIAL_POPULATION)
+                        .expected(null)
+                        .build()))
+            .scoring(MeasureScoring.COHORT.toString())
+            .build();
+    boolean output = validator.isValid(testCaseGroupPopulation, validatorContext);
+    assertTrue(output);
+  }
+
+  @Test
+  public void testValidatorReturnsTrueForEmptyStringExpectedValuePopulationBasisNonBoolean() {
+    var testCaseGroupPopulation =
+        TestCaseGroupPopulation.builder()
+            .groupId("GroupId")
+            .populationBasis("Encounter")
+            .populationValues(
+                List.of(
+                    TestCasePopulationValue.builder()
+                        .name(PopulationType.INITIAL_POPULATION)
+                        .expected("")
+                        .build()))
+            .scoring(MeasureScoring.COHORT.toString())
+            .build();
+    boolean output = validator.isValid(testCaseGroupPopulation, validatorContext);
+    assertTrue(output);
+  }
+
+  @Test
+  public void testValidatorReturnsTrueForNumericStringExpectedValuePopulationBasisNonBoolean() {
+    var testCaseGroupPopulation =
+        TestCaseGroupPopulation.builder()
+            .groupId("GroupId")
+            .populationBasis("Encounter")
+            .populationValues(
+                List.of(
+                    TestCasePopulationValue.builder()
+                        .name(PopulationType.INITIAL_POPULATION)
+                        .expected("7")
+                        .build()))
+            .scoring(MeasureScoring.COHORT.toString())
+            .build();
+    boolean output = validator.isValid(testCaseGroupPopulation, validatorContext);
+    assertTrue(output);
+  }
+
+  @Test
+  public void testValidatorReturnsTrueForBooleanExpectedValuePopulationBasisBoolean() {
+    var testCaseGroupPopulation =
+        TestCaseGroupPopulation.builder()
+            .groupId("GroupId")
+            .populationBasis("Boolean")
+            .populationValues(
+                List.of(
+                    TestCasePopulationValue.builder()
+                        .name(PopulationType.INITIAL_POPULATION)
+                        .expected(true)
+                        .build()))
+            .scoring(MeasureScoring.COHORT.toString())
+            .build();
+    boolean output = validator.isValid(testCaseGroupPopulation, validatorContext);
+    assertTrue(output);
+  }
+
+  @Test
+  public void testValidatorReturnsTrueForNonBooleanExpectedValuePopulationBasisBoolean() {
+    var testCaseGroupPopulation =
+        TestCaseGroupPopulation.builder()
+            .groupId("GroupId")
+            .populationBasis("Boolean")
+            .populationValues(
+                List.of(
+                    TestCasePopulationValue.builder()
+                        .name(PopulationType.INITIAL_POPULATION)
+                        .expected("BAD")
+                        .build()))
+            .scoring(MeasureScoring.COHORT.toString())
+            .build();
+    boolean output = validator.isValid(testCaseGroupPopulation, validatorContext);
+    assertFalse(output);
+  }
 }
