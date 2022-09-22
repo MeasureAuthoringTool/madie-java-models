@@ -145,4 +145,20 @@ class ScoringPopulationValidatorTest {
     boolean output = validator.isValid(testCaseGroupPopulation, validatorContext);
     assertTrue(output);
   }
+
+//  @Test
+//  public void testValidatorReturnsFalseForExpectedValueMismatchPopulationBasisNonBoolean() {
+//    var testCaseGroupPopulation =
+//      TestCaseGroupPopulation.builder()
+//        .groupId("GroupId")
+//        .populationValues(
+//          List.of(
+//            TestCasePopulationValue.builder()
+//              .name(PopulationType.INITIAL_POPULATION)
+//              .build()))
+//        .scoring(MeasureScoring.COHORT.toString())
+//        .build();
+//    boolean output = validator.isValid(testCaseGroupPopulation, validatorContext);
+//    assertTrue(output);
+//  }
 }
