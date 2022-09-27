@@ -15,4 +15,14 @@ public class MeasureMetaData {
   private String rationale;
   private String guidance;
   private String clinicalRecommendation;
+  
+  private boolean draft;
+  private List<Reference> references;
+  private List<Endorsement> endorsements;
+  private String riskAdjustment;
+  private String definition;
+  private boolean experimental;
+  private String transmissionFormat;
+  private String supplementalDataElements;
+  
 }
