@@ -26,4 +26,6 @@ public class TestCaseGroupPopulation {
   private String populationBasis;
 
   private List<TestCasePopulationValue> populationValues;
+
+  private List<TestCaseStratificationValue> stratificationValues;
 }
