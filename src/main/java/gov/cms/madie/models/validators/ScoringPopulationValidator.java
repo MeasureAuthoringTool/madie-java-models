@@ -62,8 +62,14 @@ public class ScoringPopulationValidator
         return true;
       } else {
         try {
-          Integer.parseInt(popVal.getExpected().toString());
-          return true;
+          if(!popVal.getName().equals(PopulationType.MEASURE_OBSERVATION)){
+            Integer.parseInt(popVal.getExpected().toString());
+            return true;
+          }
+          else{
+            Float.parseFloat(popVal.getExpected().toString());
+            return true;
+          }
         } catch (Exception ex) {
           return false;
         }
