@@ -53,7 +53,11 @@ public class ScoringPopulationValidator
       if (popVal == null || popVal.getExpected() == null) {
         return true;
       } else if ("Boolean".equals(popBasis)) {
-        return popVal.getExpected() instanceof Boolean;
+        if(popVal.getName().equals(PopulationType.MEASURE_OBSERVATION) && !popVal.getExpected().equals(false)){
+          return popVal.getExpected() instanceof String;
+        }else {
+          return popVal.getExpected() instanceof Boolean;
+        }
       } else if (popVal.getExpected().toString().isEmpty()) {
         return true;
       } else {

@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TestCasePopulationValue {
   private String id;
+  private String criteriaReference;
   private PopulationType name;
   private Object expected;
   private Object actual;
