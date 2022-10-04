@@ -53,13 +53,23 @@ public class ScoringPopulationValidator
       if (popVal == null || popVal.getExpected() == null) {
         return true;
       } else if ("Boolean".equals(popBasis)) {
-        return popVal.getExpected() instanceof Boolean;
+        if(popVal.getName().equals(PopulationType.MEASURE_OBSERVATION) && !popVal.getExpected().equals(false)){
+          return popVal.getExpected() instanceof String;
+        }else {
+          return popVal.getExpected() instanceof Boolean;
+        }
       } else if (popVal.getExpected().toString().isEmpty()) {
         return true;
       } else {
         try {
-          Integer.parseInt(popVal.getExpected().toString());
-          return true;
+          if(!popVal.getName().equals(PopulationType.MEASURE_OBSERVATION)){
+            Integer.parseInt(popVal.getExpected().toString());
+            return true;
+          }
+          else{
+            Float.parseFloat(popVal.getExpected().toString());
+            return true;
+          }
         } catch (Exception ex) {
           return false;
         }
