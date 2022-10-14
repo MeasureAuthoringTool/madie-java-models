@@ -2,63 +2,51 @@ package gov.cms.madie.models.measure;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Arrays;
+
 public enum PopulationType {
   @JsonProperty("initialPopulation")
-  INITIAL_POPULATION,
+  INITIAL_POPULATION("initial-population", "Initial Population"),
   @JsonProperty("numerator")
-  NUMERATOR,
+  NUMERATOR("numerator","Numerator"),
   @JsonProperty("numeratorExclusion")
-  NUMERATOR_EXCLUSION,
+  NUMERATOR_EXCLUSION("numerator-exclusion","Numerator Exclusion"),
   @JsonProperty("denominator")
-  DENOMINATOR,
+  DENOMINATOR("denominator","Denominator"),
   @JsonProperty("denominatorExclusion")
-  DENOMINATOR_EXCLUSION,
+  DENOMINATOR_EXCLUSION("denominator-exclusion","Denominator Exclusion"),
   @JsonProperty("denominatorException")
-  DENOMINATOR_EXCEPTION,
+  DENOMINATOR_EXCEPTION("denominator-exception","Denominator Exception"),
   @JsonProperty("measurePopulation")
-  MEASURE_POPULATION,
+  MEASURE_POPULATION("measure-population","Measure Population"),
   @JsonProperty("measurePopulationExclusion")
-  MEASURE_POPULATION_EXCLUSION,
+  MEASURE_POPULATION_EXCLUSION("measure-population-exclusion","Measure Population Exclusion"),
   @JsonProperty("measureObservation")
-  MEASURE_OBSERVATION;
+  MEASURE_OBSERVATION("measure-observation","Measure Observation");
+
+  final private String code;
+  final private String display;
+
+  PopulationType(String code, String display) {
+    this.code = code;
+    this.display = display;
+  }
 
   public String toCode() {
-    switch (this) {
-      case INITIAL_POPULATION: return "initial-population";
-      case NUMERATOR: return "numerator";
-      case NUMERATOR_EXCLUSION: return "numerator-exclusion";
-      case DENOMINATOR: return "denominator";
-      case DENOMINATOR_EXCLUSION: return "denominator-exclusion";
-      case DENOMINATOR_EXCEPTION: return "denominator-exception";
-      case MEASURE_POPULATION: return "measure-population";
-      case MEASURE_POPULATION_EXCLUSION: return "measure-population-exclusion";
-      case MEASURE_OBSERVATION: return "measure-observation";
-      default: return null;
-    }
+    return code;
   }
 
   public String getDisplay() {
-    switch (this) {
-      case INITIAL_POPULATION:
-        return "Initial Population";
-      case NUMERATOR:
-        return "Numerator";
-      case NUMERATOR_EXCLUSION:
-        return "Numerator Exclusion";
-      case DENOMINATOR:
-        return "Denominator";
-      case DENOMINATOR_EXCLUSION:
-        return "Denominator Exclusion";
-      case DENOMINATOR_EXCEPTION:
-        return "Denominator Exception";
-      case MEASURE_POPULATION:
-        return "Measure Population";
-      case MEASURE_POPULATION_EXCLUSION:
-        return "Measure Population Exclusion";
-      case MEASURE_OBSERVATION:
-        return "Measure Observation";
-      default:
-        return null;
-    }
+    return display;
   }
+
+  public static PopulationType fromDisplay(final String display){
+    return Arrays.stream(PopulationType.values()).filter(pt -> pt.display.equals(display)).findFirst().orElse(null);
+  }
+
+  public static PopulationType fromCode(final String code){
+    return Arrays.stream(PopulationType.values()).filter(pt -> pt.code.equals(code)).findFirst().orElse(null);
+  }
+
+
 }

@@ -30,7 +30,7 @@ public class Measure extends ResourceAcl {
   private String version;
   private String revisionNumber;
   private String state;
-  
+
 
   @Indexed(unique = true)
   @NotBlank(
@@ -43,7 +43,7 @@ public class Measure extends ResourceAcl {
       },
       message = "Measure Library Name is invalid.")
   private String cqlLibraryName;
-  
+
   @NotBlank(
       groups = {ValidationOrder6.class},
       message = "eCQM Abbreviated Title is required.")
@@ -95,7 +95,7 @@ public class Measure extends ResourceAcl {
   private String model;
 
   private MeasureMetaData measureMetaData = new MeasureMetaData();
-  
+
   @NotBlank(
       groups = {ValidationOrder1.class},
       message = "Version ID is required.")
@@ -124,10 +124,10 @@ public class Measure extends ResourceAcl {
   public interface ValidationOrder4 {}
 
   public interface ValidationOrder5 {}
-  
+
   public interface ValidationOrder6 {}
-  
+
   public interface ValidationOrder7 {}
-  
+
   public interface ValidationOrder8 {}
 }
