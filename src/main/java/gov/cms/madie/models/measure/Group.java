@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -48,6 +49,7 @@ public class Group implements GroupScoringPopulation {
 
   private Object scoringUnit;
 
+  @Valid
   private List<Stratification> stratifications;
 
   @NotBlank(

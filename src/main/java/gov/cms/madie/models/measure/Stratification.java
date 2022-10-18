@@ -2,6 +2,8 @@ package gov.cms.madie.models.measure;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
+
 @Data
 public class Stratification {
     private String id;
@@ -10,6 +12,7 @@ public class Stratification {
 
     private String cqlDefinition;
 
-    private String association;
+    @NotNull
+    private PopulationType association;
 
 }
