@@ -50,7 +50,6 @@ public class TestCase {
   private String lastModifiedBy;
   @JsonIgnore
   private String resourceUri;
-  @JsonIgnore
   private boolean isValidResource;
   private String json;
 
