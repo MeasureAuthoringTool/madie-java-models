@@ -50,7 +50,7 @@ public class TestCase {
   private String lastModifiedBy;
   @JsonIgnore
   private String resourceUri;
-  private boolean isValidResource;
+  private boolean validResource;
   private String json;
 
   @Transient

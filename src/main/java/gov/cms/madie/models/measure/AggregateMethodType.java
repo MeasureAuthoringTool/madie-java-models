@@ -3,6 +3,8 @@ package gov.cms.madie.models.measure;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
+import java.util.Arrays;
+
 @Getter
 public enum AggregateMethodType {
 
@@ -16,16 +18,6 @@ public enum AggregateMethodType {
   MEDIAN("Median"),
   @JsonProperty("Minimum")
   MINIMUM("Minimum"),
-  @JsonProperty("Mode")
-  MODE("Mode"),
-  @JsonProperty("Population Standard Deviation")
-  POPULATION_STANDARD_DEVIATION("Population Standard Deviation"),
-  @JsonProperty("Population Variance")
-  POPULATION_VARIANCE("Population Variance"),
-  @JsonProperty("Sample Standard Deviation")
-  SAMPLE_STANDARD_DEVIATION("Sample Standard Deviation"),
-  @JsonProperty("Sample Variance")
-  SAMPLE_VARIANCE("Sample Variance"),
   @JsonProperty("Sum")
   SUM("Sum");
 
@@ -33,6 +25,10 @@ public enum AggregateMethodType {
 
   AggregateMethodType(String value) {
     this.value = value;
+  }
+
+  public static AggregateMethodType fromValue(String value) {
+    return Arrays.stream(AggregateMethodType.values()).filter(amt -> amt.value.equals(value)).findFirst().orElse(null);
   }
 
   @Override

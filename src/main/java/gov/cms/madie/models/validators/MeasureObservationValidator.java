@@ -1,9 +1,6 @@
 package gov.cms.madie.models.validators;
 
-import gov.cms.madie.models.measure.Group;
-import gov.cms.madie.models.measure.MeasureObservation;
-import gov.cms.madie.models.measure.MeasureScoring;
-import gov.cms.madie.models.measure.Population;
+import gov.cms.madie.models.measure.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 
@@ -34,6 +31,7 @@ public class MeasureObservationValidator implements ConstraintValidator<ValidMea
         isValid = measureObservations != null && measureObservations.size() == 1 && measureObservations.stream().allMatch(obs ->
             StringUtils.hasText(obs.getDefinition()) &&
                 StringUtils.hasText(obs.getAggregateMethod()) &&
+                AggregateMethodType.fromValue(obs.getAggregateMethod()) != null &&
                 StringUtils.hasText(obs.getId())
         );
         break;
