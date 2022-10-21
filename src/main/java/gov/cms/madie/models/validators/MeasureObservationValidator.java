@@ -42,6 +42,7 @@ public class MeasureObservationValidator implements ConstraintValidator<ValidMea
                     StringUtils.hasText(obs.getDefinition()) &&
                         StringUtils.hasText(obs.getAggregateMethod()) &&
                         StringUtils.hasText(obs.getId()) &&
+                        AggregateMethodType.fromValue(obs.getAggregateMethod()) != null &&
                         StringUtils.hasText(obs.getCriteriaReference()) &&
                         populations
                             .stream()
