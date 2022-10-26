@@ -25,10 +25,12 @@ public class GroupScoringPopulationValidatorTest {
 
   private Group group;
   private Population ip1;
-  private Population ip2;
+  
   private Population denominator;
   private Population numerator;
   private Population numeratorExclusion;
+  private Population numeratorObservation;
+  
   @BeforeEach
   public void setUp() {
     ip1 = Population
@@ -47,15 +49,16 @@ public class GroupScoringPopulationValidatorTest {
       .definition("numerator")
       .build();
     numeratorExclusion = Population
-      .builder()
-      .name(PopulationType.NUMERATOR_EXCLUSION)
-      .definition("numeratorExclusion")
-      .build();
-    ip2 = Population
-      .builder()
-      .name(PopulationType.INITIAL_POPULATION)
-      .definition("Initial Population 2")
-      .build();
+        .builder()
+        .name(PopulationType.NUMERATOR_EXCLUSION)
+        .definition("numeratorExclusion")
+        .build();
+    numeratorObservation = Population
+        .builder()
+        .name(PopulationType.NUMERATOR_OBSERVATION)
+        .definition("numeratorObservation")
+        .build();
+
     List<Population> populations = new ArrayList<>();
     populations.add(ip1);
     group =
@@ -86,6 +89,19 @@ public class GroupScoringPopulationValidatorTest {
     group.getPopulations().add(denominator);
     boolean output = validator.isValid(group, validatorContext);
     assertFalse(output);
+  }
+  
+  @Test
+  public void testValidatorMisMatchedPopulationValues() {
+    // denominator not allowed for cohort
+    group.setScoring("Ratio");
+    
+    group.getPopulations().add(denominator);
+    group.getPopulations().add(numerator);
+    
+    group.getPopulations().add(numeratorObservation);
+    boolean output = validator.isValid(group, validatorContext);
+    assertTrue(output);
   }
 
   @Test

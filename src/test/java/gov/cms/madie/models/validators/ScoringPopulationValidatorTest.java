@@ -180,6 +180,33 @@ class ScoringPopulationValidatorTest {
     boolean output = validator.isValid(testCaseGroupPopulation, validatorContext);
     assertFalse(output);
   }
+  
+  @Test
+  public void testValidatorReturnsTrueForExpectedValueNumberCVBoolean() {
+    var testCaseGroupPopulation =
+      TestCaseGroupPopulation.builder()
+        .groupId("GroupId")
+          .populationBasis("Boolean")
+        .populationValues(
+          List.of(
+            TestCasePopulationValue.builder()
+              .name(PopulationType.INITIAL_POPULATION)
+              .expected(true)
+              .build(),
+              TestCasePopulationValue.builder()
+              .name(PopulationType.MEASURE_POPULATION)
+              .expected(true)
+              .build(),
+              TestCasePopulationValue.builder()
+              .name(PopulationType.MEASURE_POPULATION_OBSERVATION)
+              .expected(2)
+              .build()
+              ))
+        .scoring(MeasureScoring.CONTINUOUS_VARIABLE.toString())
+        .build();
+    boolean output = validator.isValid(testCaseGroupPopulation, validatorContext);
+    assertTrue(output);
+  }
 
   @Test
   public void testValidatorReturnsTrueForExpectedValueMismatchPopulationBasisNonBoolean() {

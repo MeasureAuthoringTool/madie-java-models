@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -50,33 +51,52 @@ public class ScoringPopulationValidator
     final String popBasis = testCaseGroupPopulation.getPopulationBasis();
 
     boolean allValuesMatchPopulationBasis = popBasis == null || populationValues.stream().allMatch(popVal -> {
-      if (popVal == null || popVal.getExpected() == null) {
-        return true;
-      } else if ("Boolean".equals(popBasis)) {
-        if(popVal.getName().equals(PopulationType.MEASURE_OBSERVATION) && !popVal.getExpected().equals(false)){
-          return popVal.getExpected() instanceof String;
-        }else {
-          return popVal.getExpected() instanceof Boolean;
-        }
-      } else if (popVal.getExpected().toString().isEmpty()) {
+      
+      if (popVal == null || popVal.getExpected() == null || popVal.getExpected().toString().isEmpty()) {
         return true;
       } else {
-        try {
-          if(!popVal.getName().equals(PopulationType.MEASURE_OBSERVATION)){
-            Integer.parseInt(popVal.getExpected().toString());
-            return true;
+        //isObservation needs to be a number, regardless of populationBasis
+        //!isObservation needs to match popBasis type (ie., Boolean or Number)
+        if(isObservation(popVal.getName())) {
+          return valIsNumber(popVal);
+        } else if (!isObservation(popVal.getName()) ) {
+          if ("Boolean".equals(popBasis) && popVal.getExpected() instanceof Boolean ) {
+            return true ; 
           }
-          else{
-            Float.parseFloat(popVal.getExpected().toString());
-            return true;
+          else {
+            return valIsNumber(popVal);
           }
-        } catch (Exception ex) {
-          return false;
         }
       }
+      return false ; 
     });
     return receivedPopulations.size() >= requiredPopulations.size()
         && receivedPopulations.containsAll(requiredPopulations)
         && allValuesMatchPopulationBasis;
+  }
+
+  private boolean valIsNumber(TestCasePopulationValue popVal) {
+    try {
+      if(!isObservation(popVal.getName())){
+        Integer.parseInt(popVal.getExpected().toString());
+        return true;
+      }
+      else{
+        Float.parseFloat(popVal.getExpected().toString());
+        return true;
+      }
+    } catch (Exception ex) {
+      return false;
+    }
+  }
+  
+  private boolean isObservation(PopulationType popType ) {
+    List<PopulationType> obvs = new ArrayList<>() {{
+      add(PopulationType.MEASURE_OBSERVATION);
+      add(PopulationType.MEASURE_POPULATION_OBSERVATION);
+      add(PopulationType.NUMERATOR_OBSERVATION);
+      add(PopulationType.DENOMINATOR_OBSERVATION);
+    }};
+    return obvs.contains(popType);
   }
 }
