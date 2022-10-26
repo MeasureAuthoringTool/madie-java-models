@@ -14,8 +14,10 @@ public interface ScoringPopulationDefinition {
       List.of(
         new MeasurePopulationOption(PopulationType.INITIAL_POPULATION, true),
         new MeasurePopulationOption(PopulationType.NUMERATOR, true),
+        new MeasurePopulationOption(PopulationType.NUMERATOR_OBSERVATION, false),
         new MeasurePopulationOption(PopulationType.NUMERATOR_EXCLUSION, false),
         new MeasurePopulationOption(PopulationType.DENOMINATOR, true),
+        new MeasurePopulationOption(PopulationType.DENOMINATOR_OBSERVATION, false),
         new MeasurePopulationOption(PopulationType.DENOMINATOR_EXCLUSION, false)),
       MeasureScoring.PROPORTION,
       List.of(
@@ -29,7 +31,9 @@ public interface ScoringPopulationDefinition {
       List.of(
         new MeasurePopulationOption(PopulationType.INITIAL_POPULATION, true),
         new MeasurePopulationOption(PopulationType.MEASURE_POPULATION, true),
-        new MeasurePopulationOption(PopulationType.MEASURE_POPULATION_EXCLUSION, false)),
+        new MeasurePopulationOption(PopulationType.MEASURE_POPULATION_EXCLUSION, false),
+        new MeasurePopulationOption(PopulationType.MEASURE_POPULATION_OBSERVATION, false)
+        ),
       MeasureScoring.COHORT,
       List.of(new MeasurePopulationOption(PopulationType.INITIAL_POPULATION, true)));
 }

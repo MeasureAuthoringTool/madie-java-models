@@ -19,6 +19,12 @@ public enum PopulationType {
   DENOMINATOR_EXCEPTION("denominator-exception","Denominator Exception"),
   @JsonProperty("measurePopulation")
   MEASURE_POPULATION("measure-population","Measure Population"),
+  @JsonProperty("measurePopulationObservation")
+  MEASURE_POPULATION_OBSERVATION("measure-population-observation","Measure Population Observation"),
+  @JsonProperty("numeratorObservation")
+  NUMERATOR_OBSERVATION("numerator-observation","Numerator Observation"),
+  @JsonProperty("denominatorObservation")
+  DENOMINATOR_OBSERVATION("denominator-observation","DenominatorObservation"),
   @JsonProperty("measurePopulationExclusion")
   MEASURE_POPULATION_EXCLUSION("measure-population-exclusion","Measure Population Exclusion"),
   @JsonProperty("measureObservation")
