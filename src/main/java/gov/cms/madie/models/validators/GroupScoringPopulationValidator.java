@@ -45,26 +45,16 @@ public class GroupScoringPopulationValidator
       return measurePopulationOptions.stream()
         .allMatch(
           option -> {
-
             Stream<Population> pops = populations.stream()
                 .filter(population -> {
 
                   return Objects.equals(option.getMeasurePopulation(), population.getName()); 
                 });
-            
-            
-            Population matchingPopulation =  pops
-                .map(population -> {
-
-                  return population;
-                })
-                .findAny().orElse(null);
+            Population matchingPopulation =  pops.findAny().orElse(null);
             // required population must be present and has definition selected
             if(option.isRequired()) {
-
               return matchingPopulation != null && StringUtils.hasText(matchingPopulation.getDefinition());
             }
-
             return true;
           })
         && populations.stream()
