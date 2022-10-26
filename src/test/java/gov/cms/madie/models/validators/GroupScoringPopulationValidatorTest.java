@@ -58,15 +58,7 @@ public class GroupScoringPopulationValidatorTest {
         .name(PopulationType.NUMERATOR_OBSERVATION)
         .definition("numeratorObservation")
         .build();
-//    measurePopulationObservation = Population.builder()
-//        .name(PopulationType.MEASURE_POPULATION_OBSERVATION)
-//        .definition("measurePopulationObservation")
-//        .build();
-//    ip2 = Population
-//      .builder()
-//      .name(PopulationType.INITIAL_POPULATION)
-//      .definition("Initial Population 2")
-//      .build();
+
     List<Population> populations = new ArrayList<>();
     populations.add(ip1);
     group =
