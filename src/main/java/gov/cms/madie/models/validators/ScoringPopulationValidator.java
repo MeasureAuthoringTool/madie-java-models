@@ -55,11 +55,8 @@ public class ScoringPopulationValidator
       if (popVal == null || popVal.getExpected() == null || popVal.getExpected().toString().isEmpty()) {
         return true;
       } else {
-        boolean isObv = isObservation(popVal.getName());
-        boolean getExp = popVal.getExpected().equals(false);
         //isObservation needs to be a number, regardless of populationBasis
         //!isObservation needs to match popBasis type (ie., Boolean or Number)
-
         if(isObservation(popVal.getName())) {
           return valIsNumber(popVal);
         } else if (!isObservation(popVal.getName()) ) {
