@@ -60,7 +60,7 @@ public class ScoringPopulationValidator
         if(isObservation(popVal.getName())) {
           return valIsNumber(popVal);
         } else if (!isObservation(popVal.getName()) ) {
-          if ("Boolean".equals(popBasis) && popVal.getExpected() instanceof Boolean ) {
+          if ("boolean".equals(popBasis) && popVal.getExpected() instanceof Boolean ) {
             return true ; 
           }
           else {
