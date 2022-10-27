@@ -186,7 +186,7 @@ class ScoringPopulationValidatorTest {
     var testCaseGroupPopulation =
       TestCaseGroupPopulation.builder()
         .groupId("GroupId")
-          .populationBasis("Boolean")
+          .populationBasis("boolean")
         .populationValues(
           List.of(
             TestCasePopulationValue.builder()
@@ -282,7 +282,7 @@ class ScoringPopulationValidatorTest {
     var testCaseGroupPopulation =
         TestCaseGroupPopulation.builder()
             .groupId("GroupId")
-            .populationBasis("Boolean")
+            .populationBasis("boolean")
             .populationValues(
                 List.of(
                     TestCasePopulationValue.builder()
