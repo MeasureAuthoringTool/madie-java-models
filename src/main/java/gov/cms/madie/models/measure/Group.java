@@ -1,6 +1,7 @@
 package gov.cms.madie.models.measure;
 
 import gov.cms.madie.models.validators.EnumValidator;
+import gov.cms.madie.models.validators.ValidGroupPopulationId;
 import gov.cms.madie.models.validators.ValidGroupScoringPopulation;
 import gov.cms.madie.models.validators.ValidMeasureObservation;
 import lombok.AllArgsConstructor;
@@ -21,6 +22,7 @@ import java.util.List;
 @AllArgsConstructor
 @ValidGroupScoringPopulation
 @ValidMeasureObservation
+@ValidGroupPopulationId
 public class Group implements GroupScoringPopulation {
   @Id
   private String id;
