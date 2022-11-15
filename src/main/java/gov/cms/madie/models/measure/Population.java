@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.NotBlank;
+
 import org.springframework.data.annotation.Id;
 
 @Data
@@ -12,6 +15,7 @@ import org.springframework.data.annotation.Id;
 @AllArgsConstructor
 public class Population {
   @Id
+  @NotBlank(message = "Population ID is required.")
   private String id;
   private PopulationType name;
   private String definition;

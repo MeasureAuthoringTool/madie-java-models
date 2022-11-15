@@ -34,6 +34,7 @@ public class Group implements GroupScoringPopulation {
       groups = {Measure.ValidationOrder5.class})
   private String scoring;
 
+  @Valid
   private List<Population> populations;
 
   private List<MeasureObservation> measureObservations;
