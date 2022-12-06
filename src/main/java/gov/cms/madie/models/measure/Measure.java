@@ -26,6 +26,10 @@ public class Measure extends ResourceAcl {
   @Id private String id;
 
   private String measureHumanReadableId;
+
+  @NotBlank(
+    groups = {ValidationOrder1.class},
+    message = "Measure Set ID is required.")
   private String measureSetId;
   private String version;
   private String revisionNumber;
