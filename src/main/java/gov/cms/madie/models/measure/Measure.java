@@ -12,7 +12,13 @@ import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import gov.cms.madie.models.common.ModelType;
+import gov.cms.madie.models.library.Version;
+import gov.cms.madie.models.utils.VersionJsonSerializer;
 import gov.cms.madie.models.validators.EnumValidator;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,8 +37,10 @@ public class Measure extends ResourceAcl {
     groups = {ValidationOrder1.class},
     message = "Measure Set ID is required.")
   private String measureSetId;
-  private String version;
-  private String revisionNumber;
+
+  @JsonSerialize(using = VersionJsonSerializer.VersionSerializer.class)
+  @JsonDeserialize(using = VersionJsonSerializer.VersionDeserializer.class)
+  private Version version;
   private String state;
 
 
