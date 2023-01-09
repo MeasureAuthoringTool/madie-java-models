@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import gov.cms.madie.models.common.ModelType;
-import gov.cms.madie.models.library.Version;
+import gov.cms.madie.models.common.Version;
 import gov.cms.madie.models.utils.VersionJsonSerializer;
 import gov.cms.madie.models.validators.EnumValidator;
 import lombok.Data;
