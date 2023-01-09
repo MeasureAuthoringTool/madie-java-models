@@ -52,7 +52,7 @@ class ScoringPopulationValidatorTest {
         .cql("test cql")
         .measureSetId("IDIDID")
         .measureName("MSR01")
-        .version(new gov.cms.madie.models.library.Version(0, 0,1))
+        .version(new gov.cms.madie.models.common.Version(0, 0,1))
         .groups(groups)
         .createdAt(Instant.now())
         .createdBy("test user")
