@@ -1,0 +1,8 @@
+package gov.cms.madie.models.measure;
+
+public enum MeasureErrorType {
+  MISSING_ELM,
+  MISMATCH_CQL_POPULATION_RETURN_TYPES,
+  MISMATCH_CQL_RISK_ADJUSTMENT,
+  MISMATCH_CQL_SUPPLEMENTAL_DATA
+}
