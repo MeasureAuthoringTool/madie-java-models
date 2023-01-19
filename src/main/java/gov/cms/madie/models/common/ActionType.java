@@ -7,5 +7,6 @@ public enum ActionType {
   VERSIONED_REVISIONNUMBER,
   DELETED,
   IMPORTED,
-  UPDATED
+  UPDATED,
+  DRAFTED
 }
