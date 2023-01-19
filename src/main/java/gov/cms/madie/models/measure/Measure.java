@@ -41,6 +41,8 @@ public class Measure extends ResourceAcl {
   @JsonSerialize(using = VersionJsonSerializer.VersionSerializer.class)
   @JsonDeserialize(using = VersionJsonSerializer.VersionDeserializer.class)
   private Version version;
+  //temp for MAT-5191
+  private String revisionNumber;
   private String state;
 
 
