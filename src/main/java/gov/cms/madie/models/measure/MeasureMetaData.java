@@ -1,11 +1,15 @@
 package gov.cms.madie.models.measure;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.List;
 
-@NoArgsConstructor
 @Data
+@Builder(toBuilder=true)
+@NoArgsConstructor
+@AllArgsConstructor
 public class MeasureMetaData {
   private String steward;
   private List<String> developers;
@@ -15,7 +19,7 @@ public class MeasureMetaData {
   private String rationale;
   private String guidance;
   private String clinicalRecommendation;
-  
+
   private boolean draft;
   private List<Reference> references;
   private List<Endorsement> endorsements;
@@ -24,5 +28,5 @@ public class MeasureMetaData {
   private boolean experimental;
   private String transmissionFormat;
   private String supplementalDataElements;
-  
+
 }

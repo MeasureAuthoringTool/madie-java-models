@@ -3,11 +3,14 @@ package gov.cms.madie.models.measure;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import javax.validation.GroupSequence;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.groups.Default;
+
+import lombok.Singular;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
@@ -90,6 +93,8 @@ public class Measure extends ResourceAcl {
   // TODO: determine if theres a way to set this from backend or if we should always trust user
   // input for this field
   private boolean cqlErrors;
+  @Singular
+  private Set<MeasureErrorType> errors;
   private String cql;
   private String elmJson;
   @Transient private String elmXml;
