@@ -106,6 +106,8 @@ public class Measure extends ResourceAcl {
   private String lastModifiedBy;
   private Date measurementPeriodStart;
   private Date measurementPeriodEnd;
+  private List<SupplementalData> supplementalData;
+  private List<RiskAdjustment> riskAdjustments;
 
   @EnumValidator(
       enumClass = ModelType.class,
