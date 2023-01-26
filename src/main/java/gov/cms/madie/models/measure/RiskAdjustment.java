@@ -1,18 +1,15 @@
 package gov.cms.madie.models.measure;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@Builder(toBuilder = true)
-@NoArgsConstructor
-@AllArgsConstructor
-public class RiskAdjustment {
+public class RiskAdjustment extends SupplementalData {
 
-    private String definition;
+    public RiskAdjustment() {
+        super();
+    }
 
-    private String description;
-
+    public RiskAdjustment(String definition, String description) {
+        super(definition, description);
+    }
 }
