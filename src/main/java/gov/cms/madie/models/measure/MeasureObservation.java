@@ -20,6 +20,7 @@ public class MeasureObservation {
       groups = {Measure.ValidationOrder5.class}
   )
   private String definition;
+  private String description;
   private String criteriaReference;
   @NotNull(
       message = "Aggregate Method is required.",
