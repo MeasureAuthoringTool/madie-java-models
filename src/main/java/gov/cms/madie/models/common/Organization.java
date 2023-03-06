@@ -20,4 +20,6 @@ public class Organization {
 
   @Indexed(unique = true)
   private String oid;
+
+  private String url;
 }
