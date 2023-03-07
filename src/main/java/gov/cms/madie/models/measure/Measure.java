@@ -123,8 +123,7 @@ public class Measure extends ResourceAcl {
   private String versionId;
   private String cmsId;
   
-  private Date approvalDate;
-  private Date lastReviewDate;
+  private ReviewMetaData reviewMetaData = new ReviewMetaData();
 
   @GroupSequence({
     Measure.ValidationOrder1.class,
