@@ -122,6 +122,9 @@ public class Measure extends ResourceAcl {
       message = "Version ID is required.")
   private String versionId;
   private String cmsId;
+  
+  private Date approvalDate;
+  private Date lastReviewDate;
 
   @GroupSequence({
     Measure.ValidationOrder1.class,
