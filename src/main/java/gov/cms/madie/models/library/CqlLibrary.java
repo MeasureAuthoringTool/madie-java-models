@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import gov.cms.madie.models.validators.EnumValidator;
 import gov.cms.madie.models.utils.VersionJsonSerializer;
+import gov.cms.madie.models.common.Identifier;
 import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.common.ProgramUseContext;
 import gov.cms.madie.models.common.Version;
@@ -73,6 +74,8 @@ public class CqlLibrary {
   private String description;
   private boolean experimental;
   private ProgramUseContext programUseContext;
+  private String title;
+  private Identifier identifier;
 
   @GroupSequence({
     CqlLibrary.ValidationOrder1.class,
