@@ -1,5 +1,6 @@
 package gov.cms.madie.models.measure;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -12,6 +13,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReviewMetaData {
-  private Date approvalDate;
-  private Date lastReviewDate;
+  private LocalDate approvalDate;
+  private LocalDate lastReviewDate;
 }
