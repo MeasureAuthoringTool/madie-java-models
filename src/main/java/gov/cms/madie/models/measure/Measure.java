@@ -10,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.groups.Default;
 
+import gov.cms.madie.models.common.ProgramUseContext;
 import lombok.Singular;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
@@ -108,6 +109,7 @@ public class Measure extends ResourceAcl {
   private Date measurementPeriodEnd;
   private List<SupplementalData> supplementalData;
   private List<RiskAdjustment> riskAdjustments;
+  private ProgramUseContext programUseContext;
 
   @EnumValidator(
       enumClass = ModelType.class,
