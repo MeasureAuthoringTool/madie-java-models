@@ -1,5 +1,6 @@
 package gov.cms.madie.models.measure;
 
+import gov.cms.madie.models.common.Organization;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,8 +12,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MeasureMetaData {
-  private String steward;
-  private List<String> developers;
+  private Organization steward;
+  private List<Organization> developers;
   private String description;
   private String copyright;
   private String disclaimer;
