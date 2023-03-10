@@ -10,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.groups.Default;
 
+import gov.cms.madie.models.common.ProgramUseContext;
 import lombok.Singular;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
@@ -109,6 +110,7 @@ public class Measure extends ResourceAcl {
   @Singular("sde")
   private List<SupplementalData> supplementalData;
   private List<RiskAdjustment> riskAdjustments;
+  private ProgramUseContext programUseContext;
 
   @EnumValidator(
       enumClass = ModelType.class,
@@ -123,6 +125,8 @@ public class Measure extends ResourceAcl {
       message = "Version ID is required.")
   private String versionId;
   private String cmsId;
+  
+  private ReviewMetaData reviewMetaData = new ReviewMetaData();
 
   @GroupSequence({
     Measure.ValidationOrder1.class,
