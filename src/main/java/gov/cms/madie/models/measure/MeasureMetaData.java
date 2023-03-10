@@ -1,6 +1,7 @@
 package gov.cms.madie.models.measure;
 
 import gov.cms.madie.models.common.Organization;
+import javax.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,6 +24,7 @@ public class MeasureMetaData {
 
   private boolean draft;
   private List<Reference> references;
+  @Valid
   private List<Endorsement> endorsements;
   private String riskAdjustment;
   private String definition;
