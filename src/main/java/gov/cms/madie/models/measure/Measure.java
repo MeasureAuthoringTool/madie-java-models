@@ -107,6 +107,7 @@ public class Measure extends ResourceAcl {
   private String lastModifiedBy;
   private Date measurementPeriodStart;
   private Date measurementPeriodEnd;
+  @Singular("sde")
   private List<SupplementalData> supplementalData;
   private List<RiskAdjustment> riskAdjustments;
   private ProgramUseContext programUseContext;
