@@ -3,16 +3,26 @@ package gov.cms.madie.models.measure;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import javax.validation.GroupSequence;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.groups.Default;
+
+import gov.cms.madie.models.common.ProgramUseContext;
+import lombok.Singular;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import gov.cms.madie.models.common.ModelType;
+import gov.cms.madie.models.common.Version;
+import gov.cms.madie.models.utils.VersionJsonSerializer;
 import gov.cms.madie.models.validators.EnumValidator;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,8 +36,16 @@ public class Measure extends ResourceAcl {
   @Id private String id;
 
   private String measureHumanReadableId;
+
+  @NotBlank(
+    groups = {ValidationOrder1.class},
+    message = "Measure Set ID is required.")
   private String measureSetId;
-  private String version;
+
+  @JsonSerialize(using = VersionJsonSerializer.VersionSerializer.class)
+  @JsonDeserialize(using = VersionJsonSerializer.VersionDeserializer.class)
+  private Version version;
+  //temp for MAT-5191
   private String revisionNumber;
   private String state;
 
@@ -76,6 +94,8 @@ public class Measure extends ResourceAcl {
   // TODO: determine if theres a way to set this from backend or if we should always trust user
   // input for this field
   private boolean cqlErrors;
+  @Singular
+  private Set<MeasureErrorType> errors;
   private String cql;
   private String elmJson;
   @Transient private String elmXml;
@@ -87,6 +107,10 @@ public class Measure extends ResourceAcl {
   private String lastModifiedBy;
   private Date measurementPeriodStart;
   private Date measurementPeriodEnd;
+  @Singular("sde")
+  private List<SupplementalData> supplementalData;
+  private List<RiskAdjustment> riskAdjustments;
+  private ProgramUseContext programUseContext;
 
   @EnumValidator(
       enumClass = ModelType.class,
@@ -94,6 +118,7 @@ public class Measure extends ResourceAcl {
       groups = {ValidationOrder5.class})
   private String model;
 
+  @Valid
   private MeasureMetaData measureMetaData = new MeasureMetaData();
 
   @NotBlank(
@@ -101,6 +126,8 @@ public class Measure extends ResourceAcl {
       message = "Version ID is required.")
   private String versionId;
   private String cmsId;
+  
+  private ReviewMetaData reviewMetaData = new ReviewMetaData();
 
   @GroupSequence({
     Measure.ValidationOrder1.class,

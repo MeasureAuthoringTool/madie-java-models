@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
-import gov.cms.madie.models.library.Version;
+import gov.cms.madie.models.common.Version;
 
 import java.io.IOException;
 import lombok.extern.slf4j.Slf4j;

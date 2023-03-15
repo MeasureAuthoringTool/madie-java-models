@@ -1,4 +1,4 @@
-package gov.cms.madie.models.library;
+package gov.cms.madie.models.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
