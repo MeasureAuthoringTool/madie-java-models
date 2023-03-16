@@ -108,8 +108,9 @@ public class Measure extends ResourceAcl {
   private Date measurementPeriodStart;
   private Date measurementPeriodEnd;
   @Singular("sde")
-  private List<SupplementalData> supplementalData;
-  private List<RiskAdjustment> riskAdjustments;
+  private List<DefDescPair> supplementalData;
+  @Singular("rav")
+  private List<DefDescPair> riskAdjustments;
   private ProgramUseContext programUseContext;
 
   @EnumValidator(
