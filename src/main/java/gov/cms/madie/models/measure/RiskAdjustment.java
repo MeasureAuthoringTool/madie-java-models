@@ -3,7 +3,7 @@ package gov.cms.madie.models.measure;
 import lombok.Data;
 
 @Data
-public class RiskAdjustment extends SupplementalData {
+public class RiskAdjustment extends DefDescPair {
 
     public RiskAdjustment() {
         super();
