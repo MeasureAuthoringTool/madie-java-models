@@ -25,7 +25,8 @@ public class RequiredByOtherFieldValidator implements
             Object selectedFieldValue = getFieldValue(object, selectedField);
             Object requiredFieldValue = getFieldValue(object, requiredField);
             return (selectedFieldValue != null && !selectedFieldValue.toString().isEmpty()) ? (
-                requiredFieldValue != null && !requiredFieldValue.toString().isEmpty()) : true;
+                requiredFieldValue != null && !requiredFieldValue.toString().isEmpty()) : (
+                    requiredFieldValue == null || requiredFieldValue.toString().isEmpty());
         } catch (Exception e) {
             log.error("Error occurred while cross validating fields of {} and {}", selectedField,
                 requiredField);

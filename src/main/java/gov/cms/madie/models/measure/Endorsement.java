@@ -9,7 +9,7 @@ import lombok.experimental.SuperBuilder;
 @Data
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
-@RequiredOnSelect(selectedField = "endorser", requiredField = "endorsementId", message = "EndorsementId is required when endorser is not null")
+@RequiredOnSelect(selectedField = "endorser", requiredField = "endorsementId", message = "EndorsementId is required when Endorser is not null,otherwise if Endorser is null, EndorsementId has to be null")
 public class Endorsement {
 
     private String endorser;
