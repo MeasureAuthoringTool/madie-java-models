@@ -64,4 +64,11 @@ class RequiredByOtherFieldValidatorTest {
         boolean output = validator.isValid(new Endorsement(), validatorContext);
         assertTrue(output);
     }
+    @Test
+    public void testValidatorNullEndorserNotNullEndorserIdValuesReturnsFalse() {
+        endorsement.setEndorsementId("testEndorsementId");
+        endorsement.setEndorser(null);
+        boolean output = validator.isValid(endorsement, validatorContext);
+        assertFalse(output);
+    }
 }
