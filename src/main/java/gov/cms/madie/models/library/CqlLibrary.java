@@ -63,8 +63,8 @@ public class CqlLibrary {
   private String groupId;
   private boolean cqlErrors;
   private String cql;
-  @Transient private String elmJson;
-  @Transient private String elmXml;
+  private String elmJson;
+  private String elmXml;
   private Instant createdAt;
   private String createdBy;
   private Instant lastModifiedAt;
