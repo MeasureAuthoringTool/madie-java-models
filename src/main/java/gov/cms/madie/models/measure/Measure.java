@@ -112,7 +112,6 @@ public class Measure extends ResourceAcl {
   @Singular("rav")
   private List<DefDescPair> riskAdjustments;
   private ProgramUseContext programUseContext;
-  private String measureBundleJson;
 
   @EnumValidator(
       enumClass = ModelType.class,
