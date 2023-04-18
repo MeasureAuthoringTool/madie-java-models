@@ -24,6 +24,7 @@ import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.common.Version;
 import gov.cms.madie.models.utils.VersionJsonSerializer;
 import gov.cms.madie.models.validators.EnumValidator;
+import gov.cms.madie.models.validators.ValidQDMMeasureScoring;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -31,6 +32,7 @@ import lombok.experimental.SuperBuilder;
 @Data
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
+@ValidQDMMeasureScoring
 public class Measure extends ResourceAcl {
 
   @Id private String id;
@@ -129,6 +131,8 @@ public class Measure extends ResourceAcl {
   private String cmsId;
   
   private ReviewMetaData reviewMetaData = new ReviewMetaData();
+  
+  private String scoring;
 
   @GroupSequence({
     Measure.ValidationOrder1.class,
