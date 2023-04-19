@@ -26,9 +26,6 @@ public class QDMMeasureScoringValidator implements ConstraintValidator<ValidQDMM
 				}
 			}
 		} 
-		else {
-			return true;
-		}
 		return true;
 	}
 
