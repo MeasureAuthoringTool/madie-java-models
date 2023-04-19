@@ -12,7 +12,7 @@
   <description>Java based models for MADiE microservices</description>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>16</java.version>
+    <java.version>17</java.version>
     <mvn.checkstyle.file>checkstyle.xml</mvn.checkstyle.file>
     <mvn.checkstyle.version>3.1.2</mvn.checkstyle.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
