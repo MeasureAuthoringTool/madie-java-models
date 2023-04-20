@@ -1,7 +1,7 @@
 package gov.cms.madie.models.measure;
 
 import gov.cms.madie.models.common.Organization;
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

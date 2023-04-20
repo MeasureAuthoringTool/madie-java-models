@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Transient;
 
-import javax.validation.GroupSequence;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.groups.Default;
+import jakarta.validation.GroupSequence;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.groups.Default;
 import java.time.Instant;
 import java.util.List;
 

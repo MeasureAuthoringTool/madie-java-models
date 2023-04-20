@@ -4,11 +4,11 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-import javax.validation.GroupSequence;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.groups.Default;
+import jakarta.validation.GroupSequence;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.groups.Default;
 
 import gov.cms.madie.models.common.ProgramUseContext;
 import lombok.Singular;
