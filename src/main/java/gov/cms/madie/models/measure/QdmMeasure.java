@@ -1,7 +1,7 @@
 package gov.cms.madie.models.measure;
 
 
-import jakarta.validation.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 

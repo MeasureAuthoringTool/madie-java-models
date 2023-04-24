@@ -2,7 +2,7 @@ package gov.cms.madie.models.measure;
 
 import lombok.Data;
 
-import jakarta.validation.constraints.NotNull;
+import javax.validation.constraints.NotNull;
 
 @Data
 public class Stratification {
