@@ -115,7 +115,7 @@ public class Measure extends ResourceAcl {
   private List<DefDescPair> riskAdjustments;
   private ProgramUseContext programUseContext;
 
-  @NotBlank(message = "Model required")
+  @NotBlank(message = "Model is required")
   @EnumValidator(
       enumClass = ModelType.class,
       message = "MADiE was unable to complete your request, please try again."
