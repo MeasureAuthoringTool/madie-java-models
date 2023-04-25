@@ -1,7 +1,7 @@
 package gov.cms.madie.models.measure;
 
 import gov.cms.madie.models.validators.RequiredOnSelect;
-import jakarta.validation.constraints.Pattern;
+import javax.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;

@@ -10,9 +10,9 @@ import gov.cms.madie.models.common.ProgramUseContext;
 import gov.cms.madie.models.common.Version;
 
 import java.time.Instant;
-import jakarta.validation.GroupSequence;
-import jakarta.validation.constraints.*;
-import jakarta.validation.groups.Default;
+import javax.validation.GroupSequence;
+import javax.validation.constraints.*;
+import javax.validation.groups.Default;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

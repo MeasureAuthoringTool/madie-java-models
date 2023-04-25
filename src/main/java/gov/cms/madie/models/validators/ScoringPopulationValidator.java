@@ -8,8 +8,8 @@ import gov.cms.madie.models.utils.ScoringPopulationDefinition;
 import gov.cms.madie.models.measure.MeasureScoring;
 import lombok.extern.slf4j.Slf4j;
 
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
