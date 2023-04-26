@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-import gov.cms.madie.models.validators.EnumValidator;
+import gov.cms.madie.models.validators.ValidMeasureScoring;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -15,12 +15,9 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @JsonTypeName("QDM v5.6")
 @ToString(callSuper=true)
+@ValidMeasureScoring
 public class QdmMeasure extends Measure {
-
-	@EnumValidator(
-      enumClass = MeasureScoring.class,
-      message = "Scoring must be a valid MADiE scoring type"
-  )
+	
 	private String scoring;
 	
 	@Override
