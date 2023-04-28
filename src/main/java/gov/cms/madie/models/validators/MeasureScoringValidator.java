@@ -1,7 +1,7 @@
 package gov.cms.madie.models.validators;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 import gov.cms.madie.models.measure.MeasureScoring;
 import gov.cms.madie.models.measure.QdmMeasure;

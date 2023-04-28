@@ -6,7 +6,8 @@
 
   <groupId>gov.cms.madie</groupId>
   <artifactId>madie-java-models</artifactId>
-  <version>0.3.11-SNAPSHOT</version>
+  <version>0.4.1-SNAPSHOT</version>
+
 
   <name>madie-java-models</name>
   <description>Java based models for MADiE microservices</description>
@@ -44,7 +45,7 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter</artifactId>
-      <version>3.0.2</version>
+      <version>3.0.3</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -71,6 +72,11 @@
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
       <version>${fasterxml.jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+      <version>3.0.2</version>
     </dependency>
   </dependencies>
 
