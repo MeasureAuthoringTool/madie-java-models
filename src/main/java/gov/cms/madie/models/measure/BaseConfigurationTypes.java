@@ -41,10 +41,9 @@ public enum BaseConfigurationTypes {
     return Arrays.stream(BaseConfigurationTypes.values())
       .filter(s -> s.text.equals(text))
       .findFirst()
-//      .orElseThrow(
-//        () ->
-//          new IllegalArgumentException(
-//            "No enum constant " + BaseConfigurationTypes.class.getCanonicalName() + "." + text));
-      .orElse(null);
+      .orElseThrow(
+        () ->
+          new IllegalArgumentException(
+            "No enum constant " + BaseConfigurationTypes.class.getCanonicalName() + "." + text));
   }
 }
