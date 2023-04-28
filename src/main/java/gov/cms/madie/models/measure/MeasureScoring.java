@@ -29,9 +29,6 @@ public enum MeasureScoring {
     return Arrays.stream(MeasureScoring.values())
       .filter(s -> s.text.equals(text))
       .findFirst()
-      .orElseThrow(
-        () ->
-          new IllegalArgumentException(
-            "No enum constant " + MeasureScoring.class.getCanonicalName() + "." + text));
+      .orElse(null);
   }
 }
