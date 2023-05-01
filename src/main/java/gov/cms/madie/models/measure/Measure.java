@@ -4,11 +4,11 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-import javax.validation.GroupSequence;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.groups.Default;
+import jakarta.validation.GroupSequence;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.groups.Default;
 
 import gov.cms.madie.models.common.ProgramUseContext;
 import lombok.Singular;
@@ -17,6 +17,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -27,10 +30,6 @@ import gov.cms.madie.models.validators.EnumValidator;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
 @Data
 @SuperBuilder(toBuilder = true)
@@ -51,6 +50,7 @@ public class Measure extends ResourceAcl {
   private String measureHumanReadableId;
 
   @NotBlank(
+    groups = {ValidationOrder1.class},
     message = "Measure Set ID is required.")
   private String measureSetId;
 
@@ -64,31 +64,41 @@ public class Measure extends ResourceAcl {
 
   @Indexed(unique = true)
   @NotBlank(
+      groups = {ValidationOrder1.class},
       message = "Measure Library Name is required.")
   @Pattern(
       regexp = "^[A-Z][a-zA-Z0-9]*$",
+      groups = {
+        ValidationOrder2.class,
+      },
       message = "Measure Library Name is invalid.")
   private String cqlLibraryName;
 
   @NotBlank(
+      groups = {ValidationOrder6.class},
       message = "eCQM Abbreviated Title is required.")
   @Length(
       min = 1,
       max = 32,
+      groups = {ValidationOrder7.class},
       message = "eCQM Abbreviated Title cannot be more than 32 characters.")
   private String ecqmTitle;
 
   @NotBlank(
+      groups = {ValidationOrder1.class},
       message = "Measure Name is required.")
   @Length(
       min = 1,
       max = 500,
+      groups = {ValidationOrder2.class},
       message = "Measure Name can not be more than 500 characters.")
   @Pattern(
       regexp = "^[^_]+$",
+      groups = {ValidationOrder3.class},
       message = "Measure Name can not contain underscores.")
   @Pattern(
       regexp = ".*[a-zA-Z]+.*",
+      groups = {ValidationOrder4.class},
       message = "A measure name must contain at least one letter.")
   private String measureName;
 
@@ -118,20 +128,20 @@ public class Measure extends ResourceAcl {
   @NotBlank(message = "Model is required")
   @EnumValidator(
       enumClass = ModelType.class,
-      message = "MADiE was unable to complete your request, please try again."
-      )
+      message = "MADiE was unable to complete your request, please try again.",
+      groups = {ValidationOrder5.class})
   private String model;
 
   @Valid
   private MeasureMetaData measureMetaData = new MeasureMetaData();
 
   @NotBlank(
+      groups = {ValidationOrder1.class},
       message = "Version ID is required.")
   private String versionId;
   private String cmsId;
   
   private ReviewMetaData reviewMetaData = new ReviewMetaData();
-  
 
   @GroupSequence({
     Measure.ValidationOrder1.class,
