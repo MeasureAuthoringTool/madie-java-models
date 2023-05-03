@@ -12,7 +12,7 @@ public class QDMGroupScoringValidator implements ConstraintValidator<ValidQDMGro
   @Override
   public boolean isValid(QdmMeasure measure, ConstraintValidatorContext context) {
   	if(measure==null || CollectionUtils.isEmpty(measure.getGroups())) {
-			return true;
+  		return true;
 		}
   	if(measure.getScoring()!=null && !measure.getScoring().equalsIgnoreCase(measure.getGroups().get(0).getScoring())) {
   		return false;
