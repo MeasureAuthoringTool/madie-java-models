@@ -25,5 +25,6 @@ public class QdmMeasure extends Measure {
 	private List<BaseConfigurationTypes> baseConfigurationTypes;
 	@Builder.Default
 	private boolean patientBasis = true;
+	private String rateAggregation;
 	
 }
