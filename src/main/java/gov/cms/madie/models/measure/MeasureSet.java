@@ -1,10 +1,13 @@
 package gov.cms.madie.models.measure;
 
+import gov.cms.madie.models.access.AclSpecification;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.Id;
+
+import java.util.List;
 
 @Data
 @SuperBuilder(toBuilder = true)
@@ -19,4 +22,6 @@ public class MeasureSet {
     private String measureSetId;
 
     private String owner;
+
+    private List<AclSpecification> acls;
 }
