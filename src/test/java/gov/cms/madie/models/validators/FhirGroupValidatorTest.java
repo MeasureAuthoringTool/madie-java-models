@@ -59,6 +59,17 @@ private final ValidFhirGroupValidator validator =  new ValidFhirGroupValidator()
   }
 	
 	@Test
+  public void testValidatorReturnsFalseForNullPopulationBasis() {
+		Group group1 = Group.builder().id("testGroupId").scoring(MeasureScoring.COHORT.toString())
+				.measureGroupTypes(Arrays.asList(MeasureGroupTypes.OUTCOME)).build();
+		Group group2 = Group.builder().id("testGroupId").scoring(MeasureScoring.COHORT.toString()).populationBasis("true")
+				.measureGroupTypes(Arrays.asList(MeasureGroupTypes.OUTCOME)).build();
+		measure.setGroups(Arrays.asList(group1, group2));
+    boolean output = validator.isValid(measure, validatorContext);
+    assertFalse(output);
+  }
+	
+	@Test
   public void testValidatorReturnsTrueForValidMeasureGroupTypes() {
 		Group group1 = Group.builder().id("testGroupId").scoring(MeasureScoring.COHORT.toString()).populationBasis("true")
 				.measureGroupTypes(Arrays.asList(MeasureGroupTypes.OUTCOME)).build();

@@ -15,7 +15,7 @@ import jakarta.validation.Payload;
 @Documented
 public @interface ValidFhirGroup {
 
-	String message() default "Fhir Group is not valid";
+	String message() default "Measure Group Types and Population Basis are required for FHIR Measure Group";
 
 	Class<?>[] groups() default {};
 
