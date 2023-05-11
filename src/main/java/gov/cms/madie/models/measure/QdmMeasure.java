@@ -26,5 +26,6 @@ public class QdmMeasure extends Measure {
 	@Builder.Default
 	private boolean patientBasis = true;
 	private String rateAggregation;
-	
+	private String improvementNotation;
+
 }
