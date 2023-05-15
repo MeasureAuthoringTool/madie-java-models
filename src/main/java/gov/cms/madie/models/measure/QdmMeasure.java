@@ -31,5 +31,3 @@ public class QdmMeasure extends Measure {
 	private String rateAggregation;
 	private ImprovementNotation improvementNotation;
 }
-
-
