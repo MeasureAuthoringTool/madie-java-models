@@ -143,6 +143,9 @@ public class Measure extends ResourceAcl {
   
   private ReviewMetaData reviewMetaData = new ReviewMetaData();
 
+  @Transient
+  private MeasureSet measureSet;
+
   @GroupSequence({
     Measure.ValidationOrder1.class,
     Measure.ValidationOrder2.class,
