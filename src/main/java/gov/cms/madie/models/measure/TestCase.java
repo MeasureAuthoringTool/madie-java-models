@@ -58,6 +58,8 @@ public class TestCase {
 
   @Valid
   private List<TestCaseGroupPopulation> groupPopulations;
+  
+  private Demographics demographics;
 
   @GroupSequence({ValidationOrder1.class, ValidationOrder2.class, Default.class})
   public interface ValidationSequence {
