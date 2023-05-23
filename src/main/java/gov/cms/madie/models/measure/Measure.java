@@ -111,7 +111,6 @@ public class Measure extends ResourceAcl {
   private String cql;
   private String elmJson;
   @Transient private String elmXml;
-  private List<TestCase> testCases;
   @Valid private List<Group> groups;
   private Instant createdAt;
   private String createdBy;
