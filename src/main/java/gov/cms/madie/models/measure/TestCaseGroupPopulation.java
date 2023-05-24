@@ -14,7 +14,7 @@ import java.util.List;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@ValidScoringPopulation
+//@ValidScoringPopulation
 public class TestCaseGroupPopulation {
   private String groupId;
 
