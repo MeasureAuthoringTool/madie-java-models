@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
+import java.util.List;
+
 @Data
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
@@ -15,5 +17,6 @@ import lombok.experimental.SuperBuilder;
 @ToString(callSuper=true)
 @ValidFhirGroup
 public class FhirMeasure extends Measure {
-	
+
+  private List<TestCase> testCases;
 }
