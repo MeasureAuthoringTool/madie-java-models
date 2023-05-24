@@ -56,7 +56,7 @@ public class TestCase {
   @Transient
   private HapiOperationOutcome hapiOperationOutcome;
 
-  @Valid
+//  @Valid
   private List<TestCaseGroupPopulation> groupPopulations;
 
   @GroupSequence({ValidationOrder1.class, ValidationOrder2.class, Default.class})
