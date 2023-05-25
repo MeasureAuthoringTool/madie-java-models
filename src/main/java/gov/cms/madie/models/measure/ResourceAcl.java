@@ -9,6 +9,8 @@ import lombok.experimental.SuperBuilder;
 @Data
 @NoArgsConstructor
 @SuperBuilder(toBuilder = true)
+// TODO: delete this class, once we complete MAT-5587,
+//  deleting this now will block other model changes
 public abstract class ResourceAcl {
 
   private List<AclSpecification> acls ;

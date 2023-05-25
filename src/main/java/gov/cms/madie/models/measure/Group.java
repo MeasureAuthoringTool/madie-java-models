@@ -9,10 +9,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
@@ -45,7 +43,7 @@ public class Group implements GroupScoringPopulation {
 
   private String rateAggregation;
 
-  @NotEmpty
+  //@NotEmpty
   private List<MeasureGroupTypes> measureGroupTypes;
 
   private Object scoringUnit;
@@ -53,8 +51,6 @@ public class Group implements GroupScoringPopulation {
   @Valid
   private List<Stratification> stratifications;
 
-  @NotBlank(
-     message = "Population Basis is required.")
   private String populationBasis;
 
 }

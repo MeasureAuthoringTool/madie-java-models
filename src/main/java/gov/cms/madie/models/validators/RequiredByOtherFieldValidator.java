@@ -1,8 +1,8 @@
 package gov.cms.madie.models.validators;
 
 import java.lang.reflect.Field;
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -25,7 +25,8 @@ public class RequiredByOtherFieldValidator implements
             Object selectedFieldValue = getFieldValue(object, selectedField);
             Object requiredFieldValue = getFieldValue(object, requiredField);
             return (selectedFieldValue != null && !selectedFieldValue.toString().isEmpty()) ? (
-                requiredFieldValue != null && !requiredFieldValue.toString().isEmpty()) : true;
+                requiredFieldValue != null && !requiredFieldValue.toString().isEmpty()) : (
+                    requiredFieldValue == null || requiredFieldValue.toString().isEmpty());
         } catch (Exception e) {
             log.error("Error occurred while cross validating fields of {} and {}", selectedField,
                 requiredField);

@@ -10,9 +10,9 @@ import gov.cms.madie.models.common.ProgramUseContext;
 import gov.cms.madie.models.common.Version;
 
 import java.time.Instant;
-import javax.validation.GroupSequence;
-import javax.validation.constraints.*;
-import javax.validation.groups.Default;
+import jakarta.validation.GroupSequence;
+import jakarta.validation.constraints.*;
+import jakarta.validation.groups.Default;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -63,8 +63,8 @@ public class CqlLibrary {
   private String groupId;
   private boolean cqlErrors;
   private String cql;
-  @Transient private String elmJson;
-  @Transient private String elmXml;
+  private String elmJson;
+  private String elmXml;
   private Instant createdAt;
   private String createdBy;
   private Instant lastModifiedAt;

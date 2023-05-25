@@ -4,11 +4,11 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-import javax.validation.GroupSequence;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.groups.Default;
+import jakarta.validation.GroupSequence;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.groups.Default;
 
 import gov.cms.madie.models.common.ProgramUseContext;
 import lombok.Singular;
@@ -17,6 +17,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -31,6 +34,15 @@ import lombok.experimental.SuperBuilder;
 @Data
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
+@JsonTypeInfo(
+    use = JsonTypeInfo.Id.NAME,
+    include = JsonTypeInfo.As.EXISTING_PROPERTY, 
+    property = "model",
+    visible = true)
+@JsonSubTypes({
+  @Type(value = FhirMeasure.class, name = "QI-Core v4.1.1"),
+  @Type(value = QdmMeasure.class, name = "QDM v5.6")
+})
 public class Measure extends ResourceAcl {
 
   @Id private String id;
@@ -99,7 +111,6 @@ public class Measure extends ResourceAcl {
   private String cql;
   private String elmJson;
   @Transient private String elmXml;
-  private List<TestCase> testCases;
   @Valid private List<Group> groups;
   private Instant createdAt;
   private String createdBy;
@@ -108,10 +119,12 @@ public class Measure extends ResourceAcl {
   private Date measurementPeriodStart;
   private Date measurementPeriodEnd;
   @Singular("sde")
-  private List<SupplementalData> supplementalData;
-  private List<RiskAdjustment> riskAdjustments;
+  private List<DefDescPair> supplementalData;
+  @Singular("rav")
+  private List<DefDescPair> riskAdjustments;
   private ProgramUseContext programUseContext;
 
+  @NotBlank(message = "Model is required")
   @EnumValidator(
       enumClass = ModelType.class,
       message = "MADiE was unable to complete your request, please try again.",
@@ -128,6 +141,9 @@ public class Measure extends ResourceAcl {
   private String cmsId;
   
   private ReviewMetaData reviewMetaData = new ReviewMetaData();
+
+  @Transient
+  private MeasureSet measureSet;
 
   @GroupSequence({
     Measure.ValidationOrder1.class,

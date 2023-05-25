@@ -4,21 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import jakarta.validation.constraints.NotBlank;
-
 import org.springframework.data.annotation.Id;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Population {
+public class Export {
   @Id
-  @NotBlank(message = "Population ID is required.")
   private String id;
-  private PopulationType name;
-  private String definition;
-  private AssociationType associationType;
-  private String description;
+  private String measureId;
+  private String measureBundleJson;
 }

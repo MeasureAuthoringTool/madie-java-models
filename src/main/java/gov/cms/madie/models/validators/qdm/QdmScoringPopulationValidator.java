@@ -1,27 +1,24 @@
-package gov.cms.madie.models.validators;
+package gov.cms.madie.models.validators.qdm;
 
-import gov.cms.madie.models.measure.PopulationType;
 import gov.cms.madie.models.measure.MeasurePopulationOption;
-import gov.cms.madie.models.measure.TestCaseGroupPopulation;
+import gov.cms.madie.models.measure.MeasureScoring;
+import gov.cms.madie.models.measure.PopulationType;
+import gov.cms.madie.models.measure.qdm.QdmTestCaseGroupPopulation;
 import gov.cms.madie.models.measure.TestCasePopulationValue;
 import gov.cms.madie.models.utils.ScoringPopulationDefinition;
-import gov.cms.madie.models.measure.MeasureScoring;
-import lombok.extern.slf4j.Slf4j;
-
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-@Slf4j
-public class ScoringPopulationValidator
-    implements ConstraintValidator<ValidScoringPopulation, TestCaseGroupPopulation> {
+public class QdmScoringPopulationValidator implements ConstraintValidator<QdmValidScoringPopulation, QdmTestCaseGroupPopulation> {
 
   @Override
   public boolean isValid(
-      TestCaseGroupPopulation testCaseGroupPopulation, ConstraintValidatorContext context) {
+      QdmTestCaseGroupPopulation testCaseGroupPopulation, ConstraintValidatorContext context) {
     if (testCaseGroupPopulation == null) {
       return true;
     }
@@ -51,7 +48,7 @@ public class ScoringPopulationValidator
     final String popBasis = testCaseGroupPopulation.getPopulationBasis();
 
     boolean allValuesMatchPopulationBasis = popBasis == null || populationValues.stream().allMatch(popVal -> {
-      
+
       if (popVal == null || popVal.getExpected() == null || popVal.getExpected().toString().isEmpty()) {
         return true;
       } else {
@@ -60,15 +57,15 @@ public class ScoringPopulationValidator
         if(isObservation(popVal.getName())) {
           return valIsNumber(popVal);
         } else if (!isObservation(popVal.getName()) ) {
-          if ("boolean".equals(popBasis) && popVal.getExpected() instanceof Boolean ) {
-            return true ; 
+          if ("true".equals(popBasis) && popVal.getExpected() instanceof Boolean ) {
+            return true ;
           }
           else {
             return valIsNumber(popVal);
           }
         }
       }
-      return false ; 
+      return false ;
     });
     return receivedPopulations.size() >= requiredPopulations.size()
         && receivedPopulations.containsAll(requiredPopulations)
@@ -89,7 +86,7 @@ public class ScoringPopulationValidator
       return false;
     }
   }
-  
+
   private boolean isObservation(PopulationType popType ) {
     List<PopulationType> obvs = new ArrayList<>() {{
       add(PopulationType.MEASURE_OBSERVATION);

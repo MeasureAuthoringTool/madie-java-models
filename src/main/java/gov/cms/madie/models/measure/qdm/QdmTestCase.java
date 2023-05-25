@@ -1,47 +1,40 @@
-package gov.cms.madie.models.measure;
+package gov.cms.madie.models.measure.qdm;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Length;
-import org.springframework.data.annotation.Transient;
-
+import gov.cms.madie.models.measure.HapiOperationOutcome;
 import jakarta.validation.GroupSequence;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.groups.Default;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.data.annotation.Transient;
+
 import java.time.Instant;
 import java.util.List;
 
-@Data
-@Builder(toBuilder = true)
-@NoArgsConstructor
-@AllArgsConstructor
-public class TestCase {
+public class QdmTestCase {
   private String id;
   private String name;
 
   @NotBlank(
-      groups = {ValidationOrder1.class},
+      groups = {QdmTestCase.ValidationOrder1.class},
       message = "Test Case Title is required.")
   @Length(
-    max = 250,
-    groups = {ValidationOrder2.class},
-    message = "Test Case Title can not be more than 250 characters.")
+      max = 250,
+      groups = {QdmTestCase.ValidationOrder2.class},
+      message = "Test Case Title can not be more than 250 characters.")
   private String title;
 
   @Length(
-    max = 250,
-    groups = {ValidationOrder1.class},
-    message = "Test Case Series can not be more than 250 characters.")
+      max = 250,
+      groups = {QdmTestCase.ValidationOrder1.class},
+      message = "Test Case Series can not be more than 250 characters.")
   private String series;
 
   @Length(
-    max = 250,
-    groups = {ValidationOrder1.class},
-    message = "Test Case Description can not be more than 250 characters.")
+      max = 250,
+      groups = {QdmTestCase.ValidationOrder1.class},
+      message = "Test Case Description can not be more than 250 characters.")
   private String description;
 
   private Instant createdAt;
@@ -57,9 +50,9 @@ public class TestCase {
   private HapiOperationOutcome hapiOperationOutcome;
 
   @Valid
-  private List<TestCaseGroupPopulation> groupPopulations;
+  private List<QdmTestCaseGroupPopulation> groupPopulations;
 
-  @GroupSequence({ValidationOrder1.class, ValidationOrder2.class, Default.class})
+  @GroupSequence({QdmTestCase.ValidationOrder1.class, QdmTestCase.ValidationOrder2.class, Default.class})
   public interface ValidationSequence {
   }
 
