@@ -123,6 +123,7 @@ public class Measure extends ResourceAcl {
   private List<DefDescPair> supplementalData;
   @Singular("rav")
   private List<DefDescPair> riskAdjustments;
+  private String riskAdjustmentDescription;
   private ProgramUseContext programUseContext;
 
   @NotBlank(message = "Model is required")
