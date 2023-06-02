@@ -121,6 +121,7 @@ public class Measure extends ResourceAcl {
   private Date measurementPeriodEnd;
   @Singular("sde")
   private List<DefDescPair> supplementalData;
+  private String supplementalDataDescription;
   @Singular("rav")
   private List<DefDescPair> riskAdjustments;
   private String riskAdjustmentDescription;
