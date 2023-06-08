@@ -43,7 +43,7 @@ import lombok.experimental.SuperBuilder;
   @Type(value = FhirMeasure.class, name = "QI-Core v4.1.1"),
   @Type(value = QdmMeasure.class, name = "QDM v5.6")
 })
-public class Measure extends ResourceAcl {
+public class Measure {
 
   @Id private String id;
 
