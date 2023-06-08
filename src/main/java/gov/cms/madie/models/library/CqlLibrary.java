@@ -3,7 +3,6 @@ package gov.cms.madie.models.library;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import gov.cms.madie.models.measure.Measure;
 import gov.cms.madie.models.validators.EnumValidator;
 import gov.cms.madie.models.utils.VersionJsonSerializer;
 import gov.cms.madie.models.common.ModelType;
@@ -29,9 +28,9 @@ public class CqlLibrary {
   @Id private String id;
 
   @NotBlank(
-          groups = {Measure.ValidationOrder1.class},
-          message = "Measure Set ID is required.")
-  private String measureSetId;
+          groups = {CqlLibrary.ValidationOrder1.class},
+          message = "Library Set ID is required.")
+  private String librarySetId;
 
   @NotNull(message = "Library name is required.")
   @NotBlank(
