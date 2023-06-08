@@ -8,7 +8,6 @@ import gov.cms.madie.models.utils.VersionJsonSerializer;
 import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.common.ProgramUseContext;
 import gov.cms.madie.models.common.Version;
-
 import java.time.Instant;
 import jakarta.validation.GroupSequence;
 import jakarta.validation.constraints.*;
@@ -27,6 +26,11 @@ import org.springframework.data.mongodb.core.index.Indexed;
 @AllArgsConstructor
 public class CqlLibrary {
   @Id private String id;
+
+  @NotBlank(
+          groups = {CqlLibrary.ValidationOrder1.class},
+          message = "Library Set ID is required.")
+  private String librarySetId;
 
   @NotNull(message = "Library name is required.")
   @NotBlank(
@@ -73,6 +77,9 @@ public class CqlLibrary {
   private String description;
   private boolean experimental;
   private ProgramUseContext programUseContext;
+
+  @Transient
+  private LibrarySet librarySet;
 
   @GroupSequence({
     CqlLibrary.ValidationOrder1.class,
