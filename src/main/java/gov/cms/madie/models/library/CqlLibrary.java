@@ -3,12 +3,12 @@ package gov.cms.madie.models.library;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import gov.cms.madie.models.measure.Measure;
 import gov.cms.madie.models.validators.EnumValidator;
 import gov.cms.madie.models.utils.VersionJsonSerializer;
 import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.common.ProgramUseContext;
 import gov.cms.madie.models.common.Version;
-
 import java.time.Instant;
 import jakarta.validation.GroupSequence;
 import jakarta.validation.constraints.*;
@@ -27,6 +27,11 @@ import org.springframework.data.mongodb.core.index.Indexed;
 @AllArgsConstructor
 public class CqlLibrary {
   @Id private String id;
+
+  @NotBlank(
+          groups = {Measure.ValidationOrder1.class},
+          message = "Measure Set ID is required.")
+  private String measureSetId;
 
   @NotNull(message = "Library name is required.")
   @NotBlank(
@@ -73,6 +78,9 @@ public class CqlLibrary {
   private String description;
   private boolean experimental;
   private ProgramUseContext programUseContext;
+
+  @Transient
+  private LibrarySet librarySet;
 
   @GroupSequence({
     CqlLibrary.ValidationOrder1.class,
