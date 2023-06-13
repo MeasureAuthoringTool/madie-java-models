@@ -64,7 +64,6 @@ public class CqlLibrary {
   private Version version;
 
   private boolean draft;
-  private String groupId;
   private boolean cqlErrors;
   private String cql;
   private String elmJson;
