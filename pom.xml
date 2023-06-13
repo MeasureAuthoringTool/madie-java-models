@@ -6,7 +6,7 @@
 
   <groupId>gov.cms.madie</groupId>
   <artifactId>madie-java-models</artifactId>
-  <version>0.5.7-SNAPSHOT</version>
+  <version>0.5.8-SNAPSHOT</version>
   <name>madie-java-models</name>
   <description>Java based models for MADiE microservices</description>
   <properties>
