@@ -3,12 +3,8 @@ package gov.cms.madie.models.measure;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
-
-import gov.cms.madie.models.common.ImprovementNotation;
-import gov.cms.madie.models.validators.EnumValidator;
 import gov.cms.madie.models.validators.ValidMeasureScoring;
 import gov.cms.madie.models.validators.ValidQDMGroupScoring;
-import jakarta.validation.constraints.Null;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,5 +25,5 @@ public class QdmMeasure extends Measure {
 	@Builder.Default
 	private boolean patientBasis = true;
 	private String rateAggregation;
-	private ImprovementNotation improvementNotation;
+	private String improvementNotation;
 }
