@@ -14,6 +14,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.groups.Default;
 import java.time.Instant;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @Builder(toBuilder = true)
@@ -52,6 +53,8 @@ public class TestCase {
   private String resourceUri;
   private boolean validResource;
   private String json;
+  
+  private UUID patientId;
 
   @Transient
   private HapiOperationOutcome hapiOperationOutcome;
