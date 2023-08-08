@@ -5,6 +5,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import gov.cms.madie.models.validators.ValidMeasureScoring;
 import gov.cms.madie.models.validators.ValidQDMGroupScoring;
+import jakarta.validation.Valid;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,11 +20,13 @@ import lombok.experimental.SuperBuilder;
 @ValidMeasureScoring
 @ValidQDMGroupScoring
 public class QdmMeasure extends Measure {
-	
+
 	private String scoring;
 	private List<BaseConfigurationTypes> baseConfigurationTypes;
 	@Builder.Default
 	private boolean patientBasis = true;
 	private String rateAggregation;
 	private String improvementNotation;
+	@Valid
+	private List<QDMGroup> groups;
 }

@@ -3,10 +3,13 @@ package gov.cms.madie.models.measure;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import gov.cms.madie.models.validators.ValidFhirGroup;
+import jakarta.validation.Valid;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
+
+import java.util.List;
 
 @Data
 @SuperBuilder(toBuilder = true)
@@ -15,5 +18,6 @@ import lombok.experimental.SuperBuilder;
 @ToString(callSuper=true)
 @ValidFhirGroup
 public class FhirMeasure extends Measure {
-	
+    @Valid
+    private List<QICoreGroup> groups;
 }

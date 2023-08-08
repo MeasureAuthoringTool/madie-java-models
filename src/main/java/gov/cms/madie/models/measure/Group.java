@@ -48,9 +48,6 @@ public class Group implements GroupScoringPopulation {
 
   private Object scoringUnit;
 
-  @Valid
-  private List<Stratification> stratifications;
-
   private String populationBasis;
 
 }

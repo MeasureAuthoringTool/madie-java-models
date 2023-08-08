@@ -112,7 +112,7 @@ public class Measure {
   private String elmJson;
   @Transient private String elmXml;
   private List<TestCase> testCases;
-  @Valid private List<Group> groups;
+//  @Valid private List<Group> groups;
   private Instant createdAt;
   private String createdBy;
   private Instant lastModifiedAt;
