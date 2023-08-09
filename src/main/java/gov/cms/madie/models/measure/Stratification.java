@@ -12,7 +12,6 @@ public class Stratification {
 
     private String cqlDefinition;
 
-    @NotNull
     private PopulationType association;
 
 }
