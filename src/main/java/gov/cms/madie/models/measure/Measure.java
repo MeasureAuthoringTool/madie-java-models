@@ -117,7 +117,7 @@ public class Measure {
   @Valid private List<Group> groups;
   private Instant createdAt;
   private String createdBy;
-  @Indexed(name = "lastModifiedAt") private Instant lastModifiedAt;
+  @Indexed private Instant lastModifiedAt;
   private String lastModifiedBy;
   private Date measurementPeriodStart;
   private Date measurementPeriodEnd;
