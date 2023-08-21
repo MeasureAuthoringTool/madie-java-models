@@ -31,7 +31,6 @@ public class CqlLibraryDraft {
           "Library name must start with an upper case letter, "
               + "followed by alpha-numeric character(s) and must not contain "
               + "spaces or other special characters.")
-  @Indexed(unique = true, name = "UniqueCqlLibraryName")
   private String cqlLibraryName;
   private String cql;
 }

@@ -30,8 +30,10 @@ import gov.cms.madie.models.validators.EnumValidator;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
+@Document
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
 @JsonTypeInfo(
@@ -62,7 +64,7 @@ public class Measure {
   private String state;
 
 
-  @Indexed(unique = true)
+  @Indexed
   @NotBlank(
       groups = {ValidationOrder1.class},
       message = "Measure Library Name is required.")
@@ -115,7 +117,7 @@ public class Measure {
   @Valid private List<Group> groups;
   private Instant createdAt;
   private String createdBy;
-  private Instant lastModifiedAt;
+  @Indexed(name = "lastModifiedAt") private Instant lastModifiedAt;
   private String lastModifiedBy;
   private Date measurementPeriodStart;
   private Date measurementPeriodEnd;
