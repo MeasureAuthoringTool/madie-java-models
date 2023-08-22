@@ -10,7 +10,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.groups.Default;
 
-import gov.cms.madie.models.common.ProgramUseContext;
 import lombok.Singular;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
@@ -127,7 +126,6 @@ public class Measure {
   @Singular("rav")
   private List<DefDescPair> riskAdjustments;
   private String riskAdjustmentDescription;
-  private ProgramUseContext programUseContext;
 
   @NotBlank(message = "Model is required")
   @EnumValidator(
