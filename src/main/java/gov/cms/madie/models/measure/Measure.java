@@ -10,7 +10,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.groups.Default;
 
-import gov.cms.madie.models.common.ProgramUseContext;
 import lombok.Singular;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
@@ -30,8 +29,10 @@ import gov.cms.madie.models.validators.EnumValidator;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
+@Document
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
 @JsonTypeInfo(
@@ -43,7 +44,7 @@ import lombok.experimental.SuperBuilder;
   @Type(value = FhirMeasure.class, name = "QI-Core v4.1.1"),
   @Type(value = QdmMeasure.class, name = "QDM v5.6")
 })
-public class Measure extends ResourceAcl {
+public class Measure {
 
   @Id private String id;
 
@@ -62,7 +63,7 @@ public class Measure extends ResourceAcl {
   private String state;
 
 
-  @Indexed(unique = true)
+  @Indexed
   @NotBlank(
       groups = {ValidationOrder1.class},
       message = "Measure Library Name is required.")
@@ -111,18 +112,20 @@ public class Measure extends ResourceAcl {
   private String cql;
   private String elmJson;
   @Transient private String elmXml;
+  private List<TestCase> testCases;
   @Valid private List<Group> groups;
   private Instant createdAt;
   private String createdBy;
-  private Instant lastModifiedAt;
+  @Indexed private Instant lastModifiedAt;
   private String lastModifiedBy;
   private Date measurementPeriodStart;
   private Date measurementPeriodEnd;
   @Singular("sde")
   private List<DefDescPair> supplementalData;
+  private String supplementalDataDescription;
   @Singular("rav")
   private List<DefDescPair> riskAdjustments;
-  private ProgramUseContext programUseContext;
+  private String riskAdjustmentDescription;
 
   @NotBlank(message = "Model is required")
   @EnumValidator(

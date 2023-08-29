@@ -21,9 +21,9 @@ public class CqlLibraryDraft {
       groups = {CqlLibrary.ValidationOrder1.class},
       message = "Library name is required.")
   @Size(
-      max = 255,
+      max = 64,
       groups = {CqlLibrary.ValidationOrder2.class},
-      message = "Library name cannot be more than 255 characters.")
+      message = "Library name cannot be more than 64 characters.")
   @Pattern(
       regexp = "^[A-Z][a-zA-Z0-9]*$",
       groups = {CqlLibrary.ValidationOrder3.class},
@@ -31,7 +31,6 @@ public class CqlLibraryDraft {
           "Library name must start with an upper case letter, "
               + "followed by alpha-numeric character(s) and must not contain "
               + "spaces or other special characters.")
-  @Indexed(unique = true, name = "UniqueCqlLibraryName")
   private String cqlLibraryName;
   private String cql;
 }

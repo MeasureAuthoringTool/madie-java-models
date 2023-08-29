@@ -6,9 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import gov.cms.madie.models.validators.EnumValidator;
 import gov.cms.madie.models.utils.VersionJsonSerializer;
 import gov.cms.madie.models.common.ModelType;
-import gov.cms.madie.models.common.ProgramUseContext;
 import gov.cms.madie.models.common.Version;
-
 import java.time.Instant;
 import jakarta.validation.GroupSequence;
 import jakarta.validation.constraints.*;
@@ -28,14 +26,19 @@ import org.springframework.data.mongodb.core.index.Indexed;
 public class CqlLibrary {
   @Id private String id;
 
+  @NotBlank(
+          groups = {CqlLibrary.ValidationOrder1.class},
+          message = "Library Set ID is required.")
+  private String librarySetId;
+
   @NotNull(message = "Library name is required.")
   @NotBlank(
       groups = {ValidationOrder1.class},
       message = "Library name is required.")
   @Size(
-      max = 255,
+      max = 64,
       groups = {ValidationOrder2.class},
-      message = "Library name cannot be more than 255 characters.")
+      message = "Library name cannot be more than 64 characters.")
   @Pattern(
       regexp = "^[A-Z][a-zA-Z0-9]*$",
       groups = {ValidationOrder3.class},
@@ -43,7 +46,7 @@ public class CqlLibrary {
           "Library name must start with an upper case letter, "
               + "followed by alpha-numeric character(s) and must not contain "
               + "spaces or other special characters.")
-  @Indexed(unique = true, name = "UniqueCqlLibraryName")
+  @Indexed
   private String cqlLibraryName;
 
   @NotNull(
@@ -60,7 +63,6 @@ public class CqlLibrary {
   private Version version;
 
   private boolean draft;
-  private String groupId;
   private boolean cqlErrors;
   private String cql;
   private String elmJson;
@@ -72,7 +74,9 @@ public class CqlLibrary {
   private String publisher;
   private String description;
   private boolean experimental;
-  private ProgramUseContext programUseContext;
+
+  @Transient
+  private LibrarySet librarySet;
 
   @GroupSequence({
     CqlLibrary.ValidationOrder1.class,
