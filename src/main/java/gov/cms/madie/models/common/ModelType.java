@@ -21,7 +21,7 @@ public enum ModelType {
   }
 
   /**
-   * Value is the string that appears in teh UI to identify the model being used
+   * Value is the string that appears in the UI to identify the model being used
    * ShortValue is the string that will be appended to classes to dynamically reference classes
    * 
    * @param value
