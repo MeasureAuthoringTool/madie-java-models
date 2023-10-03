@@ -7,10 +7,11 @@ import java.util.Map;
 
 @Getter
 public enum ModelType {
-  QI_CORE("QI-Core v4.1.1"),
-  QDM_5_6("QDM v5.6");
+  QI_CORE("QI-Core v4.1.1", "qicore"),
+  QDM_5_6("QDM v5.6", "qdm");
 
   private String value;
+  private String shortValue;
   private static final Map<String, ModelType> MODEL_TYPE_BY_VALUE = new HashMap<>();
 
   static {
@@ -19,9 +20,17 @@ public enum ModelType {
     }
   }
 
-  ModelType(String value) {
-    this.value = value;
-  }
+  /**
+   * Value is the string that appears in the UI to identify the model being used
+   * ShortValue is the string that will be appended to classes to dynamically reference classes
+   * 
+   * @param value
+   * @param shortValue
+   */
+  ModelType(String value, String shortValue) {
+	    this.value = value;
+	    this.shortValue = shortValue;
+	  }
 
   @Override
   public String toString() {
