@@ -14,5 +14,6 @@ public class TestCaseStratificationValue {
     private String name;
     private Object expected;
     private Object actual;
+    private TestCasePopulationValue populationValues;
 }
 
