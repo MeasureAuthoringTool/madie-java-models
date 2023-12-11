@@ -1,10 +1,17 @@
 package gov.cms.madie.models.measure;
 
+import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import jakarta.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Stratification {
     private String id;
 
@@ -12,6 +19,11 @@ public class Stratification {
 
     private String cqlDefinition;
 
+    //TODO: can be removed at the end of MAT-5852
+    @Deprecated
     private PopulationType association;
+
+    @NotEmpty
+    private List<PopulationType> associations;
 
 }
