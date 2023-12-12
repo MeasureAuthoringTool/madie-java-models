@@ -23,7 +23,6 @@ public class Stratification {
     @Deprecated
     private PopulationType association;
 
-    @NotEmpty
     private List<PopulationType> associations;
 
 }
