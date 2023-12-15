@@ -142,8 +142,6 @@ public class Measure {
       message = "Version ID is required.")
   private String versionId;
   private String cmsId;
-  
-  private ReviewMetaData reviewMetaData = new ReviewMetaData();
 
   @Transient
   private MeasureSet measureSet;
