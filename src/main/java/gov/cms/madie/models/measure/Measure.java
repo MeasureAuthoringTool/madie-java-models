@@ -143,6 +143,8 @@ public class Measure {
   private String versionId;
   private String cmsId;
 
+  @Deprecated
+  private ReviewMetaData reviewMetaData = new ReviewMetaData();
   @Transient
   private MeasureSet measureSet;
 
