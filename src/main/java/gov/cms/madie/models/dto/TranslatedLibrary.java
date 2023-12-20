@@ -1,10 +1,12 @@
-package gov.cms.madie.models.common;
+package gov.cms.madie.models.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
+@AllArgsConstructor
 public class TranslatedLibrary {
   private String name;
   private String version;
