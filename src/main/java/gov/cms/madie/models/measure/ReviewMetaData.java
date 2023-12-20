@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReviewMetaData {
-  private Instant approvalDate;
-  private Instant lastReviewDate;
+    private Instant approvalDate;
+    private Instant lastReviewDate;
 }
