@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder(toBuilder=true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class QDMMeasureDefinition {
+public class MeasureDefinition {
 	private String term;
 	private String definition;
 }
