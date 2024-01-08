@@ -1,6 +1,6 @@
 package gov.cms.madie.models.measure;
 
-import java.util.List;
+import org.springframework.data.annotation.Id;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MeasureDefinition {
+	@Id
+  private String id;
 	private String term;
 	private String definition;
 }
