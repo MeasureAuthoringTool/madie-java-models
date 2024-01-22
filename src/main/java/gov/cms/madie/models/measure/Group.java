@@ -40,7 +40,6 @@ public class Group implements GroupScoringPopulation {
   private String groupDescription;
 
   private String improvementNotation;
-  private String improvementNotationOther;
 
   private String rateAggregation;
 
