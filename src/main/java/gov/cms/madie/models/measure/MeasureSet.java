@@ -27,7 +27,4 @@ public class MeasureSet {
     private String owner;
 
     private List<AclSpecification> acls;
-
-    @Transient
-    public static final String SEQUENCE_NAME = "cmsId_sequence";
 }
