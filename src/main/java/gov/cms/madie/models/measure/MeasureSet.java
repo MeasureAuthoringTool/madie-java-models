@@ -18,7 +18,7 @@ public class MeasureSet {
     @Id
     private String id;
 
-    private int cmsId;
+    private Integer cmsId;
 
     @NotBlank(
             groups={Measure.ValidationOrder1.class},message="Measure Set Id is required")
