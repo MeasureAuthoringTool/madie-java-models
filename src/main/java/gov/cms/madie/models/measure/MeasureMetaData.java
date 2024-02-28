@@ -31,4 +31,5 @@ public class MeasureMetaData {
   private boolean experimental;
   private String transmissionFormat;
   private String supplementalDataElements;
+  private String measureSetTitle;
 }
