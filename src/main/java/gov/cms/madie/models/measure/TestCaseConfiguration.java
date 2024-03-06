@@ -13,4 +13,5 @@ public class TestCaseConfiguration {
     @Id
     private String id;
     private boolean sdeIncluded;
+    private boolean isManifestExpansion;
 }
