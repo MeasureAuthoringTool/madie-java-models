@@ -21,6 +21,8 @@ public enum BaseConfigurationTypes {
 	PATIENT_REPORTED_OUTCOME("Patient Reported Outcome"),
 	@JsonProperty("Performance")
 	PERFORMANCE("Performance"),
+	@JsonProperty("Patient Reported Outcome Performance")
+	PATIENT_REPORTED_OUTCOME_PERFORMANCE("Patient Reported Outcome Performance"),
 	@JsonProperty("Process")
 	PROCESS("Process"),
 	@JsonProperty("Structure")
