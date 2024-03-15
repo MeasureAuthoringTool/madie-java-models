@@ -13,7 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class TestCaseImportOutcome {
   private String familyName;
-  private String givenNames;
+  private List<String> givenNames;
   private UUID patientId;
   private String message;
   private boolean successful;
