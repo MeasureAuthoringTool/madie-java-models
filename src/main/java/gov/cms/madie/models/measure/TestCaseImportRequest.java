@@ -12,6 +12,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TestCaseImportRequest {
+  private String familyName;
+  private List<String> givenNames;
   private UUID patientId;
   private String json;
 }
