@@ -1,5 +1,6 @@
 package gov.cms.madie.models.measure;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,6 +13,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TestCaseImportRequest {
+  private String familyName;
+  private List<String> givenNames;
   private UUID patientId;
   private String json;
 }
