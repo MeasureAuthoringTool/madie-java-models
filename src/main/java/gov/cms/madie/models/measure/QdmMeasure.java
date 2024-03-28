@@ -27,4 +27,5 @@ public class QdmMeasure extends Measure {
 	private String rateAggregation;
 	private String improvementNotation;
 	private String improvementNotationOther;
+	private Reporting reporting;
 }
