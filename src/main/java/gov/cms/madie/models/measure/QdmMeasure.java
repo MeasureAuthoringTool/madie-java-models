@@ -26,6 +26,5 @@ public class QdmMeasure extends Measure {
 	private boolean patientBasis = true;
 	private String rateAggregation;
 	private String improvementNotation;
-	private String improvementNotationOther;
-	private Reporting reporting;
+	private String improvementNotationDescription;
 }
