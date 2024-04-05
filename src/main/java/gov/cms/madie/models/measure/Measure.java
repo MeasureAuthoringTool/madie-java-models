@@ -142,7 +142,6 @@ public class Measure {
       groups = {ValidationOrder1.class},
       message = "Version ID is required.")
   private String versionId;
-  private String cmsId;
 
   @Deprecated
   private ReviewMetaData reviewMetaData = new ReviewMetaData();
