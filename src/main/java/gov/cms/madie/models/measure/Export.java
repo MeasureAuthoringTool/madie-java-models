@@ -10,6 +10,7 @@ import org.springframework.data.annotation.Id;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+// TODO: look into GridFS API as our exports may grow larger than the MongoDB document max of 16MB
 public class Export {
   @Id
   private String id;
