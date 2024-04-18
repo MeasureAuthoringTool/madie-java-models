@@ -26,6 +26,7 @@ import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.common.Version;
 import gov.cms.madie.models.utils.VersionJsonSerializer;
 import gov.cms.madie.models.validators.EnumValidator;
+import gov.cms.madie.models.validators.ValidLibraryName;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -44,6 +45,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
   @Type(value = FhirMeasure.class, name = "QI-Core v4.1.1"),
   @Type(value = QdmMeasure.class, name = "QDM v5.6")
 })
+@ValidLibraryName
 public class Measure {
 
   @Id private String id;
@@ -67,12 +69,6 @@ public class Measure {
   @NotBlank(
       groups = {ValidationOrder1.class},
       message = "Measure Library Name is required.")
-  @Pattern(
-      regexp = "^[A-Z][a-zA-Z0-9]*$",
-      groups = {
-        ValidationOrder2.class,
-      },
-      message = "Measure Library Name is invalid.")
   private String cqlLibraryName;
 
   @NotBlank(
