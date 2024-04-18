@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 import java.util.List;
 
@@ -20,6 +20,7 @@ public class MeasureSet {
 
     private Integer cmsId;
 
+    @Indexed
     @NotBlank(
             groups={Measure.ValidationOrder1.class},message="Measure Set Id is required")
     private String measureSetId;
