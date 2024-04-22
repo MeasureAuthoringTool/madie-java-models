@@ -14,7 +14,7 @@ import jakarta.validation.Payload;
 @Constraint(validatedBy = ValidLibraryNameValidator.class)
 @Documented
 public @interface ValidLibraryName {
-	String message() default "Measure Library Name is invalid.";
+	String message() default "Library name must start with an upper case letter, followed by alpha-numeric character(s) and must not contain spaces or other special characters. For QDM, library name can have underscore(s).";
 
 	Class<?>[] groups() default {};
 
