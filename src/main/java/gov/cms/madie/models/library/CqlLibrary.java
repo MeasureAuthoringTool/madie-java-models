@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import gov.cms.madie.models.validators.EnumValidator;
+import gov.cms.madie.models.validators.ValidLibraryName;
 import gov.cms.madie.models.utils.VersionJsonSerializer;
 import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.common.Version;
@@ -23,6 +24,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
+@ValidLibraryName
 public class CqlLibrary {
   @Id private String id;
 
@@ -39,13 +41,6 @@ public class CqlLibrary {
       max = 64,
       groups = {ValidationOrder2.class},
       message = "Library name cannot be more than 64 characters.")
-  @Pattern(
-      regexp = "^[A-Z][a-zA-Z0-9]*$",
-      groups = {ValidationOrder3.class},
-      message =
-          "Library name must start with an upper case letter, "
-              + "followed by alpha-numeric character(s) and must not contain "
-              + "spaces or other special characters.")
   @Indexed
   private String cqlLibraryName;
 
