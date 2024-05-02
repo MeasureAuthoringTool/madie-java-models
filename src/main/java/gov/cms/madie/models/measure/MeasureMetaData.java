@@ -32,4 +32,5 @@ public class MeasureMetaData {
   private String transmissionFormat;
   private String supplementalDataElements;
   private String measureSetTitle;
+  private CqlMetaData cqlMetaData;
 }
