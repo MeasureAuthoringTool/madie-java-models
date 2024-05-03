@@ -7,5 +7,5 @@ import lombok.Data;
 
 @Data
 public class CqlMetaData {
-	private Map<String, CodeSystemVersion> codeSystemMap;
+	private Map<String, CodeSystem> codeSystemMap;
 }

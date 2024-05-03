@@ -4,7 +4,7 @@ package gov.cms.madie.models.measure;
 import lombok.Data;
 
 @Data
-public class CodeSystemVersion {
+public class CodeSystem {
 	private String name;
 	private String display;
 	private String version;
