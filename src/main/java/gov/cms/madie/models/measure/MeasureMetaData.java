@@ -23,6 +23,7 @@ public class MeasureMetaData {
   private String clinicalRecommendation;
 
   private boolean draft;
+  @Valid
   private List<Reference> references;
   @Valid
   private List<Endorsement> endorsements;
