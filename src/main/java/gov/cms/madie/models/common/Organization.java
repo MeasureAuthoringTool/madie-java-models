@@ -13,8 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @Document(collection = "organization")
 public class Organization {
-  @Id
-  private String id;
+  @Id private String id;
   private String name;
   private String oid;
   private String url;

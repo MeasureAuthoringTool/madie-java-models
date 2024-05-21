@@ -3,13 +3,12 @@ package gov.cms.madie.models.common;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum ImprovementNotation {
-
   @JsonProperty("Increased score indicates improvement")
   INCREASED_SCORE_INDICATES_IMPROVEMENT("Increased score indicates improvement"),
 
   @JsonProperty("Decreased score indicates improvement")
   DECREASED_SCORE_INDICATES_IMPROVEMENT("Decreased score indicates improvement"),
-  
+
   @JsonProperty("Other")
   OTHER("Other");
 

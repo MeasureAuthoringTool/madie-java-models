@@ -17,111 +17,122 @@ import gov.cms.madie.models.measure.Measure;
 
 @ExtendWith(SpringExtension.class)
 public class ValidLibraryNameValidatorTest {
-	private final ValidLibraryNameValidator validator =  new ValidLibraryNameValidator();
-	
-	@Mock
-  private ConstraintValidatorContext validatorContext;
-	
-	private Measure measure;
-	private CqlLibrary cqlLibrary;
-	
-	@BeforeEach
+  private final ValidLibraryNameValidator validator = new ValidLibraryNameValidator();
+
+  @Mock private ConstraintValidatorContext validatorContext;
+
+  private Measure measure;
+  private CqlLibrary cqlLibrary;
+
+  @BeforeEach
   public void setUp() {
-		measure = Measure.builder().model(ModelType.QI_CORE.getValue()).id("testId").measureSetId("testMeasureSetId")
-				.cqlLibraryName("TestCqlLibraryName").ecqmTitle("testECqm")
-    		.measureName("testMeasureName").versionId("0.0.000").build();
-		cqlLibrary = CqlLibrary.builder().model(ModelType.QI_CORE.getValue()).id("testId").cqlLibraryName("TestCqlLibraryName").build();
-	}
-	
-	@Test
+    measure =
+        Measure.builder()
+            .model(ModelType.QI_CORE.getValue())
+            .id("testId")
+            .measureSetId("testMeasureSetId")
+            .cqlLibraryName("TestCqlLibraryName")
+            .ecqmTitle("testECqm")
+            .measureName("testMeasureName")
+            .versionId("0.0.000")
+            .build();
+    cqlLibrary =
+        CqlLibrary.builder()
+            .model(ModelType.QI_CORE.getValue())
+            .id("testId")
+            .cqlLibraryName("TestCqlLibraryName")
+            .build();
+  }
+
+  @Test
   public void testValidatorReturnsTrueForQiCoreMeasureWithoutSpecialCharater() {
     boolean output = validator.isValid(measure, validatorContext);
     assertTrue(output);
   }
-	
-	@Test
+
+  @Test
   public void testValidatorReturnsFalseFirstLetterLowerCaseForMeasure() {
-		measure.setCqlLibraryName("testCqlLibraryName");
+    measure.setCqlLibraryName("testCqlLibraryName");
     boolean output = validator.isValid(measure, validatorContext);
     assertFalse(output);
   }
-	
-	@Test
+
+  @Test
   public void testValidatorReturnsFalseForQiCoreMeasureWithSpecialCharater() {
-		measure.setCqlLibraryName("Test_CqlLibraryName");
+    measure.setCqlLibraryName("Test_CqlLibraryName");
     boolean output = validator.isValid(measure, validatorContext);
     assertFalse(output);
   }
-	
-	@Test
+
+  @Test
   public void testValidatorReturnsTrueForQdmMeasureWithoutSpecialCharater() {
-		measure.setModel("QDM v5.6");
+    measure.setModel("QDM v5.6");
     boolean output = validator.isValid(measure, validatorContext);
     assertTrue(output);
   }
-	
-	@Test
+
+  @Test
   public void testValidatorReturnsTrueForQdmMeasureWithSpecialCharaterUnderscore() {
-		measure.setModel("QDM v5.6");
-		measure.setCqlLibraryName("Test_CqlLibraryName");
+    measure.setModel("QDM v5.6");
+    measure.setCqlLibraryName("Test_CqlLibraryName");
     boolean output = validator.isValid(measure, validatorContext);
     assertTrue(output);
   }
-	
-	@Test
+
+  @Test
   public void testValidatorReturnsFalseForQdmMeasureWithOtherSpecialCharaters() {
-		measure.setModel("QDM v5.6");
-		measure.setCqlLibraryName("Test$%^&*CqlLibraryName");
+    measure.setModel("QDM v5.6");
+    measure.setCqlLibraryName("Test$%^&*CqlLibraryName");
     boolean output = validator.isValid(measure, validatorContext);
     assertFalse(output);
   }
-	
-	@Test
+
+  @Test
   public void testValidatorReturnsTrueForQiCoreLibraryWithoutSpecialCharater() {
     boolean output = validator.isValid(cqlLibrary, validatorContext);
     assertTrue(output);
   }
-	
-	@Test
+
+  @Test
   public void testValidatorReturnsFalseFirstLetterLowerCaseForCqlLibrary() {
-		cqlLibrary.setCqlLibraryName("testCqlLibraryName");
+    cqlLibrary.setCqlLibraryName("testCqlLibraryName");
     boolean output = validator.isValid(cqlLibrary, validatorContext);
     assertFalse(output);
   }
-	
-	@Test
+
+  @Test
   public void testValidatorReturnsFalseForQiCoreLibraryWithSpecialCharater() {
-		cqlLibrary.setCqlLibraryName("Test_CqlLibraryName");
+    cqlLibrary.setCqlLibraryName("Test_CqlLibraryName");
     boolean output = validator.isValid(cqlLibrary, validatorContext);
     assertFalse(output);
   }
-	
-	@Test
+
+  @Test
   public void testValidatorReturnsTrueForQdmLibraryWithoutSpecialCharater() {
-		cqlLibrary.setModel("QDM v5.6");
+    cqlLibrary.setModel("QDM v5.6");
     boolean output = validator.isValid(cqlLibrary, validatorContext);
     assertTrue(output);
   }
-	
-	@Test
+
+  @Test
   public void testValidatorReturnsTrueForQdmLibraryWithSpecialCharaterUnderscore() {
-		cqlLibrary.setModel("QDM v5.6");
-		cqlLibrary.setCqlLibraryName("Test_CqlLibraryName");
+    cqlLibrary.setModel("QDM v5.6");
+    cqlLibrary.setCqlLibraryName("Test_CqlLibraryName");
     boolean output = validator.isValid(cqlLibrary, validatorContext);
     assertTrue(output);
   }
-	
-	@Test
+
+  @Test
   public void testValidatorReturnsFalseForQdmLibraryWithOtherSpecialCharaters() {
-		cqlLibrary.setModel("QDM v5.6");
-		cqlLibrary.setCqlLibraryName("Test$%^&*CqlLibraryName");
+    cqlLibrary.setModel("QDM v5.6");
+    cqlLibrary.setCqlLibraryName("Test$%^&*CqlLibraryName");
     boolean output = validator.isValid(cqlLibrary, validatorContext);
     assertFalse(output);
   }
-	
-	@Test
-	public void testValidatorReturnsTrueForNonMeasureNonCqlLibrary() {
-		boolean output = validator.isValid("This is a string", validatorContext);
-		assertTrue(output);
-	}
+
+  @Test
+  public void testValidatorReturnsTrueForNonMeasureNonCqlLibrary() {
+    boolean output = validator.isValid("This is a string", validatorContext);
+    assertTrue(output);
+  }
 }

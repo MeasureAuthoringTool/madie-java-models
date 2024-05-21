@@ -12,9 +12,9 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Participation extends DataElement {
-    private Interval participationPeriod;
-    private String qdmTitle = "Participation";
-    private String hqmfOid = "2.16.840.1.113883.10.20.28.4.130";
-    private String qdmCategory = "participation";
-    private String qdmVersion = "5.6";
+  private Interval participationPeriod;
+  private String qdmTitle = "Participation";
+  private String hqmfOid = "2.16.840.1.113883.10.20.28.4.130";
+  private String qdmCategory = "participation";
+  private String qdmVersion = "5.6";
 }
