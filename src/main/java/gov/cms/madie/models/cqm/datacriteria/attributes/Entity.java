@@ -11,8 +11,8 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Entity implements Attribute {
-    private DataElement dataElement;
-    private String id;
-    private Identifier identifier;
-    private String qdmVersion = "5.6";
+  private DataElement dataElement;
+  private String id;
+  private Identifier identifier;
+  private String qdmVersion = "5.6";
 }

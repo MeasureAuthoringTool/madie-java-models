@@ -1,8 +1,6 @@
 package gov.cms.madie.models.cqm.datacriteria.basetypes;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -11,7 +9,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-//@JsonInclude(JsonInclude.Include.NON_NULL)
+// @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DataElement {
 
   // Codes that describe this datatype.
@@ -25,6 +23,6 @@ public class DataElement {
 
   private String id = null;
 
-//  private String codeId;
-//  private String desc;
+  //  private String codeId;
+  //  private String desc;
 }

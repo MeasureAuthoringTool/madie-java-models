@@ -12,7 +12,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 public class PatientEntity extends Entity {
 
-    private String hqmfOid = "2.16.840.1.113883.10.20.28.4.136";
+  private String hqmfOid = "2.16.840.1.113883.10.20.28.4.136";
 
-    private String qrdaOid = "2.16.840.1.113883.10.20.24.3.161";
+  private String qrdaOid = "2.16.840.1.113883.10.20.24.3.161";
 }

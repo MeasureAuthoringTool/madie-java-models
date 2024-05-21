@@ -15,16 +15,15 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
 @JsonTypeName("QDM v5.6")
-@ToString(callSuper=true)
+@ToString(callSuper = true)
 @ValidMeasureScoring
 @ValidQDMGroupScoring
 public class QdmMeasure extends Measure {
-	
-	private String scoring;
-	private List<BaseConfigurationTypes> baseConfigurationTypes;
-	@Builder.Default
-	private boolean patientBasis = true;
-	private String rateAggregation;
-	private String improvementNotation;
-	private String improvementNotationDescription;
+
+  private String scoring;
+  private List<BaseConfigurationTypes> baseConfigurationTypes;
+  @Builder.Default private boolean patientBasis = true;
+  private String rateAggregation;
+  private String improvementNotation;
+  private String improvementNotationDescription;
 }

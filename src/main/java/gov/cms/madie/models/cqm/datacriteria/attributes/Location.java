@@ -11,6 +11,6 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Location extends Entity {
-    private Code locationType;
-    private String hqmfOid = "2.16.840.1.113883.10.20.28.4.142";
+  private Code locationType;
+  private String hqmfOid = "2.16.840.1.113883.10.20.28.4.142";
 }

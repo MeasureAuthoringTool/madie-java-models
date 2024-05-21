@@ -17,6 +17,7 @@ public class Population {
   @Id
   @NotBlank(message = "Population ID is required.")
   private String id;
+
   private PopulationType name;
   private String definition;
   private AssociationType associationType;

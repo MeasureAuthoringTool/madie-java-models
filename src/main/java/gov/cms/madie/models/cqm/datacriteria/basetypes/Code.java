@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Code {
-    private String code;
-    private String display;
-    private String system;
-    private String version;
+  private String code;
+  private String display;
+  private String system;
+  private String version;
 }

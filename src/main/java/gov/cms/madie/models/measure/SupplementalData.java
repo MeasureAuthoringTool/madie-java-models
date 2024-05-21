@@ -8,9 +8,8 @@ public class SupplementalData extends DefDescPair {
   public SupplementalData() {
     super();
   }
-  
-  public SupplementalData(String definition, String description) {
-      super(definition, description);
-  }
 
+  public SupplementalData(String definition, String description) {
+    super(definition, description);
+  }
 }

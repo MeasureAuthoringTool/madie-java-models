@@ -14,6 +14,4 @@ public class DefDescPair {
   private String definition;
 
   private String description;
-
 }
-

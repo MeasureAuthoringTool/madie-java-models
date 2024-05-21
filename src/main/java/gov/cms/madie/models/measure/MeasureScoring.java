@@ -27,8 +27,8 @@ public enum MeasureScoring {
 
   public static MeasureScoring valueOfText(String text) {
     return Arrays.stream(MeasureScoring.values())
-      .filter(s -> s.text.equals(text))
-      .findFirst()
-      .orElse(null);
+        .filter(s -> s.text.equals(text))
+        .findFirst()
+        .orElse(null);
   }
 }

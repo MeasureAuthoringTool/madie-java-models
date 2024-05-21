@@ -10,22 +10,20 @@ import jakarta.validation.ConstraintValidatorContext;
 public class ValidFhirGroupValidator implements ConstraintValidator<ValidFhirGroup, FhirMeasure> {
   @Override
   public boolean isValid(FhirMeasure measure, ConstraintValidatorContext context) {
-  	if(measure==null || CollectionUtils.isEmpty(measure.getGroups())) {
-			return true;
-		}
-  	if(measure.getGroups()!=null ) {
-  		for(int i=0; i<measure.getGroups().size(); i++) {
-  			if(CollectionUtils.isEmpty(measure.getGroups().get(i).getMeasureGroupTypes())) {
-  				return false;
-  			}
-  			if(!StringUtils.hasLength(measure.getGroups().get(i).getPopulationBasis()))  {
-  				return false;
-  			}
-  		}
+    if (measure == null || CollectionUtils.isEmpty(measure.getGroups())) {
+      return true;
+    }
+    if (measure.getGroups() != null) {
+      for (int i = 0; i < measure.getGroups().size(); i++) {
+        if (CollectionUtils.isEmpty(measure.getGroups().get(i).getMeasureGroupTypes())) {
+          return false;
+        }
+        if (!StringUtils.hasLength(measure.getGroups().get(i).getPopulationBasis())) {
+          return false;
+        }
+      }
     }
 
-  	return true;
+    return true;
   }
-
 }
-

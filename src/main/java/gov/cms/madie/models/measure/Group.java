@@ -20,8 +20,7 @@ import java.util.List;
 @ValidGroupScoringPopulation
 @ValidMeasureObservation
 public class Group implements GroupScoringPopulation {
-  @Id
-  private String id;
+  @Id private String id;
 
   @NotNull(
       message = "Scoring is required.",
@@ -32,8 +31,7 @@ public class Group implements GroupScoringPopulation {
       groups = {Measure.ValidationOrder5.class})
   private String scoring;
 
-  @Valid
-  private List<Population> populations;
+  @Valid private List<Population> populations;
 
   private List<MeasureObservation> measureObservations;
 
@@ -43,14 +41,12 @@ public class Group implements GroupScoringPopulation {
 
   private String rateAggregation;
 
-  //@NotEmpty
+  // @NotEmpty
   private List<MeasureGroupTypes> measureGroupTypes;
 
   private Object scoringUnit;
 
-  @Valid
-  private List<Stratification> stratifications;
+  @Valid private List<Stratification> stratifications;
 
   private String populationBasis;
-
 }
