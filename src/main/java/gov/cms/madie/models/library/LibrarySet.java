@@ -15,14 +15,15 @@ import java.util.List;
 @NoArgsConstructor
 public class LibrarySet {
 
-    @Id
-    private String id;
+  @Id private String id;
 
-    @NotBlank(groups={CqlLibrary.ValidationOrder1.class},message="Library Set Id is required")
-    @Indexed(unique = true)
-    private String librarySetId;
+  @NotBlank(
+      groups = {CqlLibrary.ValidationOrder1.class},
+      message = "Library Set Id is required")
+  @Indexed(unique = true)
+  private String librarySetId;
 
-    private String owner;
+  private String owner;
 
-    private List<AclSpecification> acls;
+  private List<AclSpecification> acls;
 }

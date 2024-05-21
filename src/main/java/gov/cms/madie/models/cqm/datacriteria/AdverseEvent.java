@@ -11,19 +11,20 @@ import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 public class AdverseEvent extends DataElement {
-    private LocalDateTime authorDatetime;
-    private LocalDateTime relevantDatetime;
-    private Code severity;
-    private FacilityLocation facilityLocation;
-    private Code type;
-    private List<Entity> recorder;
-    private String qdmTitle = "Adverse Event";
-    private String hqmfOid = "2.16.840.1.113883.10.20.28.4.120";
-    private String qdmCategory = "adverse_event";
-    private String qdmVersion = "5.6";
+  private LocalDateTime authorDatetime;
+  private LocalDateTime relevantDatetime;
+  private Code severity;
+  private FacilityLocation facilityLocation;
+  private Code type;
+  private List<Entity> recorder;
+  private String qdmTitle = "Adverse Event";
+  private String hqmfOid = "2.16.840.1.113883.10.20.28.4.120";
+  private String qdmCategory = "adverse_event";
+  private String qdmVersion = "5.6";
 }

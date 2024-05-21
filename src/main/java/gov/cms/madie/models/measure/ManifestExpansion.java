@@ -8,6 +8,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
 public class ManifestExpansion {
-    private String fullUrl;
-    private String id;
+  private String fullUrl;
+  private String id;
 }

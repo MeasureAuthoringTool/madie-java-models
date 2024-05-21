@@ -38,7 +38,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
-    include = JsonTypeInfo.As.EXISTING_PROPERTY, 
+    include = JsonTypeInfo.As.EXISTING_PROPERTY,
     property = "model",
     visible = true)
 @JsonSubTypes({
@@ -53,17 +53,17 @@ public class Measure {
   private String measureHumanReadableId;
 
   @NotBlank(
-    groups = {ValidationOrder1.class},
-    message = "Measure Set ID is required.")
+      groups = {ValidationOrder1.class},
+      message = "Measure Set ID is required.")
   private String measureSetId;
 
   @JsonSerialize(using = VersionJsonSerializer.VersionSerializer.class)
   @JsonDeserialize(using = VersionJsonSerializer.VersionDeserializer.class)
   private Version version;
-  //temp for MAT-5191
+
+  // temp for MAT-5191
   private String revisionNumber;
   private String state;
-
 
   @Indexed
   @NotBlank(
@@ -103,8 +103,7 @@ public class Measure {
   // TODO: determine if theres a way to set this from backend or if we should always trust user
   // input for this field
   private boolean cqlErrors;
-  @Singular
-  private Set<MeasureErrorType> errors;
+  @Singular private Set<MeasureErrorType> errors;
   private String cql;
   private String elmJson;
   @Transient private String elmXml;
@@ -117,11 +116,15 @@ public class Measure {
   private String lastModifiedBy;
   private Date measurementPeriodStart;
   private Date measurementPeriodEnd;
+
   @Singular("sde")
   private List<DefDescPair> supplementalData;
+
   private String supplementalDataDescription;
+
   @Singular("rav")
   private List<DefDescPair> riskAdjustments;
+
   private String riskAdjustmentDescription;
 
   @NotBlank(message = "Model is required")
@@ -131,18 +134,15 @@ public class Measure {
       groups = {ValidationOrder5.class})
   private String model;
 
-  @Valid
-  private MeasureMetaData measureMetaData = new MeasureMetaData();
+  @Valid private MeasureMetaData measureMetaData = new MeasureMetaData();
 
   @NotBlank(
       groups = {ValidationOrder1.class},
       message = "Version ID is required.")
   private String versionId;
 
-  @Deprecated
-  private ReviewMetaData reviewMetaData = new ReviewMetaData();
-  @Transient
-  private MeasureSet measureSet;
+  @Deprecated private ReviewMetaData reviewMetaData = new ReviewMetaData();
+  @Transient private MeasureSet measureSet;
 
   @GroupSequence({
     Measure.ValidationOrder1.class,

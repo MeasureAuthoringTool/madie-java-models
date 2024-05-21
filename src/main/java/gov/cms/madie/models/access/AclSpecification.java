@@ -6,7 +6,6 @@ import lombok.Data;
 @Data
 public class AclSpecification {
 
-  private String userId ;
-  private List<RoleEnum> roles ; 
-
+  private String userId;
+  private List<RoleEnum> roles;
 }

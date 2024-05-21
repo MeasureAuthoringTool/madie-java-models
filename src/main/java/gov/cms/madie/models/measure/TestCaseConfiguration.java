@@ -9,8 +9,7 @@ import org.springframework.data.annotation.Id;
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
 public class TestCaseConfiguration {
-    @Id
-    private String id;
-    private boolean sdeIncluded;
-    private ManifestExpansion manifestExpansion;
+  @Id private String id;
+  private boolean sdeIncluded;
+  private ManifestExpansion manifestExpansion;
 }

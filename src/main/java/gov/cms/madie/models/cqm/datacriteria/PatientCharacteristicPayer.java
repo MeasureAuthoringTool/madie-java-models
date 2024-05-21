@@ -12,10 +12,10 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PatientCharacteristicPayer extends DataElement {
-    private Interval relevantPeriod;
-    private String qdmTitle = "Patient Characteristic Payer";
-    private String hqmfOid = "2.16.840.1.113883.10.20.28.4.58";
-    private String qdmCategory = "patient_characteristic";
-    private String qdmStatus = "payer";
-    private String qdmVersion = "5.6";
+  private Interval relevantPeriod;
+  private String qdmTitle = "Patient Characteristic Payer";
+  private String hqmfOid = "2.16.840.1.113883.10.20.28.4.58";
+  private String qdmCategory = "patient_characteristic";
+  private String qdmStatus = "payer";
+  private String qdmVersion = "5.6";
 }

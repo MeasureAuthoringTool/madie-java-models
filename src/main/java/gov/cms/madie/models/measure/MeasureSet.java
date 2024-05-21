@@ -15,17 +15,17 @@ import java.util.List;
 @NoArgsConstructor
 public class MeasureSet {
 
-    @Id
-    private String id;
+  @Id private String id;
 
-    private Integer cmsId;
+  private Integer cmsId;
 
-    @Indexed
-    @NotBlank(
-            groups={Measure.ValidationOrder1.class},message="Measure Set Id is required")
-    private String measureSetId;
+  @Indexed
+  @NotBlank(
+      groups = {Measure.ValidationOrder1.class},
+      message = "Measure Set Id is required")
+  private String measureSetId;
 
-    private String owner;
+  private String owner;
 
-    private List<AclSpecification> acls;
+  private List<AclSpecification> acls;
 }

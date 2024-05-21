@@ -8,10 +8,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder(toBuilder=true)
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReviewMetaData {
-    private Instant approvalDate;
-    private Instant lastReviewDate;
+  private Instant approvalDate;
+  private Instant lastReviewDate;
 }

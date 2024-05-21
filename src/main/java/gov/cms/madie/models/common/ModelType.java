@@ -21,16 +21,16 @@ public enum ModelType {
   }
 
   /**
-   * Value is the string that appears in the UI to identify the model being used
-   * ShortValue is the string that will be appended to classes to dynamically reference classes
-   * 
+   * Value is the string that appears in the UI to identify the model being used ShortValue is the
+   * string that will be appended to classes to dynamically reference classes
+   *
    * @param value
    * @param shortValue
    */
   ModelType(String value, String shortValue) {
-	    this.value = value;
-	    this.shortValue = shortValue;
-	  }
+    this.value = value;
+    this.shortValue = shortValue;
+  }
 
   @Override
   public String toString() {
