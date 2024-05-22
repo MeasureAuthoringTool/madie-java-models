@@ -1,7 +1,6 @@
 package gov.cms.madie.models.measure;
 
 import gov.cms.madie.models.validators.EnumValidator;
-import gov.cms.madie.models.validators.ValidScoringPopulation;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,7 +13,7 @@ import java.util.List;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-//@ValidScoringPopulation
+// @ValidScoringPopulation
 public class TestCaseGroupPopulation {
   private String groupId;
 

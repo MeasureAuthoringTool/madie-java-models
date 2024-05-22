@@ -13,8 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @Document
 public class Generator {
-    @Id
-    private String id;
+  @Id private String id;
 
-    private int currentValue;
+  private int currentValue;
 }

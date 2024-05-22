@@ -12,10 +12,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TestCaseStratificationValue {
-    private String id;
-    private String name;
-    private Object expected;
-    private Object actual;
-    private List<TestCasePopulationValue> populationValues;
+  private String id;
+  private String name;
+  private Object expected;
+  private Object actual;
+  private List<TestCasePopulationValue> populationValues;
 }
-

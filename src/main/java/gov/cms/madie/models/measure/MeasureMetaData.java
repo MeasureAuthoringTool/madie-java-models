@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
-@Builder(toBuilder=true)
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class MeasureMetaData {
@@ -23,10 +23,8 @@ public class MeasureMetaData {
   private String clinicalRecommendation;
 
   private boolean draft;
-  @Valid
-  private List<Reference> references;
-  @Valid
-  private List<Endorsement> endorsements;
+  @Valid private List<Reference> references;
+  @Valid private List<Endorsement> endorsements;
   private String riskAdjustment;
   private String definition;
   private boolean experimental;

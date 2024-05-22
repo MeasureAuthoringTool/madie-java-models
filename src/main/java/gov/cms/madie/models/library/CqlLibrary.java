@@ -29,8 +29,8 @@ public class CqlLibrary {
   @Id private String id;
 
   @NotBlank(
-          groups = {CqlLibrary.ValidationOrder1.class},
-          message = "Library Set ID is required.")
+      groups = {CqlLibrary.ValidationOrder1.class},
+      message = "Library Set ID is required.")
   private String librarySetId;
 
   @NotNull(message = "Library name is required.")
@@ -70,8 +70,7 @@ public class CqlLibrary {
   private String description;
   private boolean experimental;
 
-  @Transient
-  private LibrarySet librarySet;
+  @Transient private LibrarySet librarySet;
 
   @GroupSequence({
     CqlLibrary.ValidationOrder1.class,

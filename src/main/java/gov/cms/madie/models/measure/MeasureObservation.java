@@ -15,13 +15,15 @@ import jakarta.validation.constraints.NotNull;
 @AllArgsConstructor
 public class MeasureObservation {
   private String id;
+
   @NotBlank(
       message = "Measure Observation definition is required.",
-      groups = {Measure.ValidationOrder5.class}
-  )
+      groups = {Measure.ValidationOrder5.class})
   private String definition;
+
   private String description;
   private String criteriaReference;
+
   @NotNull(
       message = "Aggregate Method is required.",
       groups = {Measure.ValidationOrder5.class})

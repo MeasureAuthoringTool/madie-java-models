@@ -10,18 +10,19 @@ import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
 import java.util.List;
+
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 public class CareGoal extends DataElement {
-    private LocalDate statusDate;
-    private Interval relevantPeriod;
-    private Object[] relatedTo;
-    private Object targetOutcome;
-    private List<Entity> performer;
-    private String qdmTitle = "Care Goal";
-    private String hqmfOid = "2.16.840.1.113883.10.20.28.4.7";
-    private String qdmCategory = "care_goal";
-    private String qdmVersion = "5.6";
+  private LocalDate statusDate;
+  private Interval relevantPeriod;
+  private Object[] relatedTo;
+  private Object targetOutcome;
+  private List<Entity> performer;
+  private String qdmTitle = "Care Goal";
+  private String hqmfOid = "2.16.840.1.113883.10.20.28.4.7";
+  private String qdmCategory = "care_goal";
+  private String qdmVersion = "5.6";
 }

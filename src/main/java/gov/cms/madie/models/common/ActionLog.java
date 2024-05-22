@@ -7,8 +7,7 @@ import java.util.List;
 
 @Data
 public class ActionLog {
-  @Id
-  private String id;
+  @Id private String id;
   private String targetId;
   private List<Action> actions;
 }

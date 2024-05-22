@@ -13,12 +13,12 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PatientCharacteristicClinicalTrialParticipant extends DataElement {
-    private Code reason;
-    private Interval relevantPeriod;
-    private String qdmTitle = "Patient Characteristic Clinical Trial Participant";
-    private String hqmfOid = "2.16.840.1.113883.10.20.28.4.6";
-    private String qrdaOid = "2.16.840.1.113883.10.20.24.3.51";
-    private String qdmCategory = "patient_characteristic";
-    private String qdmStatus = "clinical_trial_participant";
-    private String qdmVersion = "5.6";
+  private Code reason;
+  private Interval relevantPeriod;
+  private String qdmTitle = "Patient Characteristic Clinical Trial Participant";
+  private String hqmfOid = "2.16.840.1.113883.10.20.28.4.6";
+  private String qrdaOid = "2.16.840.1.113883.10.20.24.3.51";
+  private String qdmCategory = "patient_characteristic";
+  private String qdmStatus = "clinical_trial_participant";
+  private String qdmVersion = "5.6";
 }

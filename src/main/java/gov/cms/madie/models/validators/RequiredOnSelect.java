@@ -14,13 +14,13 @@ import jakarta.validation.Payload;
 @Documented
 public @interface RequiredOnSelect {
 
-    String message() default "Required field is missing";
+  String message() default "Required field is missing";
 
-    Class<?>[] groups() default {};
+  Class<?>[] groups() default {};
 
-    Class<? extends Payload>[] payload() default {};
+  Class<? extends Payload>[] payload() default {};
 
-    String selectedField();
+  String selectedField();
 
-    String requiredField();
+  String requiredField();
 }

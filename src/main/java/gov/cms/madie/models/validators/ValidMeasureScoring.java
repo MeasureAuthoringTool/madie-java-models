@@ -14,7 +14,7 @@ import jakarta.validation.Payload;
 @Constraint(validatedBy = MeasureScoringValidator.class)
 @Documented
 public @interface ValidMeasureScoring {
-	String message() default "Measure Scoring must be valid";
+  String message() default "Measure Scoring must be valid";
 
   Class<?>[] groups() default {};
 

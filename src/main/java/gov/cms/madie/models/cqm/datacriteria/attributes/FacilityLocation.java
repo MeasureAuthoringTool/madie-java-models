@@ -13,10 +13,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FacilityLocation implements Attribute {
 
-    private Code code;
+  private Code code;
 
-    private Interval locationPeriod;
+  private Interval locationPeriod;
 
-    private String qdmVersion = "5.6";
-
+  private String qdmVersion = "5.6";
 }

@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Quantity {
-    private double value;
-    private String unit;
+  private double value;
+  private String unit;
 }
