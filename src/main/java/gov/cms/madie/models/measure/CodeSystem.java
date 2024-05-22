@@ -7,7 +7,8 @@ import lombok.Data;
 public class CodeSystem {
 	private String name;
 	private String display;
-	private String version;
+	private String fhirVersion;
+	private String svsVersion;
 	private String codeSystem;
 	private String codeSystemOid;
 	private String status;
