@@ -25,4 +25,5 @@ public class LaboratoryTestOrder extends DataElement {
   private String qdmCategory = "laboratory_test";
   private String qdmStatus = "order";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::LaboratoryTestOrder";
 }

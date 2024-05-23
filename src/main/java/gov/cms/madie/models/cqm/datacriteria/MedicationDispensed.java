@@ -36,4 +36,5 @@ public class MedicationDispensed extends DataElement {
   private String qdmCategory = "medication";
   private String qdmStatus = "dispensed";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::MedicationDispensed";
 }

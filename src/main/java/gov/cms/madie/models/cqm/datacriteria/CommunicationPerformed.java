@@ -30,4 +30,5 @@ public class CommunicationPerformed extends DataElement {
   private String qdmCategory = "communication";
   private String qdmStatus = "performed";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::CommunicationPerformed";
 }

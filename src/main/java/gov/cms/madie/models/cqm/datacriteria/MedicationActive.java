@@ -29,4 +29,5 @@ public class MedicationActive extends DataElement {
   private String qdmCategory = "medication";
   private String qdmStatus = "active";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::MedicationActive";
 }

@@ -16,4 +16,5 @@ public class PatientCharacteristicEthnicity extends DataElement {
   private String qdmCategory = "patient_characteristic";
   private String qdmStatus = "ethnicity";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::PatientCharacteristicEthnicity";
 }

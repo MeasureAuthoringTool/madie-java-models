@@ -26,4 +26,5 @@ public class DiagnosticStudyRecommended extends DataElement {
   private String qdmCategory = "diagnostic_study";
   private String qdmStatus = "recommended";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::DiagnosticStudyRecommended";
 }

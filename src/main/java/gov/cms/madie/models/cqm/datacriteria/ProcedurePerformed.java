@@ -36,4 +36,5 @@ public class ProcedurePerformed extends DataElement {
   private String qdmCategory = "procedure";
   private String qdmStatus = "performed";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::ProcedurePerformed";
 }

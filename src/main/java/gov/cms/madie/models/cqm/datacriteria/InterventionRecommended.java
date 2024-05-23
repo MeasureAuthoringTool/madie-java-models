@@ -25,4 +25,5 @@ public class InterventionRecommended extends DataElement {
   private String qdmCategory = "intervention";
   private String qdmStatus = "recommended";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::InterventionRecommended";
 }

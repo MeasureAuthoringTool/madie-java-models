@@ -37,4 +37,5 @@ public class DiagnosticStudyPerformed extends DataElement {
   private String qdmCategory = "diagnostic_study";
   private String qdmStatus = "performed";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::DiagnosticStudyPerformed";
 }

@@ -24,4 +24,5 @@ public class FamilyHistory extends DataElement {
   private String qrdaOid = "2.16.840.1.113883.10.20.24.3.12";
   private String qdmCategory = "family_history";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::FamilyHistory";
 }

@@ -33,4 +33,5 @@ public class SubstanceOrder extends DataElement {
   private String qdmCategory = "substance";
   private String qdmStatus = "order";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::SubstanceOrder";
 }

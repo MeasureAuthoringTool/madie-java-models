@@ -25,4 +25,5 @@ public class CareGoal extends DataElement {
   private String hqmfOid = "2.16.840.1.113883.10.20.28.4.7";
   private String qdmCategory = "care_goal";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::CareGoal";
 }

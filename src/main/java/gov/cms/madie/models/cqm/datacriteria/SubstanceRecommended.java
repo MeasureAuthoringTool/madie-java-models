@@ -30,4 +30,5 @@ public class SubstanceRecommended extends DataElement {
   private String qdmCategory = "substance";
   private String qdmStatus = "recommended";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::SubstanceRecommended";
 }

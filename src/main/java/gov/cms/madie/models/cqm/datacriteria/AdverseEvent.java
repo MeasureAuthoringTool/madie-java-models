@@ -27,4 +27,5 @@ public class AdverseEvent extends DataElement {
   private String hqmfOid = "2.16.840.1.113883.10.20.28.4.120";
   private String qdmCategory = "adverse_event";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::AdverseEvent";
 }

@@ -27,4 +27,5 @@ public class EncounterRecommended extends DataElement {
   private String qdmCategory = "encounter";
   private String qdmStatus = "recommended";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::EncounterRecommended";
 }
