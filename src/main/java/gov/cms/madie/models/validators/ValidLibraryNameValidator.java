@@ -3,7 +3,6 @@ package gov.cms.madie.models.validators;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.library.CqlLibrary;
 import gov.cms.madie.models.measure.Measure;
