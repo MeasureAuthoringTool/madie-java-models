@@ -21,6 +21,7 @@ public class EncounterPerformed extends DataElement {
 
   private LocalDateTime authorDatetime;
   private Code admissionSource;
+  //The cqm javascript code uses "class" here. We may need a conversion like in cqm-models to handle this.
   private Code clazz;
   private Interval relevantPeriod;
   private Code dischargeDisposition;
