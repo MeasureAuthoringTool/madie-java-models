@@ -31,4 +31,5 @@ public class InterventionPerformed extends DataElement {
   private String qdmCategory = "intervention";
   private String qdmStatus = "performed";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::InterventionPerformed";
 }

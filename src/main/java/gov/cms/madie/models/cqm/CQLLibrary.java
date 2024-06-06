@@ -18,8 +18,9 @@ public class CQLLibrary {
   private String library_version;
   private String cql;
 
-  //  private String elm;
-  //  private String elm_annotations;
+  private Object elm;
+  private String elm_annotations;
+
   @JsonProperty(value = "is_main_library")
   @Builder.Default
   private boolean is_main_library = false;

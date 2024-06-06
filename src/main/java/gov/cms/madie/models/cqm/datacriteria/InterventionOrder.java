@@ -25,4 +25,5 @@ public class InterventionOrder extends DataElement {
   private String qdmCategory = "intervention";
   private String qdmStatus = "order";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::InterventionOrder";
 }

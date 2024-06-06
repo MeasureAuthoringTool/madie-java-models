@@ -19,4 +19,5 @@ public class PatientCharacteristicBirthdate extends DataElement {
   private String qdmCategory = "patient_characteristic";
   private String qdmStatus = "birthdate";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::PatientCharacteristicBirthdate";
 }

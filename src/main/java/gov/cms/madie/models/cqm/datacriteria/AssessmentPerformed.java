@@ -32,4 +32,5 @@ public class AssessmentPerformed extends DataElement {
   private String qdmCategory = "assessment";
   private String qdmStatus = "performed";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::AssessmentPerformed";
 }

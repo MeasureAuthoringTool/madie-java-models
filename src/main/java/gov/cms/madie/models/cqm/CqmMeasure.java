@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Data
@@ -24,7 +24,7 @@ public class CqmMeasure {
   private String description = "";
   private boolean composite = false;
   private boolean component = false;
-  private List<String> component_hqmf_set_ids = new ArrayList<>();
+  private List<String> component_hqmf_set_ids = Collections.emptyList();
   private String composite_hqmf_set_id;
   private String measure_scoring = "PROPORTION";
   private String calculation_method = "PATIENT";

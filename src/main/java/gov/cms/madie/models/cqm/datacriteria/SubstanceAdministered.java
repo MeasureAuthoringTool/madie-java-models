@@ -31,4 +31,5 @@ public class SubstanceAdministered extends DataElement {
   private String qdmCategory = "substance";
   private String qdmStatus = "administered";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::SubstanceAdministered";
 }

@@ -26,4 +26,5 @@ public class PhysicalExamOrder extends DataElement {
   private String qdmCategory = "physical_exam";
   private String qdmStatus = "order";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::PhysicalExamOrder";
 }

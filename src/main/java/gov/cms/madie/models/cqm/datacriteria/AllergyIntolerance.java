@@ -27,4 +27,5 @@ public class AllergyIntolerance extends DataElement {
   private String qdmCategory = "allergy";
   private String qdmStatus = "intolerance";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::AllergyIntolerance";
 }
