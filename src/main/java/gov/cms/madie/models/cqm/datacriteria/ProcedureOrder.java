@@ -28,4 +28,5 @@ public class ProcedureOrder extends DataElement {
   private String qdmCategory = "procedure";
   private String qdmStatus = "order";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::ProcedureOrder";
 }

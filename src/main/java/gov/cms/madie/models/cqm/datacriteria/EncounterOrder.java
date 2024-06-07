@@ -28,4 +28,5 @@ public class EncounterOrder extends DataElement {
   private String qdmCategory = "encounter";
   private String qdmStatus = "order";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::EncounterOrder";
 }

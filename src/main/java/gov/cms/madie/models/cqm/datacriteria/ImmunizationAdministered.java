@@ -30,4 +30,5 @@ public class ImmunizationAdministered extends DataElement {
   private String qdmCategory = "immunization";
   private String qdmStatus = "administered";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::ImmunizationAdministered";
 }

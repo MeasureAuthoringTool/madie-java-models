@@ -33,4 +33,5 @@ public class PhysicalExamPerformed extends DataElement {
   private String qdmCategory = "physical_exam";
   private String qdmStatus = "performed";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::PhysicalExamPerformed";
 }

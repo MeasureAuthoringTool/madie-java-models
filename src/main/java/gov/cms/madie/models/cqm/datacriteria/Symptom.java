@@ -24,4 +24,5 @@ public class Symptom extends DataElement {
   private String qrdaOid = "2.16.840.1.113883.10.20.24.3.136";
   private String qdmCategory = "symptom";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::Symptom";
 }

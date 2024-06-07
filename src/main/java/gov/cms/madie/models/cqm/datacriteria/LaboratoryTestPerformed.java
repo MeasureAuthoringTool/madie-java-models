@@ -35,4 +35,5 @@ public class LaboratoryTestPerformed extends DataElement {
   private String qdmCategory = "laboratory_test";
   private String qdmStatus = "performed";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::LaboratoryTestPerformed";
 }

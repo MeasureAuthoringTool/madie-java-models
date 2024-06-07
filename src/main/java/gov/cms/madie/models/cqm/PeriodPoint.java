@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MeasurePeriod {
-  private PeriodPoint low;
-  private PeriodPoint high;
+public class PeriodPoint {
+  String value;
 }

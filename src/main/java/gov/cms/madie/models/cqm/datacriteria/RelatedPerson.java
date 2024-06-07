@@ -18,4 +18,5 @@ public class RelatedPerson extends DataElement {
   private String hqmfOid = "2.16.840.1.113883.10.20.28.4.141";
   private String qdmCategory = "related_person";
   private String qdmVersion = "5.6";
+  private String _type = "QDM::RelatedPerson";
 }
