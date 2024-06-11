@@ -101,9 +101,8 @@ public class DataElement {
 
   // Valueset oid of the specific type.
   private String codeListId;
+  private String desc;
+  private String codeId;
 
   private String id = null;
-
-  //  private String codeId;
-  //  private String desc;
 }
