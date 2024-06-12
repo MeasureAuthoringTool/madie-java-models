@@ -87,6 +87,7 @@ import lombok.experimental.SuperBuilder;
   @JsonSubTypes.Type(value = ProcedureRecommended.class, name = "QDM::ProcedureRecommended"),
   @JsonSubTypes.Type(value = ProviderCareExperience.class, name = "QDM::ProviderCareExperience"),
   @JsonSubTypes.Type(value = SubstanceAdministered.class, name = "QDM::SubstanceAdministered"),
+  @JsonSubTypes.Type(value = RelatedPerson.class, name = "QDM::RelatedPerson"),
   @JsonSubTypes.Type(value = SubstanceOrder.class, name = "QDM::SubstanceOrder"),
   @JsonSubTypes.Type(value = SubstanceRecommended.class, name = "QDM::SubstanceRecommended"),
   @JsonSubTypes.Type(value = Symptom.class, name = "QDM::Symptom")
