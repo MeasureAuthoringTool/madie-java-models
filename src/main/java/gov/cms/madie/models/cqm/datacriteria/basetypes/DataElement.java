@@ -89,7 +89,8 @@ import lombok.experimental.SuperBuilder;
   @JsonSubTypes.Type(value = SubstanceAdministered.class, name = "QDM::SubstanceAdministered"),
   @JsonSubTypes.Type(value = SubstanceOrder.class, name = "QDM::SubstanceOrder"),
   @JsonSubTypes.Type(value = SubstanceRecommended.class, name = "QDM::SubstanceRecommended"),
-  @JsonSubTypes.Type(value = Symptom.class, name = "QDM::Symptom")
+  @JsonSubTypes.Type(value = Symptom.class, name = "QDM::Symptom"),
+  @JsonSubTypes.Type(value = RelatedPerson.class, name = "QDM::RelatedPerson")
 })
 public class DataElement {
 
