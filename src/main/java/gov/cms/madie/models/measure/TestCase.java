@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Transient;
@@ -51,7 +52,7 @@ public class TestCase {
   private String lastModifiedBy;
   @JsonIgnore private String resourceUri;
   private boolean validResource;
-  private String json;
+  @Getter private String json;
 
   private UUID patientId;
 

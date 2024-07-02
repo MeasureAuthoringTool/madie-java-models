@@ -1,22 +1,39 @@
 package gov.cms.madie.models.cqm.datacriteria;
 
 import gov.cms.madie.models.cqm.datacriteria.basetypes.DataElement;
+import gov.cms.madie.models.cqm.datacriteria.basetypes.LocalDateTimeFormatConstant;
 import gov.cms.madie.models.cqm.datacriteria.attributes.Entity;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Code;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class DiagnosticStudyOrder extends DataElement {
+  @DateTimeFormat(
+      iso = ISO.DATE_TIME,
+      pattern = LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN)
+  @JsonFormat(
+      shape = JsonFormat.Shape.STRING,
+      pattern = LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN)
   private LocalDateTime authorDatetime;
+
   private Code reason;
   private Code negationRationale;
   private List<Entity> requester;
@@ -26,4 +43,11 @@ public class DiagnosticStudyOrder extends DataElement {
   private String qdmStatus = "order";
   private String qdmVersion = "5.6";
   private String _type = "QDM::DiagnosticStudyOrder";
+
+  public void shiftDates(int shifted) {
+
+    if (this.authorDatetime != null) {
+      this.authorDatetime = this.authorDatetime.plusYears(shifted);
+    }
+  }
 }

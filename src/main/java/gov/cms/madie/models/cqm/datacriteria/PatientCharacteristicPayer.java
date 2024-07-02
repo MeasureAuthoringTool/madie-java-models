@@ -19,4 +19,18 @@ public class PatientCharacteristicPayer extends DataElement {
   private String qdmStatus = "payer";
   private String qdmVersion = "5.6";
   private String _type = "QDM::PatientCharacteristicPayer";
+
+  public void shiftDates(int shifted) {
+
+    if (this.relevantPeriod != null) {
+      Interval changeInterval = this.relevantPeriod;
+      if (changeInterval.getLow() != null) {
+        changeInterval.setLow(changeInterval.getLow().plusYears(shifted));
+      }
+      if (changeInterval.getHigh() != null) {
+        changeInterval.setHigh(changeInterval.getHigh().plusYears(shifted));
+      }
+      this.relevantPeriod = changeInterval;
+    }
+  }
 }

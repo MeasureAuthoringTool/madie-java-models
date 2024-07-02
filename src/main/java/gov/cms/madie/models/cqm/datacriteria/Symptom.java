@@ -25,4 +25,18 @@ public class Symptom extends DataElement {
   private String qdmCategory = "symptom";
   private String qdmVersion = "5.6";
   private String _type = "QDM::Symptom";
+
+  public void shiftDates(int shifted) {
+
+    if (this.prevalencePeriod != null) {
+      Interval changeInterval = this.prevalencePeriod;
+      if (changeInterval.getLow() != null) {
+        changeInterval.setLow(changeInterval.getLow().plusYears(shifted));
+      }
+      if (changeInterval.getHigh() != null) {
+        changeInterval.setHigh(changeInterval.getHigh().plusYears(shifted));
+      }
+      this.prevalencePeriod = changeInterval;
+    }
+  }
 }
