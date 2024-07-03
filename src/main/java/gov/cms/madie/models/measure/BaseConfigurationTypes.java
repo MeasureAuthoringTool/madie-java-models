@@ -9,6 +9,8 @@ public enum BaseConfigurationTypes {
   APPROPRIATE_USE_PROCESS("Appropriate Use Process"),
   @JsonProperty("Cost/Resource Use")
   COST_OR_RESOURCE_USE("Cost/Resource Use"),
+  @JsonProperty("Resource Use")
+  RESOURCE_USE("Resource Use"),
   @JsonProperty("Efficiency")
   EFFICIENCY("Efficiency"),
   @JsonProperty("Intermediate Clinical Outcome")
@@ -17,6 +19,8 @@ public enum BaseConfigurationTypes {
   OUTCOME("Outcome"),
   @JsonProperty("Patient Engagement/Experience")
   PATIENT_ENGAGEMENT_OR_EXPERIENCE("Patient Engagement/Experience"),
+  @JsonProperty("Experience")
+  EXPERIENCE("Experience"),
   @JsonProperty("Patient Reported Outcome")
   PATIENT_REPORTED_OUTCOME("Patient Reported Outcome"),
   @JsonProperty("Performance")
