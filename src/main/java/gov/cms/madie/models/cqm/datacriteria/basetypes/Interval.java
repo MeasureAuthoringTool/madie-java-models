@@ -7,10 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -21,21 +20,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Getter
 @Setter
 public class Interval {
-  @DateTimeFormat(
-      iso = ISO.DATE_TIME,
-      pattern = LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN)
-  @JsonFormat(
-      shape = JsonFormat.Shape.STRING,
-      pattern = LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN)
-  private LocalDateTime low;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+  private ZonedDateTime low;
 
-  @DateTimeFormat(
-      iso = ISO.DATE_TIME,
-      pattern = LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN)
-  @JsonFormat(
-      shape = JsonFormat.Shape.STRING,
-      pattern = LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN)
-  private LocalDateTime high;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+  private ZonedDateTime high;
 
   private boolean lowClosed;
   private boolean highClosed;

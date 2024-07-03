@@ -98,7 +98,6 @@ import lombok.experimental.SuperBuilder;
 public class DataElement {
 
   // Codes that describe this datatype.
-  //  private String[] dataElementCodes = {};
   private List<Code> dataElementCodes;
 
   // Optional description.
@@ -109,7 +108,7 @@ public class DataElement {
   private String desc;
   private String codeId;
 
-  private String id = null;
+  private String _id;
 
   @Getter private String _type;
 }

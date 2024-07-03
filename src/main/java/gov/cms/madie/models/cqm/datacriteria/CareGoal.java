@@ -44,5 +44,15 @@ public class CareGoal extends DataElement {
     if (this.statusDate != null) {
       this.statusDate = this.statusDate.plusYears(shifted);
     }
+    if (this.relevantPeriod != null) {
+      Interval changeInterval = this.relevantPeriod;
+      if (changeInterval.getLow() != null) {
+        changeInterval.setLow(changeInterval.getLow().plusYears(shifted));
+      }
+      if (changeInterval.getHigh() != null) {
+        changeInterval.setHigh(changeInterval.getHigh().plusYears(shifted));
+      }
+      this.relevantPeriod = changeInterval;
+    }
   }
 }
