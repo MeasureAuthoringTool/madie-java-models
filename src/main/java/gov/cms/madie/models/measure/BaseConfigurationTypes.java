@@ -7,8 +7,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public enum BaseConfigurationTypes {
   @JsonProperty("Appropriate Use Process")
   APPROPRIATE_USE_PROCESS("Appropriate Use Process"),
-  @JsonProperty("Cost/Resource Use")
-  COST_OR_RESOURCE_USE("Cost/Resource Use"),
   @JsonProperty("Resource Use")
   RESOURCE_USE("Resource Use"),
   @JsonProperty("Efficiency")
@@ -17,8 +15,6 @@ public enum BaseConfigurationTypes {
   INTERMEDIATE_CLINICAL_OUTCOME("Intermediate Clinical Outcome"),
   @JsonProperty("Outcome")
   OUTCOME("Outcome"),
-  @JsonProperty("Patient Engagement/Experience")
-  PATIENT_ENGAGEMENT_OR_EXPERIENCE("Patient Engagement/Experience"),
   @JsonProperty("Experience")
   EXPERIENCE("Experience"),
   @JsonProperty("Patient Reported Outcome")
