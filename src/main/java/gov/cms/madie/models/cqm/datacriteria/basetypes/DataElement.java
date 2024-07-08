@@ -1,5 +1,6 @@
 package gov.cms.madie.models.cqm.datacriteria.basetypes;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -111,4 +112,24 @@ public class DataElement {
   private String _id;
 
   @Getter private String _type;
+
+  public Interval shiftIntervalByYear(Interval interval, int year) {
+    if (interval == null) {
+      return null;
+    }
+    if (interval.getLow() != null) {
+      interval.setLow(interval.getLow().plusYears(year));
+    }
+    if (interval.getHigh() != null) {
+      interval.setHigh(interval.getHigh().plusYears(year));
+    }
+    return interval;
+  }
+
+  public ZonedDateTime shiftDateByYear(ZonedDateTime dateTime, int year) {
+    if (dateTime == null) {
+      return null;
+    }
+    return dateTime.plusYears(year);
+  }
 }

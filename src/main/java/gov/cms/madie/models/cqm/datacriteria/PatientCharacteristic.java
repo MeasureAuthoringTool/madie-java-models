@@ -1,6 +1,7 @@
 package gov.cms.madie.models.cqm.datacriteria;
 
 import gov.cms.madie.models.cqm.datacriteria.basetypes.DataElement;
+import gov.cms.madie.models.cqm.datacriteria.basetypes.LocalDateTimeFormatConstant;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -21,7 +22,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Getter
 @Setter
 public class PatientCharacteristic extends DataElement {
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+  @JsonFormat(
+      shape = JsonFormat.Shape.STRING,
+      pattern = LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private ZonedDateTime authorDatetime;
 
@@ -32,9 +35,6 @@ public class PatientCharacteristic extends DataElement {
   private String _type = "QDM::PatientCharacteristic";
 
   public void shiftDates(int shifted) {
-
-    if (this.authorDatetime != null) {
-      this.authorDatetime = this.authorDatetime.plusYears(shifted);
-    }
+    this.authorDatetime = shiftDateByYear(this.authorDatetime, shifted);
   }
 }

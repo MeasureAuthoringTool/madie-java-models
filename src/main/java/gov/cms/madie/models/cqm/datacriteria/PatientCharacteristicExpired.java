@@ -1,6 +1,7 @@
 package gov.cms.madie.models.cqm.datacriteria;
 
 import gov.cms.madie.models.cqm.datacriteria.basetypes.DataElement;
+import gov.cms.madie.models.cqm.datacriteria.basetypes.LocalDateTimeFormatConstant;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Code;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +23,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Getter
 @Setter
 public class PatientCharacteristicExpired extends DataElement {
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+  @JsonFormat(
+      shape = JsonFormat.Shape.STRING,
+      pattern = LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private ZonedDateTime expiredDatetime;
 
@@ -35,9 +38,6 @@ public class PatientCharacteristicExpired extends DataElement {
   private String _type = "QDM::PatientCharacteristicExpired";
 
   public void shiftDates(int shifted) {
-
-    if (this.expiredDatetime != null) {
-      this.expiredDatetime = this.expiredDatetime.plusYears(shifted);
-    }
+    this.expiredDatetime = shiftDateByYear(this.expiredDatetime, shifted);
   }
 }

@@ -1,6 +1,7 @@
 package gov.cms.madie.models.cqm.datacriteria;
 
 import gov.cms.madie.models.cqm.datacriteria.basetypes.DataElement;
+import gov.cms.madie.models.cqm.datacriteria.basetypes.LocalDateTimeFormatConstant;
 import gov.cms.madie.models.cqm.datacriteria.attributes.Entity;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Code;
 import lombok.AllArgsConstructor;
@@ -24,7 +25,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Getter
 @Setter
 public class CommunicationPerformed extends DataElement {
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+  @JsonFormat(
+      shape = JsonFormat.Shape.STRING,
+      pattern = LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private ZonedDateTime authorDatetime;
 
@@ -34,11 +37,15 @@ public class CommunicationPerformed extends DataElement {
   private List<Entity> recipient;
   private List relatedTo;
 
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+  @JsonFormat(
+      shape = JsonFormat.Shape.STRING,
+      pattern = LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private ZonedDateTime sentDatetime;
 
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+  @JsonFormat(
+      shape = JsonFormat.Shape.STRING,
+      pattern = LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private ZonedDateTime receivedDatetime;
 
@@ -51,15 +58,8 @@ public class CommunicationPerformed extends DataElement {
   private String _type = "QDM::CommunicationPerformed";
 
   public void shiftDates(int shifted) {
-
-    if (this.authorDatetime != null) {
-      this.authorDatetime = this.authorDatetime.plusYears(shifted);
-    }
-    if (this.sentDatetime != null) {
-      this.sentDatetime = this.sentDatetime.plusYears(shifted);
-    }
-    if (this.receivedDatetime != null) {
-      this.receivedDatetime = this.receivedDatetime.plusYears(shifted);
-    }
+    this.authorDatetime = shiftDateByYear(this.authorDatetime, shifted);
+    this.sentDatetime = shiftDateByYear(this.sentDatetime, shifted);
+    this.receivedDatetime = shiftDateByYear(this.receivedDatetime, shifted);
   }
 }

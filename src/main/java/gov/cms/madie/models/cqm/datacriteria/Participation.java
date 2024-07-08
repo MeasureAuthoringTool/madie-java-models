@@ -20,15 +20,6 @@ public class Participation extends DataElement {
   private String _type = "QDM::Participation";
 
   public void shiftDates(int shifted) {
-    if (this.participationPeriod != null) {
-      Interval changeInterval = this.participationPeriod;
-      if (changeInterval.getLow() != null) {
-        changeInterval.setLow(changeInterval.getLow().plusYears(shifted));
-      }
-      if (changeInterval.getHigh() != null) {
-        changeInterval.setHigh(changeInterval.getHigh().plusYears(shifted));
-      }
-      this.participationPeriod = changeInterval;
-    }
+    this.participationPeriod = shiftIntervalByYear(this.participationPeriod, shifted);
   }
 }

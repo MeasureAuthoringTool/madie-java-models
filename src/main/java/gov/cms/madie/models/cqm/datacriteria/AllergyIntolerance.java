@@ -4,6 +4,7 @@ import gov.cms.madie.models.cqm.datacriteria.basetypes.DataElement;
 import gov.cms.madie.models.cqm.datacriteria.attributes.Entity;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Code;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Interval;
+import gov.cms.madie.models.cqm.datacriteria.basetypes.LocalDateTimeFormatConstant;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -25,7 +26,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Getter
 @Setter
 public class AllergyIntolerance extends DataElement {
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+  @JsonFormat(
+      shape = JsonFormat.Shape.STRING,
+      pattern = LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private ZonedDateTime authorDatetime;
 
@@ -41,19 +44,7 @@ public class AllergyIntolerance extends DataElement {
   private String _type = "QDM::AllergyIntolerance";
 
   public void shiftDates(int shifted) {
-
-    if (this.authorDatetime != null) {
-      this.authorDatetime = this.authorDatetime.plusYears(shifted);
-    }
-    if (this.prevalencePeriod != null) {
-      Interval changeInterval = this.prevalencePeriod;
-      if (changeInterval.getLow() != null) {
-        changeInterval.setLow(changeInterval.getLow().plusYears(shifted));
-      }
-      if (changeInterval.getHigh() != null) {
-        changeInterval.setHigh(changeInterval.getHigh().plusYears(shifted));
-      }
-      this.prevalencePeriod = changeInterval;
-    }
+    this.authorDatetime = shiftDateByYear(this.authorDatetime, shifted);
+    this.prevalencePeriod = shiftIntervalByYear(this.prevalencePeriod, shifted);
   }
 }

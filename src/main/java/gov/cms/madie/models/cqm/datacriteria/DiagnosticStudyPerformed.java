@@ -6,6 +6,7 @@ import gov.cms.madie.models.cqm.datacriteria.attributes.FacilityLocation;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Code;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Component;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Interval;
+import gov.cms.madie.models.cqm.datacriteria.basetypes.LocalDateTimeFormatConstant;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -27,11 +28,15 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Getter
 @Setter
 public class DiagnosticStudyPerformed extends DataElement {
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+  @JsonFormat(
+      shape = JsonFormat.Shape.STRING,
+      pattern = LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private ZonedDateTime authorDatetime;
 
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+  @JsonFormat(
+      shape = JsonFormat.Shape.STRING,
+      pattern = LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private ZonedDateTime relevantDatetime;
 
@@ -39,7 +44,9 @@ public class DiagnosticStudyPerformed extends DataElement {
   private Code reason;
   private String result;
 
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+  @JsonFormat(
+      shape = JsonFormat.Shape.STRING,
+      pattern = LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private ZonedDateTime resultDatetime;
 
@@ -59,25 +66,13 @@ public class DiagnosticStudyPerformed extends DataElement {
   private String _type = "QDM::DiagnosticStudyPerformed";
 
   public void shiftDates(int shifted) {
-
-    if (this.authorDatetime != null) {
-      this.authorDatetime = this.authorDatetime.plusYears(shifted);
-    }
-    if (this.relevantDatetime != null) {
-      this.relevantDatetime = this.relevantDatetime.plusYears(shifted);
-    }
-    if (this.resultDatetime != null) {
-      this.resultDatetime = this.resultDatetime.plusYears(shifted);
-    }
-    if (this.relevantPeriod != null) {
-      Interval changeInterval = this.relevantPeriod;
-      if (changeInterval.getLow() != null) {
-        changeInterval.setLow(changeInterval.getLow().plusYears(shifted));
-      }
-      if (changeInterval.getHigh() != null) {
-        changeInterval.setHigh(changeInterval.getHigh().plusYears(shifted));
-      }
-      this.relevantPeriod = changeInterval;
+    this.authorDatetime = shiftDateByYear(this.authorDatetime, shifted);
+    this.relevantDatetime = shiftDateByYear(this.relevantDatetime, shifted);
+    this.resultDatetime = shiftDateByYear(this.resultDatetime, shifted);
+    this.relevantPeriod = shiftIntervalByYear(this.relevantPeriod, shifted);
+    if (this.facilityLocation != null) {
+      this.facilityLocation.setLocationPeriod(
+          shiftIntervalByYear(this.facilityLocation.getLocationPeriod(), shifted));
     }
   }
 }

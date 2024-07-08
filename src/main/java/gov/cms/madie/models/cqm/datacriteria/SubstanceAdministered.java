@@ -4,6 +4,7 @@ import gov.cms.madie.models.cqm.datacriteria.basetypes.DataElement;
 import gov.cms.madie.models.cqm.datacriteria.attributes.Entity;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Code;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Interval;
+import gov.cms.madie.models.cqm.datacriteria.basetypes.LocalDateTimeFormatConstant;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Quantity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,11 +27,15 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Getter
 @Setter
 public class SubstanceAdministered extends DataElement {
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+  @JsonFormat(
+      shape = JsonFormat.Shape.STRING,
+      pattern = LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private ZonedDateTime authorDatetime;
 
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+  @JsonFormat(
+      shape = JsonFormat.Shape.STRING,
+      pattern = LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private ZonedDateTime relevantDatetime;
 
@@ -48,23 +53,8 @@ public class SubstanceAdministered extends DataElement {
   private String _type = "QDM::SubstanceAdministered";
 
   public void shiftDates(int shifted) {
-
-    if (this.authorDatetime != null) {
-      this.authorDatetime = this.authorDatetime.plusYears(shifted);
-    }
-    if (this.relevantDatetime != null) {
-      this.relevantDatetime = this.relevantDatetime.plusYears(shifted);
-    }
-
-    if (this.relevantPeriod != null) {
-      Interval changeInterval = this.relevantPeriod;
-      if (changeInterval.getLow() != null) {
-        changeInterval.setLow(changeInterval.getLow().plusYears(shifted));
-      }
-      if (changeInterval.getHigh() != null) {
-        changeInterval.setHigh(changeInterval.getHigh().plusYears(shifted));
-      }
-      this.relevantPeriod = changeInterval;
-    }
+    this.authorDatetime = shiftDateByYear(this.authorDatetime, shifted);
+    this.relevantDatetime = shiftDateByYear(this.relevantDatetime, shifted);
+    this.relevantPeriod = shiftIntervalByYear(this.relevantPeriod, shifted);
   }
 }
