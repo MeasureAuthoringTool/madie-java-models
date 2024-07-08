@@ -72,5 +72,6 @@ public class LaboratoryTestPerformed extends DataElement {
     this.relevantDatetime = shiftDateByYear(this.relevantDatetime, shifted);
     this.resultDatetime = shiftDateByYear(this.resultDatetime, shifted);
     this.relevantPeriod = shiftIntervalByYear(this.relevantPeriod, shifted);
+    this.referenceRange = shiftIntervalByYear(this.referenceRange, shifted);
   }
 }
