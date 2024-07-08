@@ -5,13 +5,17 @@ import gov.cms.madie.models.cqm.datacriteria.basetypes.Code;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Interval;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class PatientCharacteristicClinicalTrialParticipant extends DataElement {
   private Code reason;
   private Interval relevantPeriod;
@@ -22,4 +26,8 @@ public class PatientCharacteristicClinicalTrialParticipant extends DataElement {
   private String qdmStatus = "clinical_trial_participant";
   private String qdmVersion = "5.6";
   private String _type = "QDM::PatientCharacteristicClinicalTrialParticipant";
+
+  public void shiftDates(int shifted) {
+    this.relevantPeriod = shiftIntervalByYear(this.relevantPeriod, shifted);
+  }
 }

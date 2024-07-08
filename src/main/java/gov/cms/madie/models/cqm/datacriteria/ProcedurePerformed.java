@@ -3,22 +3,42 @@ package gov.cms.madie.models.cqm.datacriteria;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.DataElement;
 import gov.cms.madie.models.cqm.datacriteria.attributes.Entity;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Code;
+import gov.cms.madie.models.cqm.datacriteria.basetypes.Component;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Interval;
+import gov.cms.madie.models.cqm.datacriteria.basetypes.LocalDateTimeFormatConstant;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class ProcedurePerformed extends DataElement {
-  private LocalDateTime authorDatetime;
-  private LocalDateTime relevantDatetime;
+  @JsonFormat(
+      shape = JsonFormat.Shape.STRING,
+      pattern = LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN)
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+  private ZonedDateTime authorDatetime;
+
+  @JsonFormat(
+      shape = JsonFormat.Shape.STRING,
+      pattern = LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN)
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+  private ZonedDateTime relevantDatetime;
+
   private Interval relevantPeriod;
   private Code reason;
   private Code method;
@@ -26,9 +46,15 @@ public class ProcedurePerformed extends DataElement {
   private Code status;
   private Code anatomicalLocationSite;
   private Integer rank;
-  private LocalDateTime incisionDatetime;
+
+  @JsonFormat(
+      shape = JsonFormat.Shape.STRING,
+      pattern = LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN)
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+  private ZonedDateTime incisionDatetime;
+
   private Code negationRationale;
-  private Object[] components;
+  private List<Component> components;
   private List<Entity> performer;
   private Object[] relatedTo;
   private String qdmTitle = "Procedure, Performed";
@@ -37,4 +63,11 @@ public class ProcedurePerformed extends DataElement {
   private String qdmStatus = "performed";
   private String qdmVersion = "5.6";
   private String _type = "QDM::ProcedurePerformed";
+
+  public void shiftDates(int shifted) {
+    this.authorDatetime = shiftDateByYear(this.authorDatetime, shifted);
+    this.relevantDatetime = shiftDateByYear(this.relevantDatetime, shifted);
+    this.incisionDatetime = shiftDateByYear(this.incisionDatetime, shifted);
+    this.relevantPeriod = shiftIntervalByYear(this.relevantPeriod, shifted);
+  }
 }

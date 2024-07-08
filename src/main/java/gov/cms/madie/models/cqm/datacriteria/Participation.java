@@ -18,4 +18,8 @@ public class Participation extends DataElement {
   private String qdmCategory = "participation";
   private String qdmVersion = "5.6";
   private String _type = "QDM::Participation";
+
+  public void shiftDates(int shifted) {
+    this.participationPeriod = shiftIntervalByYear(this.participationPeriod, shifted);
+  }
 }

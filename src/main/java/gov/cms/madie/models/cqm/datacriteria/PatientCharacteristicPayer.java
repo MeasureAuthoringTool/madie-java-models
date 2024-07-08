@@ -19,4 +19,8 @@ public class PatientCharacteristicPayer extends DataElement {
   private String qdmStatus = "payer";
   private String qdmVersion = "5.6";
   private String _type = "QDM::PatientCharacteristicPayer";
+
+  public void shiftDates(int shifted) {
+    this.relevantPeriod = shiftIntervalByYear(this.relevantPeriod, shifted);
+  }
 }

@@ -1,10 +1,14 @@
 package gov.cms.madie.models.cqm.datacriteria.basetypes;
 
+import java.time.ZonedDateTime;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import gov.cms.madie.models.cqm.datacriteria.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
@@ -95,7 +99,7 @@ import lombok.experimental.SuperBuilder;
 public class DataElement {
 
   // Codes that describe this datatype.
-  private String[] dataElementCodes = {};
+  private List<Code> dataElementCodes;
 
   // Optional description.
   private String description;
@@ -105,5 +109,27 @@ public class DataElement {
   private String desc;
   private String codeId;
 
-  private String id = null;
+  private String _id;
+
+  @Getter private String _type;
+
+  public Interval shiftIntervalByYear(Interval interval, int year) {
+    if (interval == null) {
+      return null;
+    }
+    if (interval.getLow() != null) {
+      interval.setLow(interval.getLow().plusYears(year));
+    }
+    if (interval.getHigh() != null) {
+      interval.setHigh(interval.getHigh().plusYears(year));
+    }
+    return interval;
+  }
+
+  public ZonedDateTime shiftDateByYear(ZonedDateTime dateTime, int year) {
+    if (dateTime == null) {
+      return null;
+    }
+    return dateTime.plusYears(year);
+  }
 }
