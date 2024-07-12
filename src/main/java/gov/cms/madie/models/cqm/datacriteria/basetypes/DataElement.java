@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import gov.cms.madie.models.cqm.datacriteria.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
@@ -112,8 +111,6 @@ public class DataElement {
   private String codeId;
 
   private String _id;
-
-  @Getter private String _type;
 
   public Interval shiftIntervalByYear(Interval interval, int year) {
     if (interval == null) {
