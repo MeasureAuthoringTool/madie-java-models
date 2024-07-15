@@ -3,7 +3,6 @@ package gov.cms.madie.models.measure;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum MeasureReportType {
-
   @JsonProperty("Individual")
   INDIVIDUAL("individual", "Individual"),
   @JsonProperty("Subject List")
