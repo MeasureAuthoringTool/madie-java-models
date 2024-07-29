@@ -8,5 +8,6 @@ public enum ActionType {
   DELETED,
   IMPORTED,
   UPDATED,
-  DRAFTED
+  DRAFTED,
+  ASSOCIATED
 }
