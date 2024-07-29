@@ -3,6 +3,7 @@ package gov.cms.madie.models.cqm.datacriteria;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.DataElement;
 import gov.cms.madie.models.cqm.datacriteria.attributes.Entity;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Code;
+import gov.cms.madie.models.cqm.datacriteria.basetypes.Component;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Interval;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.LocalDateTimeFormatConstant;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Quantity;
@@ -40,7 +41,7 @@ public class EncounterPerformed extends DataElement {
   private Interval relevantPeriod;
   private Code dischargeDisposition;
   private List<Code> facilityLocations;
-  private List<Code> diagnoses;
+  private List<Component> diagnoses;
   private Quantity lengthOfStay;
   private Code priority;
   private List<Entity> participant;
