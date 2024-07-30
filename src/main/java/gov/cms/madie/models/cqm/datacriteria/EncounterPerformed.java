@@ -40,7 +40,7 @@ public class EncounterPerformed extends DataElement {
   private Interval relevantPeriod;
   private Code dischargeDisposition;
   private List<Code> facilityLocations;
-  private List<Code> diagnoses;
+  private List<DiagnosisComponent> diagnoses;
   private Quantity lengthOfStay;
   private Code priority;
   private List<Entity> participant;
