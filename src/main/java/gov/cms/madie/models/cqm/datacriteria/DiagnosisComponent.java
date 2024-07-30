@@ -19,5 +19,5 @@ public class DiagnosisComponent {
   private String _id;
   private Code code;
   private Code presentOnAdmissionIndicator;
-  private int rank;
+  private Integer rank;
 }
