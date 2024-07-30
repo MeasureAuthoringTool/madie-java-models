@@ -15,4 +15,5 @@ public class Action {
   private ActionType actionType;
   private Instant performedAt;
   private String performedBy;
+  private String additionalActionMessage;
 }
