@@ -26,7 +26,7 @@ public class MeasureMetaData {
   @Valid private List<Reference> references;
   @Valid private List<Endorsement> endorsements;
   private String definition;
-  private boolean experimental;
+  private Boolean experimental;
   private String transmissionFormat;
   private String measureSetTitle;
   private CqlMetaData cqlMetaData;
