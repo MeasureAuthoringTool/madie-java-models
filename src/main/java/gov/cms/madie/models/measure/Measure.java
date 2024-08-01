@@ -4,6 +4,8 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+
+import gov.cms.madie.models.common.IncludedLibrary;
 import jakarta.validation.GroupSequence;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -108,6 +110,7 @@ public class Measure {
   private String elmJson;
   @Transient private String elmXml;
   private List<TestCase> testCases;
+  private List<IncludedLibrary> includedLibraries;
   private TestCaseConfiguration testCaseConfiguration;
   @Valid private List<Group> groups;
   private Instant createdAt;
