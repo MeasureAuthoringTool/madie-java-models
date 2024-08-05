@@ -3,12 +3,15 @@ package gov.cms.madie.models.library;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import gov.cms.madie.models.common.IncludedLibrary;
 import gov.cms.madie.models.validators.EnumValidator;
 import gov.cms.madie.models.validators.ValidLibraryName;
 import gov.cms.madie.models.utils.VersionJsonSerializer;
 import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.common.Version;
 import java.time.Instant;
+import java.util.List;
+
 import jakarta.validation.GroupSequence;
 import jakarta.validation.constraints.*;
 import jakarta.validation.groups.Default;
@@ -57,6 +60,7 @@ public class CqlLibrary {
   @JsonDeserialize(using = VersionJsonSerializer.VersionDeserializer.class)
   private Version version;
 
+  private List<IncludedLibrary> includedLibraries;
   private boolean draft;
   private boolean active = true;
   private boolean cqlErrors;
