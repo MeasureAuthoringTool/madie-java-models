@@ -8,6 +8,7 @@ import java.util.Map;
 @Getter
 public enum ModelType {
   QI_CORE("QI-Core v4.1.1", "qicore"),
+  QICORE_6_0_0("QI-Core v6.0.0", "qicore6.0.0"),
   QDM_5_6("QDM v5.6", "qdm");
 
   private String value;

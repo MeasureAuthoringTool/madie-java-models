@@ -45,6 +45,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
     visible = true)
 @JsonSubTypes({
   @Type(value = FhirMeasure.class, name = "QI-Core v4.1.1"),
+  @Type(value = FhirMeasure.class, name = "QI-Core v6.0.0"),
   @Type(value = QdmMeasure.class, name = "QDM v5.6")
 })
 @ValidLibraryName
