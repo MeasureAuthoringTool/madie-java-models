@@ -13,6 +13,8 @@ public enum BaseConfigurationTypes {
   EFFICIENCY("Efficiency"),
   @JsonProperty("Intermediate Clinical Outcome")
   INTERMEDIATE_CLINICAL_OUTCOME("Intermediate Clinical Outcome"),
+  @JsonProperty("Intermediate Outcome")
+  INTERMEDIATE_OUTCOME("Intermediate Outcome"),
   @JsonProperty("Outcome")
   OUTCOME("Outcome"),
   @JsonProperty("Experience")
