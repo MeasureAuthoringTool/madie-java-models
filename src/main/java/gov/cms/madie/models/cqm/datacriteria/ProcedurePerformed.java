@@ -42,7 +42,7 @@ public class ProcedurePerformed extends DataElement {
   private Interval relevantPeriod;
   private Code reason;
   private Code method;
-  private String result;
+  private Code result;
   private Code status;
   private Code anatomicalLocationSite;
   private Integer rank;
