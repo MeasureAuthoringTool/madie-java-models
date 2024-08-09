@@ -13,6 +13,7 @@ public class Identifier implements Attribute {
   private String namingSystem;
   private String value;
   private String qdmVersion = "5.6";
+  private String _type = "QDM::Identifier";
 
   // CQM validates uniqueness of value with conditions
   // where namingSystem is CQM::Provider::NPI_OID

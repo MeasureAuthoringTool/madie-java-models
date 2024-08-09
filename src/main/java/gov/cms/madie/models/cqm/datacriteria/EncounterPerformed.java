@@ -2,6 +2,7 @@ package gov.cms.madie.models.cqm.datacriteria;
 
 import gov.cms.madie.models.cqm.datacriteria.basetypes.DataElement;
 import gov.cms.madie.models.cqm.datacriteria.attributes.Entity;
+import gov.cms.madie.models.cqm.datacriteria.attributes.FacilityLocation;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Code;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Interval;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.LocalDateTimeFormatConstant;
@@ -39,7 +40,7 @@ public class EncounterPerformed extends DataElement {
   private Code clazz;
   private Interval relevantPeriod;
   private Code dischargeDisposition;
-  private List<Code> facilityLocations;
+  private List<FacilityLocation> facilityLocations;
   private List<DiagnosisComponent> diagnoses;
   private Quantity lengthOfStay;
   private Code priority;
@@ -55,5 +56,13 @@ public class EncounterPerformed extends DataElement {
   public void shiftDates(int shifted) {
     this.authorDatetime = shiftDateByYear(this.authorDatetime, shifted);
     this.relevantPeriod = shiftIntervalByYear(this.relevantPeriod, shifted);
+    if (!org.springframework.util.CollectionUtils.isEmpty(this.facilityLocations)) {
+      this.facilityLocations.stream()
+          .forEach(
+              facilityLocation -> {
+                facilityLocation.setLocationPeriod(
+                    shiftIntervalByYear(facilityLocation.getLocationPeriod(), shifted));
+              });
+    }
   }
 }

@@ -47,7 +47,7 @@ public class AssessmentPerformed extends DataElement {
   private Code interpretation;
   private List<Component> components;
   private Object[] relatedTo;
-  private Entity performer;
+  private Entity[] performer;
   private String qdmTitle = "Assessment, Performed";
   private String hqmfOid = "2.16.840.1.113883.10.20.28.4.117";
   private String qdmCategory = "assessment";
