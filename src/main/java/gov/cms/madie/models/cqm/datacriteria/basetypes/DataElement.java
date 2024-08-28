@@ -117,10 +117,10 @@ public class DataElement {
       return null;
     }
     if (interval.getLow() != null) {
-      interval.setLow(interval.getLow().plusYears(year));
+      interval.setLow(shiftDateByYear(interval.getLow(), year));
     }
     if (interval.getHigh() != null) {
-      interval.setHigh(interval.getHigh().plusYears(year));
+      interval.setHigh(shiftDateByYear(interval.getHigh(), year));
     }
     return interval;
   }
@@ -129,6 +129,13 @@ public class DataElement {
     if (dateTime == null) {
       return null;
     }
-    return dateTime.plusYears(year);
+    ZonedDateTime shiftedDateTime = dateTime.plusYears(year);
+    if (shiftedDateTime.getYear() > 9999) {
+      return shiftedDateTime.withYear(9999);
+    }
+    if (shiftedDateTime.getYear() < 0) {
+      return shiftedDateTime.withYear(0);
+    }
+    return shiftedDateTime;
   }
 }
