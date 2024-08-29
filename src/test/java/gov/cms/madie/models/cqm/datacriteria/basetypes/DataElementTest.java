@@ -26,6 +26,6 @@ class DataElementTest {
     ZonedDateTime dateTime = ZonedDateTime.ofInstant(Instant.now(), ZoneId.of("UTC"));
     encounterPerformed.setAuthorDatetime(dateTime);
     ZonedDateTime shiftedDateTime = encounterPerformed.shiftDateByYear(dateTime, -100000);
-    assertThat(shiftedDateTime).isEqualTo(dateTime.withYear(0));
+    assertThat(shiftedDateTime).isEqualTo(dateTime.withYear(1900));
   }
 }
