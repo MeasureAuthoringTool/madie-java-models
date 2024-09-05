@@ -156,6 +156,12 @@ public class DataElement {
       LocalDate converted = convertToLocalDate(object);
       if (converted != null) {
         converted = converted.plusYears(year);
+        if (converted.getYear() > 9999) {
+          converted.withYear(9999);
+        }
+        if (converted.getYear() < 1900) {
+          converted.withYear(1900);
+        }
         convertedObj = converted.toString();
       }
     } catch (Exception ex) {
@@ -166,6 +172,12 @@ public class DataElement {
       ZonedDateTime converted = convertToZonedDateTime(object);
       if (converted != null) {
         converted = shiftDateByYear(converted, year);
+        if (converted.getYear() > 9999) {
+          converted.withYear(9999);
+        }
+        if (converted.getYear() < 1900) {
+          converted.withYear(1900);
+        }
         convertedObj = converted.toString().replace("Z", ":00.000+00:00");
       }
     } catch (Exception ex) {
