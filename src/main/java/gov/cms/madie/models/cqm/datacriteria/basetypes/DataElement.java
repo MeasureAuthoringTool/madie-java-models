@@ -139,8 +139,8 @@ public class DataElement {
     if (shiftedDateTime.getYear() > 9999) {
       return shiftedDateTime.withYear(9999);
     }
-    if (shiftedDateTime.getYear() < 0) {
-      return shiftedDateTime.withYear(0);
+    if (shiftedDateTime.getYear() < 1900) {
+      return shiftedDateTime.withYear(1900);
     }
     return shiftedDateTime;
   }

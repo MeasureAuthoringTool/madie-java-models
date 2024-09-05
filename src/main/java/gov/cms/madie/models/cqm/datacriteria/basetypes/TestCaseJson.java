@@ -37,6 +37,13 @@ public class TestCaseJson {
     if (this.birthDatetime == null) {
       return null;
     }
-    return this.birthDatetime.plusYears(year);
+    ZonedDateTime shiftedDateTime = birthDatetime.plusYears(year);
+    if (shiftedDateTime.getYear() > 9999) {
+      return shiftedDateTime.withYear(9999);
+    }
+    if (shiftedDateTime.getYear() < 1900) {
+      return shiftedDateTime.withYear(1900);
+    }
+    return shiftedDateTime;
   }
 }
