@@ -1,17 +1,23 @@
 package gov.cms.madie.models.cqm.datacriteria.basetypes;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import gov.cms.madie.models.cqm.datacriteria.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Data
 @SuperBuilder
 @NoArgsConstructor
@@ -137,5 +143,50 @@ public class DataElement {
       return shiftedDateTime.withYear(0);
     }
     return shiftedDateTime;
+  }
+
+  public Object shiftDateByYearForObject(Object object, int year) {
+    if (object == null) {
+      return null;
+    }
+
+    Object convertedObj = object;
+    // Date type
+    try {
+      LocalDate converted = convertToLocalDate(object);
+      if (converted != null) {
+        converted = converted.plusYears(year);
+        convertedObj = converted.toString();
+      }
+    } catch (Exception ex) {
+      log.error("Object not a Date type! exception: " + ex.getMessage());
+    }
+    // DateTime type
+    try {
+      ZonedDateTime converted = convertToZonedDateTime(object);
+      if (converted != null) {
+        converted = shiftDateByYear(converted, year);
+        convertedObj = converted.toString().replace("Z", ":00.000+00:00");
+      }
+    } catch (Exception ex) {
+      log.error("Object not a Date Time type! exception: " + ex.getMessage());
+    }
+    return convertedObj;
+  }
+
+  private LocalDate convertToLocalDate(Object object) {
+    LocalDate localDate =
+        LocalDate.parse(
+            object.toString(),
+            DateTimeFormatter.ofPattern(LocalDateTimeFormatConstant.LOCAL_DATE_PATTERN));
+    return localDate;
+  }
+
+  private ZonedDateTime convertToZonedDateTime(Object object) {
+    OffsetDateTime odt =
+        OffsetDateTime.parse(
+            object.toString(),
+            DateTimeFormatter.ofPattern(LocalDateTimeFormatConstant.LOCAL_DATE_TIME_PATTERN));
+    return odt.toZonedDateTime();
   }
 }

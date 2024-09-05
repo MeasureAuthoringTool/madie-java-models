@@ -18,6 +18,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.util.CollectionUtils;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -42,7 +43,7 @@ public class DiagnosticStudyPerformed extends DataElement {
 
   private Interval relevantPeriod;
   private Code reason;
-  private String result;
+  private Object result;
 
   @JsonFormat(
       shape = JsonFormat.Shape.STRING,
@@ -73,6 +74,14 @@ public class DiagnosticStudyPerformed extends DataElement {
     if (this.facilityLocation != null) {
       this.facilityLocation.setLocationPeriod(
           shiftIntervalByYear(this.facilityLocation.getLocationPeriod(), shifted));
+    }
+    this.result = shiftDateByYearForObject(this.result, shifted);
+    if (!CollectionUtils.isEmpty(this.components)) {
+      this.components.stream()
+          .forEach(
+              component -> {
+                component.setResult(shiftDateByYearForObject(component.getResult(), shifted));
+              });
     }
   }
 }

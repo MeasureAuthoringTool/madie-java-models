@@ -17,4 +17,6 @@ public class Component {
   private String _type;
   private String _id;
   private Code code;
+
+  private Object result;
 }
