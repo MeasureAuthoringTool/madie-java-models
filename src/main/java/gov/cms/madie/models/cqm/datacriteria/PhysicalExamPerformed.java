@@ -17,6 +17,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.util.CollectionUtils;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -59,5 +60,13 @@ public class PhysicalExamPerformed extends DataElement {
     this.authorDatetime = shiftDateByYear(this.authorDatetime, shifted);
     this.relevantDatetime = shiftDateByYear(this.relevantDatetime, shifted);
     this.relevantPeriod = shiftIntervalByYear(this.relevantPeriod, shifted);
+    this.result = shiftDateByYearForObject(this.result, shifted);
+    if (!CollectionUtils.isEmpty(this.components)) {
+      this.components.stream()
+          .forEach(
+              component -> {
+                component.setResult(shiftDateByYearForObject(component.getResult(), shifted));
+              });
+    }
   }
 }

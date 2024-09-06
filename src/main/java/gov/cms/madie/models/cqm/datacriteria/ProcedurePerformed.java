@@ -17,6 +17,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.util.CollectionUtils;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -42,7 +43,7 @@ public class ProcedurePerformed extends DataElement {
   private Interval relevantPeriod;
   private Code reason;
   private Code method;
-  private Code result;
+  private Object result;
   private Code status;
   private Code anatomicalLocationSite;
   private Integer rank;
@@ -69,5 +70,13 @@ public class ProcedurePerformed extends DataElement {
     this.relevantDatetime = shiftDateByYear(this.relevantDatetime, shifted);
     this.incisionDatetime = shiftDateByYear(this.incisionDatetime, shifted);
     this.relevantPeriod = shiftIntervalByYear(this.relevantPeriod, shifted);
+    this.result = shiftDateByYearForObject(this.result, shifted);
+    if (!CollectionUtils.isEmpty(this.components)) {
+      this.components.stream()
+          .forEach(
+              component -> {
+                component.setResult(shiftDateByYearForObject(component.getResult(), shifted));
+              });
+    }
   }
 }

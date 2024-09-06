@@ -56,5 +56,6 @@ public class InterventionPerformed extends DataElement {
     this.authorDatetime = shiftDateByYear(this.authorDatetime, shifted);
     this.relevantDatetime = shiftDateByYear(this.relevantDatetime, shifted);
     this.relevantPeriod = shiftIntervalByYear(this.relevantPeriod, shifted);
+    this.result = shiftDateByYearForObject(this.result, shifted);
   }
 }

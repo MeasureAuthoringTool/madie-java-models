@@ -17,6 +17,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.util.CollectionUtils;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -73,5 +74,12 @@ public class LaboratoryTestPerformed extends DataElement {
     this.resultDatetime = shiftDateByYear(this.resultDatetime, shifted);
     this.relevantPeriod = shiftIntervalByYear(this.relevantPeriod, shifted);
     this.referenceRange = shiftIntervalByYear(this.referenceRange, shifted);
+    if (!CollectionUtils.isEmpty(this.components)) {
+      this.components.stream()
+          .forEach(
+              component -> {
+                component.setResult(shiftDateByYearForObject(component.getResult(), shifted));
+              });
+    }
   }
 }
