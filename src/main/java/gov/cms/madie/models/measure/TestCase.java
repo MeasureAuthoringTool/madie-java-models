@@ -23,6 +23,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class TestCase {
   private String id;
+  private Integer caseNumber;
   private String name;
 
   @NotBlank(
