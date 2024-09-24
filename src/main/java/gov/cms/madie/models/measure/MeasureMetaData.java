@@ -13,8 +13,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MeasureMetaData {
-  private Organization steward;
-  private List<Organization> developers;
+  @Valid private Organization steward;
+  @Valid private List<Organization> developers;
   private String description;
   private String copyright;
   private String disclaimer;
