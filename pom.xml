@@ -6,7 +6,7 @@
 
   <groupId>gov.cms.madie</groupId>
   <artifactId>madie-java-models</artifactId>
-  <version>0.6.65-SNAPSHOT</version>
+  <version>0.6.66-SNAPSHOT</version>
   <name>madie-java-models</name>
   <description>Java based models for MADiE microservices</description>
   <properties>
@@ -71,6 +71,11 @@
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
       <version>${fasterxml.jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.17.0</version>
     </dependency>
   </dependencies>
 

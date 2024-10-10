@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import gov.cms.madie.models.validators.ValidMeasureScoring;
+import gov.cms.madie.models.validators.ValidOtherImprovementNotation;
 import gov.cms.madie.models.validators.ValidQDMGroupScoring;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +19,7 @@ import lombok.experimental.SuperBuilder;
 @ToString(callSuper = true)
 @ValidMeasureScoring
 @ValidQDMGroupScoring
+@ValidOtherImprovementNotation
 public class QdmMeasure extends Measure {
 
   private String scoring;
