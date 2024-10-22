@@ -41,6 +41,13 @@ class ImprovementNotationValidatorTest {
   }
 
   @Test
+  void testImprovementNotationWithDescription() {
+    measure.setImprovementNotation("Decreased score indicates improvement");
+    measure.setImprovementNotationDescription("Something useful");
+    assertTrue(validator.isValid(measure, validatorContext));
+  }
+
+  @Test
   void testImprovementNotationOtherHasDescription() {
     measure.setImprovementNotation("Other");
     measure.setImprovementNotationDescription("desc");
@@ -58,5 +65,16 @@ class ImprovementNotationValidatorTest {
   void testInvalidImprovementNotation() {
     measure.setImprovementNotation("Invalid");
     assertFalse(validator.isValid(measure, validatorContext));
+  }
+
+  @Test
+  void testImprovementNotationDescriptionOnly() {
+    measure.setImprovementNotationDescription("Nonsense description");
+    assertFalse(validator.isValid(measure, validatorContext));
+  }
+
+  @Test
+  void testEmptyImprovementNotation() {
+    assertTrue(validator.isValid(measure, validatorContext));
   }
 }

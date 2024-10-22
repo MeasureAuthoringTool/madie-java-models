@@ -12,6 +12,9 @@ public class ImprovementNotationValidator
 
   @Override
   public boolean isValid(QdmMeasure measure, ConstraintValidatorContext context) {
+    if (StringUtils.isEmpty(measure.getImprovementNotation())) {
+      return StringUtils.isEmpty(measure.getImprovementNotationDescription());
+    }
     if (StringUtils.equalsIgnoreCase(
             measure.getImprovementNotation(), "Increased score indicates improvement")
         || StringUtils.equalsIgnoreCase(
