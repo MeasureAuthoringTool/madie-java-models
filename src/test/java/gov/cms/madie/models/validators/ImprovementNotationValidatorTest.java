@@ -59,4 +59,9 @@ class ImprovementNotationValidatorTest {
     measure.setImprovementNotation("Invalid");
     assertFalse(validator.isValid(measure, validatorContext));
   }
+
+  @Test
+  void testEmptyImprovementNotation() {
+    assertTrue(validator.isValid(measure, validatorContext));
+  }
 }
