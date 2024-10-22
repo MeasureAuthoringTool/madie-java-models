@@ -7,11 +7,11 @@ import java.lang.annotation.*;
 
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = OtherImprovementNotationValidator.class)
+@Constraint(validatedBy = ImprovementNotationValidator.class)
 @Documented
-public @interface ValidOtherImprovementNotation {
+public @interface ValidImprovementNotation {
 
-  String message() default "Improvement Notation Description is required when Other is selected";
+  String message() default "Improvement Notation Description is invalid";
 
   Class<?>[] groups() default {};
 
