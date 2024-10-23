@@ -2,6 +2,7 @@ package gov.cms.madie.models.common;
 
 import lombok.Getter;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +32,10 @@ public enum ModelType {
   ModelType(String value, String shortValue) {
     this.value = value;
     this.shortValue = shortValue;
+  }
+
+  public String getVersionNumber() {
+    return Arrays.stream(this.value.split(" v")).toList().get(1);
   }
 
   @Override
