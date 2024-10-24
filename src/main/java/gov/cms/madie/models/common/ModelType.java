@@ -4,6 +4,8 @@ import lombok.Getter;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Getter
 public enum ModelType {
@@ -14,6 +16,7 @@ public enum ModelType {
   private String value;
   private String shortValue;
   private static final Map<String, ModelType> MODEL_TYPE_BY_VALUE = new HashMap<>();
+  private static final Pattern VERSION_PATTERN = Pattern.compile("v(\\d+(\\.\\d+)*)");
 
   static {
     for (ModelType mt : values()) {
@@ -31,6 +34,11 @@ public enum ModelType {
   ModelType(String value, String shortValue) {
     this.value = value;
     this.shortValue = shortValue;
+  }
+
+  public String getVersionNumber() {
+    Matcher matcher = VERSION_PATTERN.matcher(this.value);
+    return matcher.find() ? matcher.group(1) : null;
   }
 
   @Override
