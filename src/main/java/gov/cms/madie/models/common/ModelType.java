@@ -2,9 +2,10 @@ package gov.cms.madie.models.common;
 
 import lombok.Getter;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Getter
 public enum ModelType {
@@ -35,7 +36,9 @@ public enum ModelType {
   }
 
   public String getVersionNumber() {
-    return Arrays.stream(this.value.split(" v")).toList().get(1);
+    Pattern pattern = Pattern.compile("v(\\d+(\\.\\d+)*)");
+    Matcher matcher = pattern.matcher(this.value);
+    return matcher.find() ? matcher.group(1) : null;
   }
 
   @Override
