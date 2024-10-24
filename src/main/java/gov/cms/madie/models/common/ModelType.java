@@ -16,6 +16,7 @@ public enum ModelType {
   private String value;
   private String shortValue;
   private static final Map<String, ModelType> MODEL_TYPE_BY_VALUE = new HashMap<>();
+  private static final Pattern VERSION_PATTERN = Pattern.compile("v(\\d+(\\.\\d+)*)");
 
   static {
     for (ModelType mt : values()) {
@@ -36,8 +37,7 @@ public enum ModelType {
   }
 
   public String getVersionNumber() {
-    Pattern pattern = Pattern.compile("v(\\d+(\\.\\d+)*)");
-    Matcher matcher = pattern.matcher(this.value);
+    Matcher matcher = VERSION_PATTERN.matcher(this.value);
     return matcher.find() ? matcher.group(1) : null;
   }
 
