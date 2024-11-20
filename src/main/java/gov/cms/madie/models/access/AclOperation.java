@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class AclOperation {
   @NotEmpty private List<AclSpecification> acls;
-  @NotNull private AclAction operation;
+  @NotNull private AclAction action;
 
   public enum AclAction {
     GRANT,
