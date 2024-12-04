@@ -39,6 +39,8 @@ public class Group implements GroupScoringPopulation {
 
   private String improvementNotation;
 
+  private String improvementNotationDescription;
+
   private String rateAggregation;
 
   // @NotEmpty
