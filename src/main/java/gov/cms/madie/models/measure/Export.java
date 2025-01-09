@@ -15,5 +15,6 @@ public class Export {
   @Id private String id;
   private String measureId;
   private String measureBundleJson;
+  private String humanReadable;
   private byte[] packageData;
 }
