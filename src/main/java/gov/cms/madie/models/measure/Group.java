@@ -3,6 +3,7 @@ package gov.cms.madie.models.measure;
 import gov.cms.madie.models.validators.EnumValidator;
 import gov.cms.madie.models.validators.ValidGroupScoringPopulation;
 import gov.cms.madie.models.validators.ValidMeasureObservation;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -51,4 +52,7 @@ public class Group implements GroupScoringPopulation {
   @Valid private List<Stratification> stratifications;
 
   private String populationBasis;
+
+  @Min(1)
+  private Integer scoringPrecision;
 }
