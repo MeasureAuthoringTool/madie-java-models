@@ -17,6 +17,5 @@ import lombok.experimental.SuperBuilder;
 @ValidFhirGroup
 @ValidIntendedVenue
 public class FhirMeasure extends Measure {
-  private Integer scoringPrecision;
   private CodeConcept intendedVenue;
 }
