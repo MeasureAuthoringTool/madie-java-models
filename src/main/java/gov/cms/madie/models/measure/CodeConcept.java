@@ -7,8 +7,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 public class CodeConcept {
   private String code;
   private String codeSystem;
