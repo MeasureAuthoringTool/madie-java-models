@@ -30,4 +30,5 @@ public class MeasureMetaData {
   private String transmissionFormat;
   private String measureSetTitle;
   private CqlMetaData cqlMetaData;
+  private CodeConcept intendedVenue;
 }

@@ -1,14 +1,14 @@
 package gov.cms.madie.models.validators;
 
+import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.measure.CodeConcept;
-import gov.cms.madie.models.measure.FhirMeasure;
+import gov.cms.madie.models.measure.Measure;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class IntendedVenueValidator
-    implements ConstraintValidator<ValidIntendedVenue, FhirMeasure> {
+public class IntendedVenueValidator implements ConstraintValidator<ValidIntendedVenue, Measure> {
   private final CodeConcept eh =
       CodeConcept.builder()
           .code("eh")
@@ -28,9 +28,16 @@ public class IntendedVenueValidator
           .build();
 
   @Override
-  public boolean isValid(FhirMeasure measure, ConstraintValidatorContext context) {
-    if (measure != null && measure.getIntendedVenue() != null) {
-      return measure.getIntendedVenue().equals(eh) || measure.getIntendedVenue().equals(ec);
+  public boolean isValid(Measure measure, ConstraintValidatorContext context) {
+    if (measure != null
+        && measure.getMeasureMetaData() != null
+        && measure.getMeasureMetaData().getIntendedVenue() != null) {
+      if (ModelType.QDM_5_6.getValue().equals(measure.getModel())) {
+        return false;
+      }
+
+      return measure.getMeasureMetaData().getIntendedVenue().equals(eh)
+          || measure.getMeasureMetaData().getIntendedVenue().equals(ec);
     }
 
     return true;

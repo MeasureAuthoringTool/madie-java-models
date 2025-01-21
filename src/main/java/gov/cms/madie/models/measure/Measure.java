@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import gov.cms.madie.models.common.IncludedLibrary;
+import gov.cms.madie.models.validators.ValidIntendedVenue;
 import jakarta.validation.GroupSequence;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -49,6 +50,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
   @Type(value = QdmMeasure.class, name = "QDM v5.6")
 })
 @ValidLibraryName
+@ValidIntendedVenue
 public class Measure {
 
   @Id private String id;

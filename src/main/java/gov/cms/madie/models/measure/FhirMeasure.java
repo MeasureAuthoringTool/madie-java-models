@@ -2,7 +2,6 @@ package gov.cms.madie.models.measure;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-import gov.cms.madie.models.validators.ValidIntendedVenue;
 import gov.cms.madie.models.validators.ValidFhirGroup;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +14,4 @@ import lombok.experimental.SuperBuilder;
 @JsonTypeName("QI-Core v4.1.1")
 @ToString(callSuper = true)
 @ValidFhirGroup
-@ValidIntendedVenue
-public class FhirMeasure extends Measure {
-  private CodeConcept intendedVenue;
-}
+public class FhirMeasure extends Measure {}
