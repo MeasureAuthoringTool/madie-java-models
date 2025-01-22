@@ -1,7 +1,9 @@
 package gov.cms.madie.models.validators;
 
+import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.measure.CodeConcept;
-import gov.cms.madie.models.measure.FhirMeasure;
+import gov.cms.madie.models.measure.Measure;
+import gov.cms.madie.models.measure.MeasureMetaData;
 import jakarta.validation.ConstraintValidatorContext;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,20 +17,22 @@ class IntendedVenueValidatorTest {
 
   @Mock private ConstraintValidatorContext validatorContext;
 
-  private FhirMeasure measure;
+  private Measure measure;
   private CodeConcept eh;
   private CodeConcept ec;
 
   @BeforeEach
   public void setUp() {
     measure =
-        FhirMeasure.builder()
+        Measure.builder()
+            .model(ModelType.QI_CORE.getValue())
             .id("testId")
             .measureSetId("testMeasureSetId")
             .cqlLibraryName("TestCqlLibraryName")
             .ecqmTitle("testECqm")
             .measureName("testMeasureName")
             .versionId("0.0.000")
+            .measureMetaData(MeasureMetaData.builder().build())
             .build();
 
     eh =
@@ -51,33 +55,41 @@ class IntendedVenueValidatorTest {
   }
 
   @Test
-  void testNullIntendedVenue() {
+  void testNullIntendedVenueForQiCoreMeasure() {
     assertTrue(validator.isValid(measure, validatorContext));
   }
 
   @Test
-  void testEhIntendedVenue() {
-    measure.setIntendedVenue(eh);
-    assertTrue(validator.isValid(measure, validatorContext));
-  }
+  void testIntendedVenueForQdmMeasure() {
+    measure.setModel(ModelType.QDM_5_6.getValue());
+    measure.getMeasureMetaData().setIntendedVenue(eh);
 
-  @Test
-  void testEcIntendedVenue() {
-    measure.setIntendedVenue(ec);
-    assertTrue(validator.isValid(measure, validatorContext));
-  }
-
-  @Test
-  void testInvalidEhIntendedVenue() {
-    eh.setCode("invalidEh");
-    measure.setIntendedVenue(eh);
     assertFalse(validator.isValid(measure, validatorContext));
   }
 
   @Test
-  void testInvalidEcIntendedVenue() {
+  void testEhIntendedVenueForQiCoreMeasure() {
+    measure.getMeasureMetaData().setIntendedVenue(eh);
+    assertTrue(validator.isValid(measure, validatorContext));
+  }
+
+  @Test
+  void testEcIntendedVenueForQiCoreMeasure() {
+    measure.getMeasureMetaData().setIntendedVenue(ec);
+    assertTrue(validator.isValid(measure, validatorContext));
+  }
+
+  @Test
+  void testInvalidEhIntendedVenueForQiCoreMeasure() {
+    eh.setCode("invalidEh");
+    measure.getMeasureMetaData().setIntendedVenue(eh);
+    assertFalse(validator.isValid(measure, validatorContext));
+  }
+
+  @Test
+  void testInvalidEcIntendedVenueForQiCoreMeasure() {
     ec.setCode("invalidEc");
-    measure.setIntendedVenue(ec);
+    measure.getMeasureMetaData().setIntendedVenue(ec);
     assertFalse(validator.isValid(measure, validatorContext));
   }
 }
