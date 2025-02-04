@@ -20,5 +20,8 @@ public class MeasureDefinition {
       groups = {Measure.ValidationOrder7.class})
   private String term;
 
+  @NotBlank(
+      message = "Definition cannot be null.",
+      groups = {Measure.ValidationOrder8.class})
   private String definition;
 }
