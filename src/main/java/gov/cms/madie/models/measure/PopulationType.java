@@ -2,9 +2,10 @@ package gov.cms.madie.models.measure;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public enum PopulationType {
+public enum PopulationType implements Serializable {
   @JsonProperty("initialPopulation")
   INITIAL_POPULATION("initial-population", "Initial Population"),
   @JsonProperty("numerator")
