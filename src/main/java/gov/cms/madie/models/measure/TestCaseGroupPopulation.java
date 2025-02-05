@@ -6,7 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.SerializationUtils;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Data
@@ -15,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 // @ValidScoringPopulation
 @ValidTestCasePopulationValue
-public class TestCaseGroupPopulation {
+public class TestCaseGroupPopulation implements Serializable {
   private String groupId;
 
   @EnumValidator(

@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.SerializationUtils;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Transient;
 
@@ -13,6 +14,8 @@ import jakarta.validation.GroupSequence;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.groups.Default;
+
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
@@ -21,7 +24,7 @@ import java.util.UUID;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class TestCase {
+public class TestCase implements Serializable, Cloneable {
   private String id;
   private Integer caseNumber;
   private String name;
@@ -67,4 +70,8 @@ public class TestCase {
   public interface ValidationOrder1 {}
 
   public interface ValidationOrder2 {}
+
+  public TestCase deepCopy() {
+    return SerializationUtils.clone(this);
+  }
 }
