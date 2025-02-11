@@ -9,5 +9,7 @@ public enum ActionType {
   IMPORTED,
   UPDATED,
   DRAFTED,
-  ASSOCIATED
+  ASSOCIATED,
+  SHARED,
+  UNSHARED
 }
