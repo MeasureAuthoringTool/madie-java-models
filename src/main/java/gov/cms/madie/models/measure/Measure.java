@@ -7,6 +7,7 @@ import java.util.Set;
 
 import gov.cms.madie.models.common.IncludedLibrary;
 import gov.cms.madie.models.validators.ValidIntendedVenue;
+import gov.cms.madie.models.validators.ValidPurpose;
 import jakarta.validation.GroupSequence;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -51,6 +52,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 })
 @ValidLibraryName
 @ValidIntendedVenue
+@ValidPurpose
 public class Measure {
 
   @Id private String id;
