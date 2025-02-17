@@ -31,6 +31,7 @@ public class MeasureMetaData {
   private String measureSetTitle;
   private CqlMetaData cqlMetaData;
   private CodeConcept intendedVenue;
+  private String purpose;
 
   @Valid private List<MeasureDefinition> measureDefinitions;
 }
