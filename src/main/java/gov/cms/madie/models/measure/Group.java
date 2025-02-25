@@ -55,4 +55,6 @@ public class Group implements GroupScoringPopulation {
 
   @Min(1)
   private Integer scoringPrecision;
+
+  private String displayId;
 }
