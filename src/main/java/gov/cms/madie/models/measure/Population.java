@@ -22,4 +22,5 @@ public class Population {
   private String definition;
   private AssociationType associationType;
   private String description;
+  private String displayId;
 }
