@@ -113,7 +113,7 @@ public class Measure {
   @Singular private Set<MeasureErrorType> errors;
   private String cql;
   private String elmJson;
-  private String elmJsonClean;
+  private String elmJsonWithoutWarnings;
   @Transient private String elmXml;
   private List<TestCase> testCases;
   private List<IncludedLibrary> includedLibraries;
