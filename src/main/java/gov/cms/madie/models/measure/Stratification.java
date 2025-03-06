@@ -22,4 +22,6 @@ public class Stratification {
   @Deprecated private PopulationType association;
 
   private List<PopulationType> associations;
+
+  private String displayId;
 }

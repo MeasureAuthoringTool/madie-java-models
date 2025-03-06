@@ -32,4 +32,6 @@ public class MeasureObservation {
       message = "Aggregate Method must be a valid Measure Observation Aggregate Method type",
       groups = {Measure.ValidationOrder5.class})
   private String aggregateMethod;
+
+  private String displayId;
 }
