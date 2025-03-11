@@ -6,18 +6,18 @@
 
   <groupId>gov.cms.madie</groupId>
   <artifactId>madie-java-models</artifactId>
-  <version>0.6.86-SNAPSHOT</version>
+  <version>0.6.87-SNAPSHOT</version>
   <name>madie-java-models</name>
   <description>Java based models for MADiE microservices</description>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>17</java.version>
     <mvn.checkstyle.file>checkstyle.xml</mvn.checkstyle.file>
-    <mvn.checkstyle.version>3.1.2</mvn.checkstyle.version>
+    <mvn.checkstyle.version>3.3.0</mvn.checkstyle.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <fasterxml.jackson.version>2.15.3</fasterxml.jackson.version>
-    <springboot.version>3.2.4</springboot.version>
+    <springboot.version>3.4.3</springboot.version>
   </properties>
 
   <distributionManagement>
@@ -38,7 +38,7 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.22</version>
+      <version>1.18.30</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
