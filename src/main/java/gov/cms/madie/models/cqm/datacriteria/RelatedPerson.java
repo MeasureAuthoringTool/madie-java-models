@@ -19,4 +19,8 @@ public class RelatedPerson extends DataElement {
   private String qdmCategory = "related_person";
   private String qdmVersion = "5.6";
   private String _type = "QDM::RelatedPerson";
+
+  public void shiftDates(int shifted) {
+    // GAK MAT-8269.. No implementation for this data type
+  }
 }

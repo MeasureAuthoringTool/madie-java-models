@@ -118,6 +118,13 @@ public class DataElement {
 
   private String _id;
 
+  public void shiftDates(int shifted) throws ShiftDatesException {
+    // GAK MAT-8269.. This is only to be overridden.. there isn't any implementation in a raw
+    // DataElement object; but in order to clean up a huge if then else with instantiation for every
+    // sub type, we're going to treat it like an abstract class for giggles
+    throw new ShiftDatesException("There isn't an implementation of ShiftDates for this type");
+  }
+
   public Interval shiftIntervalByYear(Interval interval, int year) {
     if (interval == null) {
       return null;
