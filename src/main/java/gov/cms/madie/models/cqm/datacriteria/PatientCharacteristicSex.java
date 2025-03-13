@@ -17,4 +17,8 @@ public class PatientCharacteristicSex extends DataElement {
   private String qdmStatus = "gender";
   private String qdmVersion = "5.6";
   private String _type = "QDM::PatientCharacteristicSex";
+
+  public void shiftDates(int shifted) {
+    // GAK MAT-8269.. No implementation for this data type
+  }
 }
