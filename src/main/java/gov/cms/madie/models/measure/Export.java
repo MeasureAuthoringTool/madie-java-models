@@ -20,5 +20,5 @@ public class Export {
   private String measureBundleWithoutWarningsGridFsId;
   private String humanReadable;
   private byte[] packageData;
-  private byte[] PublishablePackageData; // Elm does not include Warnings
+  private byte[] publishablePackageData; // Elm does not include Warnings
 }
