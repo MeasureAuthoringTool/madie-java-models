@@ -16,7 +16,7 @@
     <mvn.checkstyle.version>3.3.0</mvn.checkstyle.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <fasterxml.jackson.version>2.15.3</fasterxml.jackson.version>
+    <fasterxml.jackson.version>2.18.3</fasterxml.jackson.version>
     <springboot.version>3.4.3</springboot.version>
   </properties>
 
