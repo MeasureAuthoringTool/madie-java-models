@@ -59,6 +59,7 @@ public class TestCase implements Serializable, Cloneable {
   private String lastModifiedBy;
   @JsonIgnore private String resourceUri;
   private boolean validResource;
+  private boolean createdBeforeVersioning;
   @Getter private String json;
 
   private UUID patientId;
