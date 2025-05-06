@@ -10,7 +10,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.SerializationUtils;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.data.annotation.Transient;
 
 import jakarta.validation.GroupSequence;
 import jakarta.validation.Valid;
@@ -64,7 +63,7 @@ public class TestCase implements Serializable, Cloneable {
 
   private UUID patientId;
 
-  @Transient private HapiOperationOutcome hapiOperationOutcome;
+  private HapiOperationOutcome hapiOperationOutcome;
 
   @Valid private List<TestCaseGroupPopulation> groupPopulations;
 
