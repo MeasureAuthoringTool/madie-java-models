@@ -2,7 +2,6 @@ package gov.cms.madie.models.measure;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import gov.cms.madie.models.validators.TestCaseValidationStatusValidator;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,7 +24,6 @@ import java.util.UUID;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@TestCaseValidationStatusValidator(enumClass = TestCaseValidationStatus.class)
 public class TestCase implements Serializable, Cloneable {
   private String id;
   private Integer caseNumber;
@@ -67,7 +65,7 @@ public class TestCase implements Serializable, Cloneable {
 
   @Valid private List<TestCaseGroupPopulation> groupPopulations;
 
-  private String testCaseValidationStatus;
+  private TestCaseValidationStatus testCaseValidationStatus;
 
   @GroupSequence({ValidationOrder1.class, ValidationOrder2.class, Default.class})
   public interface ValidationSequence {}
