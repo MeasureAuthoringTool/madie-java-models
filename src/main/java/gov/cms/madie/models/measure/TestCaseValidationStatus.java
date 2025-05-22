@@ -12,7 +12,9 @@ public enum TestCaseValidationStatus {
   @JsonProperty("Not Complete")
   NOT_COMPLETE("Not Complete"),
   @JsonProperty("Pending")
-  PENDING("Pending");
+  PENDING("Pending"),
+  @JsonProperty("Validating")
+  VALIDATING("Validating");
 
   private final String text;
 
