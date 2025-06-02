@@ -29,6 +29,7 @@ public class CqmMeasure {
   private String measure_scoring = "PROPORTION";
   private String calculation_method = "PATIENT";
   private boolean calculate_sdes;
+  private boolean calculate_ravs;
 
   private List<CQLLibrary> cql_libraries;
   private String main_cql_library;
