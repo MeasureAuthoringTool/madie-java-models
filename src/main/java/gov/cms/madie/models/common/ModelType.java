@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 public enum ModelType {
   QI_CORE("QI-Core v4.1.1", "qicore"),
   QI_CORE_6_0_0("QI-Core v6.0.0", "qicore6"),
+  QI_CORE_7_0_0("QI-Core v7.0.0", "qicore7"),
   QDM_5_6("QDM v5.6", "qdm");
 
   private String value;
