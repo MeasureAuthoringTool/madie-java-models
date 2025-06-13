@@ -18,5 +18,6 @@ public class PopulationSet {
   private PopulationMap populations;
   private List<CqmStratification> stratifications;
   private List<StatementReference> supplemental_data_elements;
+  private List<StatementReference> risk_adjustment_variables;
   private List<Observation> observations;
 }

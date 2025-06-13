@@ -11,5 +11,6 @@ import org.springframework.data.annotation.Id;
 public class TestCaseConfiguration {
   @Id private String id;
   private boolean sdeIncluded;
+  private boolean ravIncluded;
   private ManifestExpansion manifestExpansion;
 }
