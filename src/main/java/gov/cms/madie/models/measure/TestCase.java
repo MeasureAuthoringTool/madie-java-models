@@ -65,7 +65,7 @@ public class TestCase implements Serializable, Cloneable {
 
   @Valid private List<TestCaseGroupPopulation> groupPopulations;
 
-  private TestCaseValidationStatus testCaseValidationStatus;
+  private String testCaseValidationStatus;
 
   @GroupSequence({ValidationOrder1.class, ValidationOrder2.class, Default.class})
   public interface ValidationSequence {}
