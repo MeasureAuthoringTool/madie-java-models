@@ -11,5 +11,6 @@ public enum ActionType {
   DRAFTED,
   ASSOCIATED,
   SHARED,
-  UNSHARED
+  UNSHARED,
+  ADJUSTED_BY_ADMIN
 }
