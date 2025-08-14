@@ -1,5 +1,6 @@
 package gov.cms.madie.models.measure;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -20,7 +21,7 @@ import lombok.experimental.SuperBuilder;
 @ValidMeasureScoring
 @ValidQDMGroupScoring
 @ValidImprovementNotation
-public class QdmMeasure extends Measure {
+public class QdmMeasure extends Measure implements Serializable {
 
   private String scoring;
   private List<BaseConfigurationTypes> baseConfigurationTypes;

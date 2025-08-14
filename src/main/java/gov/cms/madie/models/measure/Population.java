@@ -9,11 +9,13 @@ import jakarta.validation.constraints.NotBlank;
 
 import org.springframework.data.annotation.Id;
 
+import java.io.Serializable;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Population {
+public class Population implements Serializable {
   @Id
   @NotBlank(message = "Population ID is required.")
   private String id;

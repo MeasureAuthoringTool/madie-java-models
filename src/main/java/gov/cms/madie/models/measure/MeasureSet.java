@@ -8,12 +8,13 @@ import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Data
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
-public class MeasureSet {
+public class MeasureSet implements Serializable {
 
   @Id private String id;
 

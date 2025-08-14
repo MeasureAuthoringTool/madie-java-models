@@ -5,13 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Data
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class DefDescPair {
+public class DefDescPair implements Serializable {
 
   DefDescPair(String definition, String description) {
     this.definition = definition;

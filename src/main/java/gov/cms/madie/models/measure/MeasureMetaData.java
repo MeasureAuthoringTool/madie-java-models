@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class MeasureMetaData {
+public class MeasureMetaData implements Serializable {
   @Valid private Organization steward;
   @Valid private List<Organization> developers;
   private String description;

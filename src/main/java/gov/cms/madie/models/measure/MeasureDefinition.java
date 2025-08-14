@@ -8,11 +8,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class MeasureDefinition {
+public class MeasureDefinition implements Serializable {
   @Id private String id;
 
   @NotBlank(
