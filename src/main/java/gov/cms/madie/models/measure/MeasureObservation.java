@@ -9,11 +9,13 @@ import lombok.NoArgsConstructor;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.io.Serializable;
+
 @Data
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class MeasureObservation {
+public class MeasureObservation implements Serializable {
   private String id;
 
   @NotBlank(

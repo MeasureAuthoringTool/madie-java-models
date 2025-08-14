@@ -1,5 +1,6 @@
 package gov.cms.madie.models.measure;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +16,7 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.groups.Default;
 
 import lombok.Singular;
+import org.apache.commons.lang3.SerializationUtils;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
@@ -54,7 +56,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @ValidLibraryName
 @ValidIntendedVenue
 @ValidPurpose
-public class Measure {
+public class Measure implements Serializable, Cloneable {
 
   @Id private String id;
 
@@ -181,4 +183,8 @@ public class Measure {
   public interface ValidationOrder7 {}
 
   public interface ValidationOrder8 {}
+
+  public Measure deepCopy() {
+    return SerializationUtils.clone(this);
+  }
 }

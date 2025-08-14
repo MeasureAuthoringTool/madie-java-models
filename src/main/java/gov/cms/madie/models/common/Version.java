@@ -6,12 +6,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.Serializable;
+
 @Slf4j
 @Data
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class Version {
+public class Version implements Serializable {
   private int major;
   private int minor;
   private int revisionNumber;

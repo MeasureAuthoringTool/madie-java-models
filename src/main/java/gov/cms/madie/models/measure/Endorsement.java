@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import java.io.Serializable;
+
 @Data
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
@@ -14,7 +16,7 @@ import lombok.experimental.SuperBuilder;
     requiredField = "endorsementId",
     message =
         "EndorsementId is required when Endorser is not null,otherwise if Endorser is null, EndorsementId has to be null")
-public class Endorsement {
+public class Endorsement implements Serializable {
 
   private String endorser;
   private String endorserSystemId;
