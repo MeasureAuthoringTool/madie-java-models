@@ -23,28 +23,22 @@ public class MeasureTest {
   @Test
   void testDeepCopyCollections() {
     Measure measure =
-      new Measure()
-        .toBuilder()
-        .id("id")
-        .active(true)
-        .groups(
-          List.of(
-            Group.builder()
-              .groupDescription("group 1 Description")
-              .rateAggregation("rate agg")
-              .improvementNotationDescription("line go up")
-              .populations(
-                List.of(
-                  Population.builder()
-                    .definition("definition1")
-                    .build()))
-              .stratifications(
-                List.of(
-                  Stratification.builder()
-                    .cqlDefinition("cql 1")
-                    .build()))
-              .build()))
-        .build();
+        new Measure()
+            .toBuilder()
+                .id("id")
+                .active(true)
+                .groups(
+                    List.of(
+                        Group.builder()
+                            .groupDescription("group 1 Description")
+                            .rateAggregation("rate agg")
+                            .improvementNotationDescription("line go up")
+                            .populations(
+                                List.of(Population.builder().definition("definition1").build()))
+                            .stratifications(
+                                List.of(Stratification.builder().cqlDefinition("cql 1").build()))
+                            .build()))
+                .build();
 
     Measure copy = measure.deepCopy();
     assertThat(copy.getGroups()).isEqualTo(measure.getGroups());
@@ -58,34 +52,34 @@ public class MeasureTest {
   @Test
   void testDeepCopyNestedObjects() {
     Measure measure =
-      new Measure()
-        .toBuilder()
-        .id("id")
-        .active(true)
-        .measureMetaData(
-          MeasureMetaData.builder()
-            .draft(true)
-            .description("measureDesc")
-            .rationale("rationale")
-            .purpose("purpose")
-            .guidance("guidance")
-            .clinicalRecommendation("clinicalRecommendation")
-            .references(
-              List.of(
-                Reference.builder()
-                  .referenceText("reference1")
-                  .referenceType("CITATION")
-                  .build()))
-            .measureDefinitions(
-              List.of(
-                MeasureDefinition.builder()
-                  .definition("definition1")
-                  .term("term")
-                  .build()))
-            .copyright("measure Copyright")
-            .disclaimer("disclaimer")
-            .build())
-        .build();
+        new Measure()
+            .toBuilder()
+                .id("id")
+                .active(true)
+                .measureMetaData(
+                    MeasureMetaData.builder()
+                        .draft(true)
+                        .description("measureDesc")
+                        .rationale("rationale")
+                        .purpose("purpose")
+                        .guidance("guidance")
+                        .clinicalRecommendation("clinicalRecommendation")
+                        .references(
+                            List.of(
+                                Reference.builder()
+                                    .referenceText("reference1")
+                                    .referenceType("CITATION")
+                                    .build()))
+                        .measureDefinitions(
+                            List.of(
+                                MeasureDefinition.builder()
+                                    .definition("definition1")
+                                    .term("term")
+                                    .build()))
+                        .copyright("measure Copyright")
+                        .disclaimer("disclaimer")
+                        .build())
+                .build();
 
     Measure copy = measure.deepCopy();
     assertThat(copy.getMeasureMetaData()).isEqualTo(measure.getMeasureMetaData());
@@ -97,6 +91,7 @@ public class MeasureTest {
 
     assertThat(copy.getMeasureMetaData().getReferences()).isEmpty();
     assertThat(measure.getMeasureMetaData().getReferences()).hasSize(1);
-    assertThat(measure.getMeasureMetaData().getReferences().get(0).getReferenceText()).isEqualTo("reference1");
+    assertThat(measure.getMeasureMetaData().getReferences().get(0).getReferenceText())
+        .isEqualTo("reference1");
   }
 }
