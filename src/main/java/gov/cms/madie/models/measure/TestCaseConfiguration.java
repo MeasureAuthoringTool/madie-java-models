@@ -2,6 +2,7 @@ package gov.cms.madie.models.measure;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Builder.Default;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.Id;
 
@@ -13,6 +14,6 @@ import java.io.Serializable;
 public class TestCaseConfiguration implements Serializable {
   @Id private String id;
   private boolean sdeIncluded;
-  private boolean ravIncluded;
+  @Default private boolean ravIncluded = true;
   private ManifestExpansion manifestExpansion;
 }
