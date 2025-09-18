@@ -1,5 +1,6 @@
 package gov.cms.madie.models.measure;
 
+import java.io.Serializable;
 import java.time.Instant;
 
 import lombok.AllArgsConstructor;
@@ -11,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReviewMetaData {
+public class ReviewMetaData implements Serializable {
   private Instant approvalDate;
   private Instant lastReviewDate;
 }

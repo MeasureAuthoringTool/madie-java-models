@@ -8,12 +8,14 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Document(collection = "organization")
-public class Organization {
+public class Organization implements Serializable {
   @Id
   @NotBlank(message = "Id is required.")
   private String id;

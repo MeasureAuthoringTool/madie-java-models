@@ -2,8 +2,10 @@ package gov.cms.madie.models.measure;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class CodeSystem {
+public class CodeSystem implements Serializable {
   private String name;
   private String display;
   private String fhirVersion;

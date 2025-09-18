@@ -12,6 +12,8 @@ import org.springframework.data.annotation.Id;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+
+import java.io.Serializable;
 import java.util.List;
 
 @Data
@@ -20,7 +22,7 @@ import java.util.List;
 @AllArgsConstructor
 @ValidGroupScoringPopulation
 @ValidMeasureObservation
-public class Group implements GroupScoringPopulation {
+public class Group implements GroupScoringPopulation, Serializable {
   @Id private String id;
 
   @NotNull(

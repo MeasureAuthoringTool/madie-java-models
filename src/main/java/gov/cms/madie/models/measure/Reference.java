@@ -7,10 +7,12 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import jakarta.validation.constraints.NotBlank;
 
+import java.io.Serializable;
+
 @Data
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
-public class Reference {
+public class Reference implements Serializable {
   @Id private String id;
   private String referenceText;
 
