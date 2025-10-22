@@ -69,7 +69,7 @@ public class TestCase implements Serializable, Cloneable {
   private String validationTaskId;
 
   // Lock information - transient field populated on retrieval, not persisted
-  private TestCaseLockInfo testCaseLock;
+  @JsonIgnore private TestCaseLockInfo testCaseLock;
 
   @GroupSequence({ValidationOrder1.class, ValidationOrder2.class, Default.class})
   public interface ValidationSequence {}
