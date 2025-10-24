@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.SerializationUtils;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.data.annotation.Transient;
 
 import jakarta.validation.GroupSequence;
 import jakarta.validation.Valid;
@@ -67,6 +68,9 @@ public class TestCase implements Serializable, Cloneable {
 
   private String validationStatus;
   private String validationTaskId;
+
+  // Lock information - transient field populated on retrieval, not persisted
+  @Transient private TestCaseLockInfo testCaseLock;
 
   @GroupSequence({ValidationOrder1.class, ValidationOrder2.class, Default.class})
   public interface ValidationSequence {}
