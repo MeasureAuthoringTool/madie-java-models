@@ -15,4 +15,5 @@ public class TestCaseConfiguration implements Serializable {
   private boolean sdeIncluded;
   private boolean ravIncluded;
   private ManifestExpansion manifestExpansion;
+  private boolean executeInvalidTestCases;
 }

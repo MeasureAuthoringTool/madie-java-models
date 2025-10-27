@@ -1,5 +1,6 @@
 package gov.cms.madie.models.cqm.datacriteria.attributes;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Code;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,6 +11,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonTypeName("QDM::Practitioner")
 public class Practitioner extends Entity {
   private Code role;
   private Code specialty;
