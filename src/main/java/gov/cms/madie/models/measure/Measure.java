@@ -155,6 +155,9 @@ public class Measure implements Serializable, Cloneable {
   @Deprecated private ReviewMetaData reviewMetaData = new ReviewMetaData();
   @Transient private MeasureSet measureSet;
 
+  @Transient private MeasureLock measureLock;
+  @Transient private boolean hasLockedTestCases;
+
   @GroupSequence({
     Measure.ValidationOrder1.class,
     Measure.ValidationOrder2.class,
