@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
-@Builder(toBuilder=true)
+@Builder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
 public class DetailsRequestDto {
-    private List<String> harpIds;
+  private List<String> harpIds;
 }
