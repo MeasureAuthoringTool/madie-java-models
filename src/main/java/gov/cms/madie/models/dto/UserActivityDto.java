@@ -9,15 +9,15 @@ import lombok.NoArgsConstructor;
 import java.time.Instant;
 
 @Data
-@Builder(toBuilder=true)
+@Builder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserActivityDto {
-    private String harpId;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private Instant lastLoginAt;
-    private Instant accessStartAt;
-    private UserStatus status;
+  private String harpId;
+  private String firstName;
+  private String lastName;
+  private String email;
+  private Instant lastLoginAt;
+  private Instant accessStartAt;
+  private UserStatus status;
 }

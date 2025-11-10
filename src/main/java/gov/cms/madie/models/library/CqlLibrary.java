@@ -9,6 +9,7 @@ import gov.cms.madie.models.validators.ValidLibraryName;
 import gov.cms.madie.models.utils.VersionJsonSerializer;
 import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.common.Version;
+
 import java.time.Instant;
 import java.util.List;
 
@@ -76,6 +77,7 @@ public class CqlLibrary {
   private boolean experimental;
 
   @Transient private LibrarySet librarySet;
+  @Transient private CqlLibraryLockInfo cqlLibraryLock;
 
   @GroupSequence({
     CqlLibrary.ValidationOrder1.class,
