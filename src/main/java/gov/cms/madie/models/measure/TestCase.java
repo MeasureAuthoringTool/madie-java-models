@@ -65,7 +65,7 @@ public class TestCase implements Serializable, Cloneable {
   private HapiOperationOutcome hapiOperationOutcome;
 
   @Valid private List<TestCaseGroupPopulation> groupPopulations;
-
+  private boolean isBundleTypeUpdated;
   private String validationStatus;
   private String validationTaskId;
 
