@@ -79,6 +79,11 @@ public class Measure implements Serializable, Cloneable {
   @NotBlank(
       groups = {ValidationOrder1.class},
       message = "Measure Library Name is required.")
+  @Length(
+      min = 1,
+      max = 64,
+      groups = {ValidationOrder8.class},
+      message = "Measure Library Name cannot be more than 64 characters.")
   private String cqlLibraryName;
 
   @NotBlank(
