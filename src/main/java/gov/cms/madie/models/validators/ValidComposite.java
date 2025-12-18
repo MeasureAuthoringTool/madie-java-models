@@ -10,7 +10,7 @@ import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Documented
-@Constraint(validatedBy = gov.cms.madie.models.validators.ValidCompositeValidator.class)
+@Constraint(validatedBy = ValidCompositeValidator.class)
 @Target({TYPE})
 @Retention(RUNTIME)
 public @interface ValidComposite {

@@ -25,10 +25,9 @@ public class ValidFhirGroupValidator implements ConstraintValidator<ValidFhirGro
           return false;
         }
         // TODO: if group is composite, cannot have populations
-        if (MeasureScoring.COMPOSITE.toString().equals(group.getScoring())) {
-          if (!CollectionUtils.isEmpty(group.getPopulations())) {
-            return false;
-          }
+        if (MeasureScoring.COMPOSITE.toString().equals(group.getScoring())
+            && !CollectionUtils.isEmpty(group.getPopulations())) {
+          return false;
         }
       }
     }
