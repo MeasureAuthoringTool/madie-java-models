@@ -12,7 +12,9 @@ public enum MeasureScoring {
   @JsonProperty("Proportion")
   PROPORTION("Proportion"),
   @JsonProperty("Ratio")
-  RATIO("Ratio");
+  RATIO("Ratio"),
+  @JsonProperty("Composite")
+  COMPOSITE("Composite");
 
   private final String text;
 
