@@ -27,7 +27,7 @@ public class Group implements GroupScoringPopulation, Serializable {
 
   @NotNull(
       message = "Scoring is required.",
-      groups = {Measure.ValidationOrder5.class})
+      groups = {Measure.ValidationOrder4.class})
   @EnumValidator(
       enumClass = MeasureScoring.class,
       message = "Scoring must be a valid MADiE scoring type",
@@ -59,4 +59,14 @@ public class Group implements GroupScoringPopulation, Serializable {
   private Integer scoringPrecision;
 
   private String displayId;
+
+  // Composite attributes
+  @EnumValidator(
+      enumClass = CompositeMeasureScoring.class,
+      message = "Composite Scoring must be a valid MADiE Composite scoring type",
+      allowNull = true,
+      groups = {Measure.ValidationOrder5.class})
+  private String compositeScoring;
+
+  private List<Component> components;
 }

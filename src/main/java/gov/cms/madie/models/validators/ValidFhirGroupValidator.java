@@ -1,5 +1,7 @@
 package gov.cms.madie.models.validators;
 
+import gov.cms.madie.models.measure.Group;
+import gov.cms.madie.models.measure.MeasureScoring;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
@@ -15,10 +17,16 @@ public class ValidFhirGroupValidator implements ConstraintValidator<ValidFhirGro
     }
     if (measure.getGroups() != null) {
       for (int i = 0; i < measure.getGroups().size(); i++) {
-        if (CollectionUtils.isEmpty(measure.getGroups().get(i).getMeasureGroupTypes())) {
+        Group group = measure.getGroups().get(i);
+        if (CollectionUtils.isEmpty(group.getMeasureGroupTypes())) {
           return false;
         }
-        if (!StringUtils.hasLength(measure.getGroups().get(i).getPopulationBasis())) {
+        if (!StringUtils.hasLength(group.getPopulationBasis())) {
+          return false;
+        }
+        // TODO: if group is composite, cannot have populations
+        if (MeasureScoring.COMPOSITE.toString().equals(group.getScoring())
+            && !CollectionUtils.isEmpty(group.getPopulations())) {
           return false;
         }
       }

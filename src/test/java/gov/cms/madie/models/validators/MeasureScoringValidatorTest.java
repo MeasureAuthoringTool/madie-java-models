@@ -120,4 +120,12 @@ public class MeasureScoringValidatorTest {
         com.fasterxml.jackson.databind.exc.InvalidFormatException.class,
         () -> mapper.readValue(qdmMeasureStr, QdmMeasure.class));
   }
+
+  @Test
+  public void testValidatorReturnsFalseForCompositeScoring() {
+    measure.setModel("QDM v5.6");
+    measure.setScoring(MeasureScoring.COMPOSITE.toString());
+    boolean output = validator.isValid(measure, validatorContext);
+    assertFalse(output);
+  }
 }
