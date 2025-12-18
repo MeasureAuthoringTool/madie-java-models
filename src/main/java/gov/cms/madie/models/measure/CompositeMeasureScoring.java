@@ -23,6 +23,10 @@ public enum CompositeMeasureScoring {
     return this.text;
   }
 
+  public String toCode() {
+    return this.text.toLowerCase();
+  }
+
   public static CompositeMeasureScoring valueOfText(String text) {
     return Arrays.stream(CompositeMeasureScoring.values())
         .filter(s -> s.text.equals(text))
