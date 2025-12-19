@@ -36,6 +36,7 @@ public class MeasureMetaData implements Serializable {
   private CqlMetaData cqlMetaData;
   private CodeConcept intendedVenue;
   private String purpose;
+  private boolean composite;
 
   @Valid private List<MeasureDefinition> measureDefinitions;
 }

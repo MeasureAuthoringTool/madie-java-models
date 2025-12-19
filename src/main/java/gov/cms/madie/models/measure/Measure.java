@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import gov.cms.madie.models.common.IncludedLibrary;
-import gov.cms.madie.models.validators.ValidIntendedVenue;
-import gov.cms.madie.models.validators.ValidPurpose;
+import gov.cms.madie.models.validators.*;
 import jakarta.validation.GroupSequence;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -31,8 +30,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.common.Version;
 import gov.cms.madie.models.utils.VersionJsonSerializer;
-import gov.cms.madie.models.validators.EnumValidator;
-import gov.cms.madie.models.validators.ValidLibraryName;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -56,6 +53,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @ValidLibraryName
 @ValidIntendedVenue
 @ValidPurpose
+@ValidComposite
 public class Measure implements Serializable, Cloneable {
 
   @Id private String id;

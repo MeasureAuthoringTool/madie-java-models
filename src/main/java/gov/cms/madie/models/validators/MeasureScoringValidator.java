@@ -12,7 +12,11 @@ public class MeasureScoringValidator
   @Override
   public boolean isValid(QdmMeasure measure, ConstraintValidatorContext context) {
     if (measure != null && measure.getScoring() != null) {
-      return MeasureScoring.valueOfText(measure.getScoring()) == null ? false : true;
+      MeasureScoring scoring = MeasureScoring.valueOfText(measure.getScoring());
+      if (scoring == MeasureScoring.COMPOSITE) {
+        return false;
+      }
+      return scoring != null;
     }
     return true;
   }
