@@ -12,4 +12,5 @@ import java.io.Serializable;
 public class ManifestExpansion implements Serializable {
   private String fullUrl;
   private String id;
+  private String title;
 }

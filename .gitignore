@@ -7,7 +7,7 @@ target/
 .classpath
 .project
 .settings
-
+bin
 
 ### macOs files
 .DS_Store
