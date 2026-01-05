@@ -3,10 +3,6 @@ on:
   schedule: 
     - cron: 0 0 1 * * # First day of every month
   workflow_dispatch:
-  pull_request:
-    types: [opened, synchronize]
-    paths:
-      - "code.json"
 
 permissions:
   contents: write

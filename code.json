@@ -30,9 +30,9 @@
     "contractNumber": [],
     "SBOM": "https://github.com/MeasureAuthoringTool/madie-java-models/network/dependencies",
     "date": {
-      "created": "2022-04-06T16:23:09Z",
-      "lastModified": "2025-12-19T17:38:36Z",
-      "metaDataLastUpdated": "2026-01-01T00:17:41.119Z"
+        "created": "2022-04-06T16:23:09Z",
+        "lastModified": "2025-12-19T17:38:36Z",
+        "metaDataLastUpdated": "2026-01-01T00:17:41.119Z"
     },
     "tags": [
         "java",
