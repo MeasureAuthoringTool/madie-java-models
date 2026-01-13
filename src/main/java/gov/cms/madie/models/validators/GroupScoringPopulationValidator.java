@@ -28,6 +28,11 @@ public class GroupScoringPopulationValidator
       return true;
     }
 
+    if (group.getScoring() != null
+        && group.getScoring().equals(MeasureScoring.COMPOSITE.toString())) {
+      return true;
+    }
+
     List<Population> populations = group.getPopulations();
 
     if (group.getScoring() == null
