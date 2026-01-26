@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import gov.cms.madie.models.common.IncludedLibrary;
+import gov.cms.madie.models.utils.VersionConstants;
 import gov.cms.madie.models.validators.*;
 import jakarta.validation.GroupSequence;
 import jakarta.validation.Valid;
@@ -45,10 +46,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
     property = "model",
     visible = true)
 @JsonSubTypes({
-  @Type(value = FhirMeasure.class, name = "QI-Core v4.1.1"),
-  @Type(value = FhirMeasure.class, name = "QI-Core v6.0.0"),
-  @Type(value = FhirMeasure.class, name = "QI-Core v7.0.0"),
-  @Type(value = QdmMeasure.class, name = "QDM v5.6")
+  @Type(value = FhirMeasure.class, name = VersionConstants.QICORE_4_1_1_VERSION),
+  @Type(value = FhirMeasure.class, name = VersionConstants.QICORE_6_0_0_VERSION),
+  @Type(value = FhirMeasure.class, name = VersionConstants.QICORE_7_0_0_VERSION),
+  @Type(value = FhirMeasure.class, name = VersionConstants.QICORE_7_0_2_VERSION),
+  @Type(value = QdmMeasure.class, name = VersionConstants.QDM_5_6_VERSION)
 })
 @ValidLibraryName
 @ValidIntendedVenue
