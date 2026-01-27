@@ -6,23 +6,20 @@ import lombok.Getter;
 
 @Getter
 public enum AssociationType {
+  @JsonProperty("Denominator")
+  DENOMINATOR("Denominator"),
 
-	@JsonProperty("Denominator")
-	DENOMINATOR("Denominator"),
+  @JsonProperty("Numerator")
+  NUMERATOR("Numerator");
 
-	@JsonProperty("Numerator")
-	NUMERATOR("Numerator");
+  private final String value;
 
+  AssociationType(String value) {
+    this.value = value;
+  }
 
-	private final String value;
-
-	AssociationType(String value) {
-		this.value = value;
-	}
-
-	@Override
-	public String toString() {
-		return this.getValue();
-	}
+  @Override
+  public String toString() {
+    return this.getValue();
+  }
 }
-

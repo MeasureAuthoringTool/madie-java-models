@@ -1,9 +1,14 @@
 package gov.cms.madie.models.measure;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+
+import gov.cms.madie.models.common.IncludedLibrary;
+import gov.cms.madie.models.utils.VersionConstants;
+import gov.cms.madie.models.validators.*;
 import jakarta.validation.GroupSequence;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -11,6 +16,7 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.groups.Default;
 
 import lombok.Singular;
+import org.apache.commons.lang3.SerializationUtils;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
@@ -25,7 +31,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.common.Version;
 import gov.cms.madie.models.utils.VersionJsonSerializer;
-import gov.cms.madie.models.validators.EnumValidator;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -37,42 +42,48 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
-    include = JsonTypeInfo.As.EXISTING_PROPERTY, 
+    include = JsonTypeInfo.As.EXISTING_PROPERTY,
     property = "model",
     visible = true)
 @JsonSubTypes({
-  @Type(value = FhirMeasure.class, name = "QI-Core v4.1.1"),
-  @Type(value = QdmMeasure.class, name = "QDM v5.6")
+  @Type(value = FhirMeasure.class, name = VersionConstants.QICORE_4_1_1_VERSION),
+  @Type(value = FhirMeasure.class, name = VersionConstants.QICORE_6_0_0_VERSION),
+  @Type(value = FhirMeasure.class, name = VersionConstants.QICORE_7_0_0_VERSION),
+  @Type(value = FhirMeasure.class, name = VersionConstants.QICORE_7_0_2_VERSION),
+  @Type(value = QdmMeasure.class, name = VersionConstants.QDM_5_6_VERSION)
 })
-public class Measure {
+@ValidLibraryName
+@ValidIntendedVenue
+@ValidPurpose
+@ValidComposite
+public class Measure implements Serializable, Cloneable {
 
   @Id private String id;
 
   private String measureHumanReadableId;
 
   @NotBlank(
-    groups = {ValidationOrder1.class},
-    message = "Measure Set ID is required.")
+      groups = {ValidationOrder1.class},
+      message = "Measure Set ID is required.")
   private String measureSetId;
 
   @JsonSerialize(using = VersionJsonSerializer.VersionSerializer.class)
   @JsonDeserialize(using = VersionJsonSerializer.VersionDeserializer.class)
   private Version version;
-  //temp for MAT-5191
+
+  // temp for MAT-5191
   private String revisionNumber;
   private String state;
-
 
   @Indexed
   @NotBlank(
       groups = {ValidationOrder1.class},
       message = "Measure Library Name is required.")
-  @Pattern(
-      regexp = "^[A-Z][a-zA-Z0-9]*$",
-      groups = {
-        ValidationOrder2.class,
-      },
-      message = "Measure Library Name is invalid.")
+  @Length(
+      min = 1,
+      max = 64,
+      groups = {ValidationOrder8.class},
+      message = "Measure Library Name cannot be more than 64 characters.")
   private String cqlLibraryName;
 
   @NotBlank(
@@ -107,12 +118,13 @@ public class Measure {
   // TODO: determine if theres a way to set this from backend or if we should always trust user
   // input for this field
   private boolean cqlErrors;
-  @Singular
-  private Set<MeasureErrorType> errors;
+  @Singular private Set<MeasureErrorType> errors;
   private String cql;
   private String elmJson;
   @Transient private String elmXml;
   private List<TestCase> testCases;
+  private List<IncludedLibrary> includedLibraries;
+  private TestCaseConfiguration testCaseConfiguration;
   @Valid private List<Group> groups;
   private Instant createdAt;
   private String createdBy;
@@ -120,11 +132,15 @@ public class Measure {
   private String lastModifiedBy;
   private Date measurementPeriodStart;
   private Date measurementPeriodEnd;
+
   @Singular("sde")
   private List<DefDescPair> supplementalData;
+
   private String supplementalDataDescription;
+
   @Singular("rav")
   private List<DefDescPair> riskAdjustments;
+
   private String riskAdjustmentDescription;
 
   @NotBlank(message = "Model is required")
@@ -134,19 +150,18 @@ public class Measure {
       groups = {ValidationOrder5.class})
   private String model;
 
-  @Valid
-  private MeasureMetaData measureMetaData = new MeasureMetaData();
+  @Valid private MeasureMetaData measureMetaData = new MeasureMetaData();
 
   @NotBlank(
       groups = {ValidationOrder1.class},
       message = "Version ID is required.")
   private String versionId;
-  private String cmsId;
-  
-  private ReviewMetaData reviewMetaData = new ReviewMetaData();
 
-  @Transient
-  private MeasureSet measureSet;
+  @Deprecated private ReviewMetaData reviewMetaData = new ReviewMetaData();
+  @Transient private MeasureSet measureSet;
+
+  @Transient private MeasureLock measureLock;
+  @Transient private boolean hasLockedTestCases;
 
   @GroupSequence({
     Measure.ValidationOrder1.class,
@@ -176,4 +191,8 @@ public class Measure {
   public interface ValidationOrder7 {}
 
   public interface ValidationOrder8 {}
+
+  public Measure deepCopy() {
+    return SerializationUtils.clone(this);
+  }
 }

@@ -3,11 +3,16 @@ package gov.cms.madie.models.library;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import gov.cms.madie.models.common.IncludedLibrary;
 import gov.cms.madie.models.validators.EnumValidator;
+import gov.cms.madie.models.validators.ValidLibraryName;
 import gov.cms.madie.models.utils.VersionJsonSerializer;
 import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.common.Version;
+
 import java.time.Instant;
+import java.util.List;
+
 import jakarta.validation.GroupSequence;
 import jakarta.validation.constraints.*;
 import jakarta.validation.groups.Default;
@@ -23,12 +28,13 @@ import org.springframework.data.mongodb.core.index.Indexed;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
+@ValidLibraryName
 public class CqlLibrary {
   @Id private String id;
 
   @NotBlank(
-          groups = {CqlLibrary.ValidationOrder1.class},
-          message = "Library Set ID is required.")
+      groups = {CqlLibrary.ValidationOrder1.class},
+      message = "Library Set ID is required.")
   private String librarySetId;
 
   @NotNull(message = "Library name is required.")
@@ -39,13 +45,6 @@ public class CqlLibrary {
       max = 64,
       groups = {ValidationOrder2.class},
       message = "Library name cannot be more than 64 characters.")
-  @Pattern(
-      regexp = "^[A-Z][a-zA-Z0-9]*$",
-      groups = {ValidationOrder3.class},
-      message =
-          "Library name must start with an upper case letter, "
-              + "followed by alpha-numeric character(s) and must not contain "
-              + "spaces or other special characters.")
   @Indexed
   private String cqlLibraryName;
 
@@ -62,7 +61,9 @@ public class CqlLibrary {
   @JsonDeserialize(using = VersionJsonSerializer.VersionDeserializer.class)
   private Version version;
 
+  private List<IncludedLibrary> includedLibraries;
   private boolean draft;
+  private boolean active = true;
   private boolean cqlErrors;
   private String cql;
   private String elmJson;
@@ -75,8 +76,8 @@ public class CqlLibrary {
   private String description;
   private boolean experimental;
 
-  @Transient
-  private LibrarySet librarySet;
+  @Transient private LibrarySet librarySet;
+  @Transient private CqlLibraryLockInfo cqlLibraryLock;
 
   @GroupSequence({
     CqlLibrary.ValidationOrder1.class,

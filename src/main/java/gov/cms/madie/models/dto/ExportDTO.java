@@ -14,8 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ExportDTO {
-    private Measure measure;
-    private List<String> testCaseIds;
-    private BundleType bundleType ; 
+  private Measure measure;
+  private List<String> testCaseIds;
+  private BundleType bundleType;
 }
-	

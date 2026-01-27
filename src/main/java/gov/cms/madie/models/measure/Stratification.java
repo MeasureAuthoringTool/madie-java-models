@@ -1,17 +1,28 @@
 package gov.cms.madie.models.measure;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import jakarta.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.List;
 
 @Data
-public class Stratification {
-    private String id;
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Stratification implements Serializable {
+  private String id;
 
-    private String description;
+  private String description;
 
-    private String cqlDefinition;
+  private String cqlDefinition;
 
-    private PopulationType association;
+  // TODO: can be removed at the end of MAT-5852
+  @Deprecated private PopulationType association;
 
+  private List<PopulationType> associations;
+
+  private String displayId;
 }

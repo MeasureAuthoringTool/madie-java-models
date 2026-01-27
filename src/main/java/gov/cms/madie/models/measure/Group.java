@@ -3,6 +3,7 @@ package gov.cms.madie.models.measure;
 import gov.cms.madie.models.validators.EnumValidator;
 import gov.cms.madie.models.validators.ValidGroupScoringPopulation;
 import gov.cms.madie.models.validators.ValidMeasureObservation;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,6 +12,8 @@ import org.springframework.data.annotation.Id;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+
+import java.io.Serializable;
 import java.util.List;
 
 @Data
@@ -19,21 +22,19 @@ import java.util.List;
 @AllArgsConstructor
 @ValidGroupScoringPopulation
 @ValidMeasureObservation
-public class Group implements GroupScoringPopulation {
-  @Id
-  private String id;
+public class Group implements GroupScoringPopulation, Serializable {
+  @Id private String id;
 
   @NotNull(
       message = "Scoring is required.",
-      groups = {Measure.ValidationOrder5.class})
+      groups = {Measure.ValidationOrder4.class})
   @EnumValidator(
       enumClass = MeasureScoring.class,
       message = "Scoring must be a valid MADiE scoring type",
       groups = {Measure.ValidationOrder5.class})
   private String scoring;
 
-  @Valid
-  private List<Population> populations;
+  @Valid private List<Population> populations;
 
   private List<MeasureObservation> measureObservations;
 
@@ -41,16 +42,31 @@ public class Group implements GroupScoringPopulation {
 
   private String improvementNotation;
 
+  private String improvementNotationDescription;
+
   private String rateAggregation;
 
-  //@NotEmpty
+  // @NotEmpty
   private List<MeasureGroupTypes> measureGroupTypes;
 
   private Object scoringUnit;
 
-  @Valid
-  private List<Stratification> stratifications;
+  @Valid private List<Stratification> stratifications;
 
   private String populationBasis;
 
+  @Min(1)
+  private Integer scoringPrecision;
+
+  private String displayId;
+
+  // Composite attributes
+  @EnumValidator(
+      enumClass = CompositeMeasureScoring.class,
+      message = "Composite Scoring must be a valid MADiE Composite scoring type",
+      allowNull = true,
+      groups = {Measure.ValidationOrder5.class})
+  private String compositeScoring;
+
+  private List<Component> components;
 }

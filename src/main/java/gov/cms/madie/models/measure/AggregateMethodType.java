@@ -7,7 +7,6 @@ import java.util.Arrays;
 
 @Getter
 public enum AggregateMethodType {
-
   @JsonProperty("Average")
   AVERAGE("Average"),
   @JsonProperty("Count")
@@ -28,12 +27,14 @@ public enum AggregateMethodType {
   }
 
   public static AggregateMethodType fromValue(String value) {
-    return Arrays.stream(AggregateMethodType.values()).filter(amt -> amt.value.equals(value)).findFirst().orElse(null);
+    return Arrays.stream(AggregateMethodType.values())
+        .filter(amt -> amt.value.equals(value))
+        .findFirst()
+        .orElse(null);
   }
 
   @Override
   public String toString() {
     return this.getValue();
   }
-
 }

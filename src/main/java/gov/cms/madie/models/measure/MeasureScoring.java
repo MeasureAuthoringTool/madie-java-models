@@ -12,7 +12,9 @@ public enum MeasureScoring {
   @JsonProperty("Proportion")
   PROPORTION("Proportion"),
   @JsonProperty("Ratio")
-  RATIO("Ratio");
+  RATIO("Ratio"),
+  @JsonProperty("Composite")
+  COMPOSITE("Composite");
 
   private final String text;
 
@@ -27,8 +29,8 @@ public enum MeasureScoring {
 
   public static MeasureScoring valueOfText(String text) {
     return Arrays.stream(MeasureScoring.values())
-      .filter(s -> s.text.equals(text))
-      .findFirst()
-      .orElse(null);
+        .filter(s -> s.text.equals(text))
+        .findFirst()
+        .orElse(null);
   }
 }

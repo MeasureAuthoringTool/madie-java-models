@@ -18,56 +18,48 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(SpringExtension.class)
 public class GroupScoringPopulationValidatorTest {
-  private final GroupScoringPopulationValidator validator =  new GroupScoringPopulationValidator();
+  private final GroupScoringPopulationValidator validator = new GroupScoringPopulationValidator();
 
-  @Mock
-  private ConstraintValidatorContext validatorContext;
+  @Mock private ConstraintValidatorContext validatorContext;
 
   private Group group;
   private Population ip1;
-  
+
   private Population denominator;
   private Population numerator;
   private Population numeratorExclusion;
   private Population numeratorObservation;
-  
+
   @BeforeEach
   public void setUp() {
-    ip1 = Population
-      .builder()
-      .name(PopulationType.INITIAL_POPULATION)
-      .definition("Initial Population")
-      .build();
-    denominator = Population
-      .builder()
-      .name(PopulationType.DENOMINATOR)
-      .definition("denominator")
-      .build();
-    numerator = Population
-      .builder()
-      .name(PopulationType.NUMERATOR)
-      .definition("numerator")
-      .build();
-    numeratorExclusion = Population
-        .builder()
-        .name(PopulationType.NUMERATOR_EXCLUSION)
-        .definition("numeratorExclusion")
-        .build();
-    numeratorObservation = Population
-        .builder()
-        .name(PopulationType.NUMERATOR_OBSERVATION)
-        .definition("numeratorObservation")
-        .build();
+    ip1 =
+        Population.builder()
+            .name(PopulationType.INITIAL_POPULATION)
+            .definition("Initial Population")
+            .build();
+    denominator =
+        Population.builder().name(PopulationType.DENOMINATOR).definition("denominator").build();
+    numerator = Population.builder().name(PopulationType.NUMERATOR).definition("numerator").build();
+    numeratorExclusion =
+        Population.builder()
+            .name(PopulationType.NUMERATOR_EXCLUSION)
+            .definition("numeratorExclusion")
+            .build();
+    numeratorObservation =
+        Population.builder()
+            .name(PopulationType.NUMERATOR_OBSERVATION)
+            .definition("numeratorObservation")
+            .build();
 
     List<Population> populations = new ArrayList<>();
     populations.add(ip1);
     group =
-      Group.builder()
-        .id("GroupId")
-        .scoring("Cohort")
-        .populations(populations)
-        .groupDescription("Description")
-        .build();
+        Group.builder()
+            .id("GroupId")
+            .scoring("Cohort")
+            .populations(populations)
+            .groupDescription("Description")
+            .build();
   }
 
   @Test
@@ -90,15 +82,15 @@ public class GroupScoringPopulationValidatorTest {
     boolean output = validator.isValid(group, validatorContext);
     assertFalse(output);
   }
-  
+
   @Test
   public void testValidatorMisMatchedPopulationValues() {
     // denominator not allowed for cohort
     group.setScoring("Ratio");
-    
+
     group.getPopulations().add(denominator);
     group.getPopulations().add(numerator);
-    
+
     group.getPopulations().add(numeratorObservation);
     boolean output = validator.isValid(group, validatorContext);
     assertTrue(output);

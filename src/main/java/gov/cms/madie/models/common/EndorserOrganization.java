@@ -14,9 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "endorserOrganization")
 public class EndorserOrganization {
 
-    @Id
-    private String id;
+  @Id private String id;
 
-    private String endorserOrganization;
-
+  private String endorserOrganization;
 }

@@ -15,9 +15,9 @@ import jakarta.validation.Payload;
 @Documented
 public @interface ValidQDMGroupScoring {
 
-	String message() default "Groups must have same scoring";
+  String message() default "Groups must have same scoring";
 
-	Class<?>[] groups() default {};
+  Class<?>[] groups() default {};
 
   Class<? extends Payload>[] payload() default {};
 }

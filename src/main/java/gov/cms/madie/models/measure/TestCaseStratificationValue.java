@@ -5,14 +5,17 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+import java.util.List;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class TestCaseStratificationValue {
-    private String id;
-    private String name;
-    private Object expected;
-    private Object actual;
+public class TestCaseStratificationValue implements Serializable {
+  private String id;
+  private String name;
+  private Object expected;
+  private Object actual;
+  private List<TestCasePopulationValue> populationValues;
 }
-

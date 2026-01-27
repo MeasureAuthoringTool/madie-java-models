@@ -5,6 +5,8 @@ import lombok.Getter;
 
 @Getter
 public enum MeasureGroupTypes {
+  @JsonProperty("Intermediate Outcome")
+  INTERMEDIATE_OUTCOME("Intermediate Outcome"),
 
   @JsonProperty("Outcome")
   OUTCOME("Outcome"),

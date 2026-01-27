@@ -1,5 +1,7 @@
 package gov.cms.madie.models.library;
 
+import gov.cms.madie.models.common.ModelType;
+import gov.cms.madie.models.validators.EnumValidator;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -8,7 +10,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.mongodb.core.index.Indexed;
 
 @Data
 @Builder(toBuilder = true)
@@ -32,5 +33,12 @@ public class CqlLibraryDraft {
               + "followed by alpha-numeric character(s) and must not contain "
               + "spaces or other special characters.")
   private String cqlLibraryName;
+
+  @EnumValidator(
+      enumClass = ModelType.class,
+      message = "Model must be one of the supported types in MADiE.",
+      groups = {CqlLibrary.ValidationOrder4.class})
+  private String model;
+
   private String cql;
 }

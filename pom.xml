@@ -6,18 +6,18 @@
 
   <groupId>gov.cms.madie</groupId>
   <artifactId>madie-java-models</artifactId>
-  <version>0.6.8</version>
+  <version>0.8.3</version>
   <name>madie-java-models</name>
   <description>Java based models for MADiE microservices</description>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>17</java.version>
     <mvn.checkstyle.file>checkstyle.xml</mvn.checkstyle.file>
-    <mvn.checkstyle.version>3.1.2</mvn.checkstyle.version>
+    <mvn.checkstyle.version>3.3.0</mvn.checkstyle.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <fasterxml.jackson.version>2.13.3</fasterxml.jackson.version>
-    <springboot.version>3.0.3</springboot.version>
+    <fasterxml.jackson.version>2.15.3</fasterxml.jackson.version>
+    <springboot.version>3.5.7</springboot.version>
   </properties>
 
   <distributionManagement>
@@ -38,7 +38,7 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.22</version>
+      <version>1.18.30</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -71,6 +71,11 @@
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
       <version>${fasterxml.jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.18.0</version>
     </dependency>
   </dependencies>
 
@@ -136,10 +141,27 @@
               </goals>
             </execution>
           </executions>
-
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>com.spotify.fmt</groupId>
+        <artifactId>fmt-maven-plugin</artifactId>
+        <version>2.23</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>format</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <skipSortingImports>true</skipSortingImports>
+          <style>google</style>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 
   <reporting>

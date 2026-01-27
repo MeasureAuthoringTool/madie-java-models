@@ -6,15 +6,18 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.time.Instant;
 import java.util.List;
 
 @Data
-@Builder(toBuilder=true)
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class MeasureMetaData {
-  private Organization steward;
-  private List<Organization> developers;
+public class MeasureMetaData implements Serializable {
+  @Valid private Organization steward;
+  @Valid private List<Organization> developers;
   private String description;
   private String copyright;
   private String disclaimer;
@@ -23,13 +26,17 @@ public class MeasureMetaData {
   private String clinicalRecommendation;
 
   private boolean draft;
-  private List<Reference> references;
-  @Valid
-  private List<Endorsement> endorsements;
-  private String riskAdjustment;
+  private Instant versionDate;
+  @Valid private List<Reference> references;
+  @Valid private List<Endorsement> endorsements;
   private String definition;
-  private boolean experimental;
+  private Boolean experimental;
   private String transmissionFormat;
-  private String supplementalDataElements;
+  private String measureSetTitle;
+  private CqlMetaData cqlMetaData;
+  private CodeConcept intendedVenue;
+  private String purpose;
+  private boolean composite;
 
+  @Valid private List<MeasureDefinition> measureDefinitions;
 }

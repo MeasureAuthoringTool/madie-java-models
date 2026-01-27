@@ -12,8 +12,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
 @JsonTypeName("QI-Core v4.1.1")
-@ToString(callSuper=true)
+@ToString(callSuper = true)
 @ValidFhirGroup
-public class FhirMeasure extends Measure {
-	
-}
+public class FhirMeasure extends Measure {}
