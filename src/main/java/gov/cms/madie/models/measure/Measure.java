@@ -56,6 +56,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @ValidIntendedVenue
 @ValidPurpose
 @ValidComposite
+@ValidReferences
 public class Measure implements Serializable, Cloneable {
 
   @Id private String id;
