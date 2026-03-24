@@ -14,4 +14,5 @@ public class UserDetailsDto {
   private String firstName;
   private String lastName;
   private String email;
+  private boolean active;
 }
