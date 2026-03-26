@@ -1,5 +1,6 @@
 package gov.cms.madie.models.dto;
 
+import gov.cms.madie.models.access.UserStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,5 +15,5 @@ public class UserDetailsDto {
   private String firstName;
   private String lastName;
   private String email;
-  private boolean active;
+  private UserStatus userStatus;
 }
