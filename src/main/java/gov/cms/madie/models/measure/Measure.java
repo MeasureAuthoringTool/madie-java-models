@@ -116,6 +116,7 @@ public class Measure implements Serializable, Cloneable {
   private String measureName;
 
   private boolean active = true;
+  private List<String> compositeMeasureIds;
   // TODO: determine if theres a way to set this from backend or if we should always trust user
   // input for this field
   private boolean cqlErrors;
