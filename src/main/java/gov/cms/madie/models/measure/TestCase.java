@@ -61,6 +61,7 @@ public class TestCase implements Serializable, Cloneable {
   @Getter private String json;
 
   private UUID patientId;
+  private UUID testCaseSetId;
 
   private HapiOperationOutcome hapiOperationOutcome;
 
