@@ -2,7 +2,6 @@ package gov.cms.madie.models.utils;
 
 import org.junit.jupiter.api.Test;
 
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -59,10 +58,8 @@ public class CmsIdFormatterTest {
 
   @Test
   void formatOmitsFhirSuffixForModelsThatDoNotStartWithQiCorePrefix() {
-    // "QI-Core" is matched literally; anything else gets no suffix.
     assertThat(CmsIdFormatter.format(2, "FHIR"), is(equalTo("0002")));
     assertThat(CmsIdFormatter.format(2, "Some Other Model"), is(equalTo("0002")));
-    // Case-sensitive: lowercase is not a match.
     assertThat(CmsIdFormatter.format(2, "qi-core v4.1.1"), is(equalTo("0002")));
   }
 
