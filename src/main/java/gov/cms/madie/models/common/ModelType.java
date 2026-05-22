@@ -14,7 +14,7 @@ public enum ModelType {
   QI_CORE_6_0_0(VersionConstants.QICORE_6_0_0_VERSION, "qicore6"),
   QI_CORE_7_0_0(VersionConstants.QICORE_7_0_0_VERSION, "qicore7"),
   QI_CORE_7_0_2(VersionConstants.QICORE_7_0_2_VERSION, "qicore7"),
-  US_QUALITY_CORE_0_5_6(VersionConstants.USQUALITYCORE_0_5_6_Version, "usqualitycore5"),
+  US_QUALITY_CORE_0_5_0(VersionConstants.USQUALITYCORE_0_5_0_Version, "usqualitycore05"),
   QDM_5_6(VersionConstants.QDM_5_6_VERSION, "qdm");
 
   private String value;
