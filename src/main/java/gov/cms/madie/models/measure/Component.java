@@ -14,6 +14,7 @@ public class Component {
   private String measureId;
   private String groupId;
   private Double weight;
+  @Transient private String measureName;
   @Transient private String groupDisplayId;
   @Transient private String measureLibraryName;
   @Transient private String measureVersion;
