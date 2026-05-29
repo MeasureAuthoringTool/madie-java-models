@@ -19,4 +19,5 @@ public class Component {
   @Transient private String measureLibraryName;
   @Transient private String measureVersion;
   @Transient private boolean draft;
+  @Transient private boolean multiGroupComponent;
 }
