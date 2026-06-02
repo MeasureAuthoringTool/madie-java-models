@@ -10,10 +10,12 @@ import java.util.regex.Pattern;
 
 @Getter
 public enum ModelType {
+  FHIR_4_0_1(VersionConstants.FHIR_4_0_1_VERSION, "fhir4"),
   QI_CORE(VersionConstants.QICORE_4_1_1_VERSION, "qicore"),
   QI_CORE_6_0_0(VersionConstants.QICORE_6_0_0_VERSION, "qicore6"),
   QI_CORE_7_0_0(VersionConstants.QICORE_7_0_0_VERSION, "qicore7"),
   QI_CORE_7_0_2(VersionConstants.QICORE_7_0_2_VERSION, "qicore7"),
+  US_CORE_6_0_1(VersionConstants.US_CORE_6_1_0_VERSION, "uscore6"),
   US_QUALITY_CORE_0_5_0(VersionConstants.USQUALITYCORE_0_5_0_Version, "usqualitycore05"),
   QDM_5_6(VersionConstants.QDM_5_6_VERSION, "qdm");
 
