@@ -78,6 +78,7 @@ public class CqlLibrary {
 
   @Transient private LibrarySet librarySet;
   @Transient private CqlLibraryLockInfo cqlLibraryLock;
+  @Transient private String ownerDisplayName;
 
   @GroupSequence({
     CqlLibrary.ValidationOrder1.class,
