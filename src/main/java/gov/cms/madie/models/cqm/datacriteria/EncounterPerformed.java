@@ -1,5 +1,7 @@
 package gov.cms.madie.models.cqm.datacriteria;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import gov.cms.madie.models.cqm.datacriteria.basetypes.DataElement;
 import gov.cms.madie.models.cqm.datacriteria.attributes.Entity;
 import gov.cms.madie.models.cqm.datacriteria.attributes.FacilityLocation;
@@ -51,6 +53,8 @@ public class EncounterPerformed extends DataElement {
   private String qdmCategory = "encounter";
   private String qdmStatus = "performed";
   private String qdmVersion = "5.6";
+
+  @JsonProperty("_type")
   private String _type = "QDM::EncounterPerformed";
 
   public void shiftDates(int shifted) {

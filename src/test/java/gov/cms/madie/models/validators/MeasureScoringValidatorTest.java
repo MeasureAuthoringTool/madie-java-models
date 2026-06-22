@@ -14,9 +14,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 
 import gov.cms.madie.models.measure.BaseConfigurationTypes;
 import gov.cms.madie.models.measure.MeasureScoring;
@@ -99,8 +97,7 @@ public class MeasureScoringValidatorTest {
   }
 
   @Test
-  public void testDeserializeInvalidBaseConfigurationTypesThrowsException()
-      throws JsonMappingException, JsonProcessingException {
+  public void testDeserializeInvalidBaseConfigurationTypesThrowsException() {
     String qdmMeasureStr =
         "{\n"
             + "    \"model\": \"QDM v5.6\",\n"
@@ -117,7 +114,7 @@ public class MeasureScoringValidatorTest {
     ObjectMapper mapper = new ObjectMapper();
 
     assertThrows(
-        com.fasterxml.jackson.databind.exc.InvalidFormatException.class,
+        tools.jackson.databind.exc.InvalidFormatException.class,
         () -> mapper.readValue(qdmMeasureStr, QdmMeasure.class));
   }
 
