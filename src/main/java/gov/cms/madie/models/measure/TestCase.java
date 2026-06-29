@@ -68,6 +68,7 @@ public class TestCase implements Serializable, Cloneable {
   private HapiOperationOutcome hapiOperationOutcome;
 
   @Valid private List<TestCaseGroupPopulation> groupPopulations;
+  @Valid private List<ComponentProfile> componentProfiles;
 
   @JsonProperty("bundleTypeUpdated")
   private boolean isBundleTypeUpdated;
