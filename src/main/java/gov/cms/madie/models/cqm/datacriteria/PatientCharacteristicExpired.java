@@ -1,5 +1,7 @@
 package gov.cms.madie.models.cqm.datacriteria;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import gov.cms.madie.models.cqm.datacriteria.basetypes.DataElement;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.LocalDateTimeFormatConstant;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Code;
@@ -35,6 +37,8 @@ public class PatientCharacteristicExpired extends DataElement {
   private String qdmCategory = "patient_characteristic";
   private String qdmStatus = "expired";
   private String qdmVersion = "5.6";
+
+  @JsonProperty("_type")
   private String _type = "QDM::PatientCharacteristicExpired";
 
   public void shiftDates(int shifted) {

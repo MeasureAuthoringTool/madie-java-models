@@ -1,5 +1,7 @@
 package gov.cms.madie.models.cqm.datacriteria.basetypes;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
@@ -116,6 +118,7 @@ public class DataElement {
   private String desc;
   private String codeId;
 
+  @JsonProperty("_id")
   private String _id;
 
   public void shiftDates(int shifted) throws ShiftDatesException {

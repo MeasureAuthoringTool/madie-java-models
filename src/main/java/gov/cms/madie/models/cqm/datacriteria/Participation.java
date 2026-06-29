@@ -1,5 +1,7 @@
 package gov.cms.madie.models.cqm.datacriteria;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import gov.cms.madie.models.cqm.datacriteria.basetypes.DataElement;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Interval;
 import lombok.AllArgsConstructor;
@@ -17,6 +19,8 @@ public class Participation extends DataElement {
   private String hqmfOid = "2.16.840.1.113883.10.20.28.4.130";
   private String qdmCategory = "participation";
   private String qdmVersion = "5.6";
+
+  @JsonProperty("_type")
   private String _type = "QDM::Participation";
 
   public void shiftDates(int shifted) {
