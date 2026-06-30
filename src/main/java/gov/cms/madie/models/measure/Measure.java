@@ -77,6 +77,7 @@ public class Measure implements Serializable, Cloneable {
   private String revisionNumber;
   private String state;
 
+  @XssFilter
   @Indexed
   @NotBlank(
       groups = {ValidationOrder1.class},
@@ -98,6 +99,7 @@ public class Measure implements Serializable, Cloneable {
       message = "eCQM Abbreviated Title cannot be more than 32 characters.")
   private String ecqmTitle;
 
+  @XssFilter
   @NotBlank(
       groups = {ValidationOrder1.class},
       message = "Measure Name is required.")
