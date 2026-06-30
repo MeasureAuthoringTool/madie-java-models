@@ -1,5 +1,7 @@
 package gov.cms.madie.models.cqm.datacriteria.attributes;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -29,5 +31,7 @@ public class FacilityLocation implements Attribute {
   private Interval locationPeriod;
 
   private String qdmVersion = "5.6";
+
+  @JsonProperty("_type")
   private String _type = "QDM::FacilityLocation";
 }

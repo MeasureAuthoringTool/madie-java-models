@@ -1,5 +1,7 @@
 package gov.cms.madie.models.cqm.datacriteria;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import gov.cms.madie.models.cqm.datacriteria.basetypes.DataElement;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.LocalDateTimeFormatConstant;
 import gov.cms.madie.models.cqm.datacriteria.attributes.Entity;
@@ -35,6 +37,8 @@ public class PatientCareExperience extends DataElement {
   private String hqmfOid = "2.16.840.1.113883.10.20.28.4.52";
   private String qdmCategory = "care_experience";
   private String qdmVersion = "5.6";
+
+  @JsonProperty("_type")
   private String _type = "QDM::PatientCareExperience";
 
   public void shiftDates(int shifted) {

@@ -1,5 +1,7 @@
 package gov.cms.madie.models.cqm.datacriteria;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import gov.cms.madie.models.cqm.datacriteria.basetypes.DataElement;
 import gov.cms.madie.models.cqm.datacriteria.attributes.Entity;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Code;
@@ -24,6 +26,8 @@ public class Symptom extends DataElement {
   private String qrdaOid = "2.16.840.1.113883.10.20.24.3.136";
   private String qdmCategory = "symptom";
   private String qdmVersion = "5.6";
+
+  @JsonProperty("_type")
   private String _type = "QDM::Symptom";
 
   public void shiftDates(int shifted) {

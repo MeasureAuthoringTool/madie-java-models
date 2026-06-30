@@ -1,5 +1,7 @@
 package gov.cms.madie.models.cqm.datacriteria;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Code;
@@ -15,8 +17,13 @@ import lombok.experimental.SuperBuilder;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DiagnosisComponent {
   private String qdmVersion = "5.6";
+
+  @JsonProperty("_type")
   private String _type = "QDM::DiagnosisComponent";
+
+  @JsonProperty("_id")
   private String _id;
+
   private Code code;
   private Code presentOnAdmissionIndicator;
   private Integer rank;
