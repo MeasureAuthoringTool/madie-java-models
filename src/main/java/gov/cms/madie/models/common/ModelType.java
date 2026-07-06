@@ -22,11 +22,13 @@ public enum ModelType {
   private String value;
   private String shortValue;
   private static final Map<String, ModelType> MODEL_TYPE_BY_VALUE = new HashMap<>();
+  private static final Map<String, ModelType> MODEL_TYPE_BY_SHORT_VALUE = new HashMap<>();
   private static final Pattern VERSION_PATTERN = Pattern.compile("v(\\d+(\\.\\d+)*)");
 
   static {
     for (ModelType mt : values()) {
       MODEL_TYPE_BY_VALUE.put(mt.getValue(), mt);
+      MODEL_TYPE_BY_SHORT_VALUE.put(mt.getShortValue(), mt);
     }
   }
 
@@ -54,5 +56,9 @@ public enum ModelType {
 
   public static ModelType valueOfName(final String name) {
     return MODEL_TYPE_BY_VALUE.get(name);
+  }
+
+  public static ModelType byShortValue(final String shortValue) {
+    return MODEL_TYPE_BY_SHORT_VALUE.get(shortValue);
   }
 }
