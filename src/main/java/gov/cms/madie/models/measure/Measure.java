@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import gov.cms.madie.models.common.IncludedLibrary;
+import gov.cms.madie.models.common.Review;
 import gov.cms.madie.models.utils.VersionConstants;
 import gov.cms.madie.models.validators.*;
 import jakarta.validation.GroupSequence;
@@ -163,6 +164,7 @@ public class Measure implements Serializable, Cloneable {
   private String versionId;
 
   @Deprecated private ReviewMetaData reviewMetaData = new ReviewMetaData();
+  private Review review;
   @Transient private MeasureSet measureSet;
 
   @Transient private MeasureLock measureLock;
