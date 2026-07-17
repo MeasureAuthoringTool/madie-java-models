@@ -16,8 +16,13 @@ public class XssValidator implements ConstraintValidator<XssFilter, String> {
   @Override
   public boolean isValid(String field, ConstraintValidatorContext context) {
     if (field != null) {
-
-      String decoded = URLDecoder.decode(field, StandardCharsets.UTF_8);
+      String decoded;
+      try {
+        decoded = URLDecoder.decode(field, StandardCharsets.UTF_8);
+      } catch (IllegalArgumentException e) {
+        // If decoding fails, we can consider the input invalid
+        return false;
+      }
 
       if (EXPRESSION_PATTERN.matcher(decoded).matches()) {
         return false;
