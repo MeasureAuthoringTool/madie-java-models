@@ -1,37 +1,34 @@
 package gov.cms.madie.models.library;
 
-import gov.cms.madie.models.common.Review;
 import gov.cms.madie.models.common.ReviewStatus;
-import gov.cms.madie.models.common.Version;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class CqlLibraryReviewTest {
 
   @Test
   void testCqlLibraryReviewRoundTrip() {
-    Review review =
-        Review.builder().status(ReviewStatus.READY_FOR_REVIEW).comment("Looks good").build();
-
-    CqlLibrary library =
-        CqlLibrary.builder()
-            .id("lib-1")
+    CqlLibraryReview review =
+        CqlLibraryReview.builder()
+            .id("review-1")
+            .libraryId("lib-1")
             .librarySetId("set-1")
-            .cqlLibraryName("TestLibrary")
-            .model("QI-Core v4.1.1")
-            .version(new Version(0, 0, 1))
-            .review(review)
+            .status(ReviewStatus.READY_FOR_REVIEW)
+            .comment("Looks good")
             .build();
 
-    assertEquals(ReviewStatus.READY_FOR_REVIEW, library.getReview().getStatus());
-    assertEquals("Looks good", library.getReview().getComment());
+    assertEquals("review-1", review.getId());
+    assertEquals("lib-1", review.getLibraryId());
+    assertEquals("set-1", review.getLibrarySetId());
+    assertEquals(ReviewStatus.READY_FOR_REVIEW, review.getStatus());
+    assertEquals("Looks good", review.getComment());
   }
 
   @Test
-  void testCqlLibraryReviewDefaultsToNull() {
-    CqlLibrary library = new CqlLibrary();
-    assertNull(library.getReview());
+  void testCqlLibraryReviewBuilderDefaults() {
+    CqlLibraryReview review = CqlLibraryReview.builder().build();
+    assertNotNull(review);
   }
 }

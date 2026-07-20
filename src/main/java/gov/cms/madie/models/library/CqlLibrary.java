@@ -4,7 +4,7 @@ import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonSerialize;
 
 import gov.cms.madie.models.common.IncludedLibrary;
-import gov.cms.madie.models.common.Review;
+import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.validators.EnumValidator;
 import gov.cms.madie.models.validators.ValidLibraryName;
 import gov.cms.madie.models.utils.VersionJsonSerializer;
@@ -76,7 +76,6 @@ public class CqlLibrary {
   private String publisher;
   private String description;
   private boolean experimental;
-  private Review review;
 
   @Transient private LibrarySet librarySet;
   @Transient private CqlLibraryLockInfo cqlLibraryLock;
