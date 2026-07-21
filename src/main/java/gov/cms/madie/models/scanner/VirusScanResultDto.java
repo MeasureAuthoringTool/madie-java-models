@@ -13,6 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 public class VirusScanResultDto {
   private String fileName;
-  private boolean infected;
+  private Boolean infected;
   private List<String> viruses;
 }
