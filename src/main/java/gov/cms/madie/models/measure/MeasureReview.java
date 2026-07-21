@@ -13,7 +13,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "measureReviews")
 public class MeasureReview implements Serializable {
   @Id private String id;
 

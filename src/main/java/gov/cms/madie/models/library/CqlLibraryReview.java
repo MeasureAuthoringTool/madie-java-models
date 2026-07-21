@@ -13,7 +13,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "cqlLibraryReviews")
 public class CqlLibraryReview implements Serializable {
   @Id private String id;
 
