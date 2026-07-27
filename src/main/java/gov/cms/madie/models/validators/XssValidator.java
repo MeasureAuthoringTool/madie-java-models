@@ -20,7 +20,7 @@ public class XssValidator implements ConstraintValidator<XssFilter, String> {
       try {
         decoded = URLDecoder.decode(field, StandardCharsets.UTF_8);
       } catch (IllegalArgumentException e) {
-        // Treat malformed percent-encoding as literal text and continue validation.
+        // Treat malformed encoding strings as plain text and continue validation.
         decoded = field;
       }
 
