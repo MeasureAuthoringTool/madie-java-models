@@ -80,9 +80,9 @@ class XssValidatorTest {
   }
 
   @ParameterizedTest
-  @ValueSource(strings = {"%", "%ZZ", "%3"})
-  void isValidReturnsFalseForMalformedUrlEncodedStrings(String malformedEncoded) {
-    assertFalse(xssValidator.isValid(malformedEncoded, context));
+  @ValueSource(strings = {"%", "%ZZ", "%3", "9%"})
+  void isValidReturnsTrueForMalformedUrlEncodedStrings(String malformedEncoded) {
+    assertTrue(xssValidator.isValid(malformedEncoded, context));
   }
 
   @ParameterizedTest
