@@ -36,7 +36,10 @@ class XssValidatorTest {
         "   ",
         "Just a regular string with no tags",
         "Medicare Advantage Plan 2026",
-        "This is safe alphanumeric input 123"
+        "This is safe alphanumeric input 123",
+        "Something is < 3",
+        "Something is > 3",
+        "Example #11"
       })
   void testIsValidReturnsTrueForSafeStrings(String safeInput) {
     assertTrue(xssValidator.isValid(safeInput, context));
@@ -60,6 +63,7 @@ class XssValidatorTest {
       strings = {
         "<script>alert(1)</script>",
         "<html><body>malicious</body></html>",
+        "<body onresize=\"print()\">",
         "<div>plain div tag</div>",
         "<b>bold text</b>",
         "<img src=x onerror=alert(1)>"
@@ -80,8 +84,22 @@ class XssValidatorTest {
   }
 
   @ParameterizedTest
-  @ValueSource(strings = {"hello%20world", "a+b", "simple%2Ddash", "%", "%ZZ", "%3", "9%"})
+  @ValueSource(
+      strings = {
+        "hello%20world",
+        "a+b",
+        "simple%2Ddash",
+        "%3C%203",
+        "%3E%203",
+        "Example%20%2311",
+      })
   void isValidReturnsTrueForWellFormedUrlEncodedStrings(String wellFormedEncoded) {
+    assertTrue(xssValidator.isValid(wellFormedEncoded, context));
+  }
+
+  @ParameterizedTest
+  @ValueSource(strings = {"%", "%ZZ", "%3", "9%"})
+  void isValidReturnsTrueForInvalidEncodedStrings(String wellFormedEncoded) {
     assertTrue(xssValidator.isValid(wellFormedEncoded, context));
   }
 }
