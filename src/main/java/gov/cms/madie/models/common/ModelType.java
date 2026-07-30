@@ -10,20 +10,25 @@ import java.util.regex.Pattern;
 
 @Getter
 public enum ModelType {
+  FHIR_4_0_1(VersionConstants.FHIR_4_0_1_VERSION, "fhir4"),
   QI_CORE(VersionConstants.QICORE_4_1_1_VERSION, "qicore"),
   QI_CORE_6_0_0(VersionConstants.QICORE_6_0_0_VERSION, "qicore6"),
   QI_CORE_7_0_0(VersionConstants.QICORE_7_0_0_VERSION, "qicore7"),
   QI_CORE_7_0_2(VersionConstants.QICORE_7_0_2_VERSION, "qicore7"),
+  US_CORE_6_1_0(VersionConstants.US_CORE_6_1_0_VERSION, "uscore6"),
+  US_QUALITY_CORE_0_5_0(VersionConstants.USQUALITYCORE_0_5_0_Version, "usqualitycore05"),
   QDM_5_6(VersionConstants.QDM_5_6_VERSION, "qdm");
 
   private String value;
   private String shortValue;
   private static final Map<String, ModelType> MODEL_TYPE_BY_VALUE = new HashMap<>();
+  private static final Map<String, ModelType> MODEL_TYPE_BY_SHORT_VALUE = new HashMap<>();
   private static final Pattern VERSION_PATTERN = Pattern.compile("v(\\d+(\\.\\d+)*)");
 
   static {
     for (ModelType mt : values()) {
       MODEL_TYPE_BY_VALUE.put(mt.getValue(), mt);
+      MODEL_TYPE_BY_SHORT_VALUE.put(mt.getShortValue(), mt);
     }
   }
 
@@ -51,5 +56,9 @@ public enum ModelType {
 
   public static ModelType valueOfName(final String name) {
     return MODEL_TYPE_BY_VALUE.get(name);
+  }
+
+  public static ModelType byShortValue(final String shortValue) {
+    return MODEL_TYPE_BY_SHORT_VALUE.get(shortValue);
   }
 }

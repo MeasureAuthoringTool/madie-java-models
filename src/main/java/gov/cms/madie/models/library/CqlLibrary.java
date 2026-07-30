@@ -1,9 +1,10 @@
 package gov.cms.madie.models.library;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import tools.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonSerialize;
 
 import gov.cms.madie.models.common.IncludedLibrary;
+import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.validators.EnumValidator;
 import gov.cms.madie.models.validators.ValidLibraryName;
 import gov.cms.madie.models.utils.VersionJsonSerializer;
@@ -78,6 +79,7 @@ public class CqlLibrary {
 
   @Transient private LibrarySet librarySet;
   @Transient private CqlLibraryLockInfo cqlLibraryLock;
+  @Transient private String ownerDisplayName;
 
   @GroupSequence({
     CqlLibrary.ValidationOrder1.class,

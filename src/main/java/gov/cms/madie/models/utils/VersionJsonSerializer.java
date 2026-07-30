@@ -1,37 +1,33 @@
 package gov.cms.madie.models.utils;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-
 import gov.cms.madie.models.common.Version;
-
-import java.io.IOException;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.jackson.JsonComponent;
+import org.springframework.boot.jackson.JacksonComponent;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueDeserializer;
+import tools.jackson.databind.ValueSerializer;
 
 @Slf4j
-@JsonComponent
+@JacksonComponent
 public class VersionJsonSerializer {
 
-  public static class VersionSerializer extends JsonSerializer<Version> {
+  public static class VersionSerializer extends ValueSerializer<Version> {
     @Override
-    public void serialize(Version value, JsonGenerator gen, SerializerProvider serializers)
-        throws IOException {
+    public void serialize(Version value, JsonGenerator gen, SerializationContext serializers) {
       gen.writeString(value == null ? null : value.toString());
     }
   }
 
-  public static class VersionDeserializer extends JsonDeserializer<Version> {
+  public static class VersionDeserializer extends ValueDeserializer<Version> {
     @Override
     public Version deserialize(JsonParser jp, DeserializationContext ctxt) {
       try {
-        JsonNode node = jp.getCodec().readTree(jp);
-        return Version.parse(node.asText());
+        JsonNode node = ctxt.readTree(jp);
+        return Version.parse(node.isValueNode() ? node.asString() : "");
       } catch (Exception ex) {
         log.error("An error occurred while deserializing the version", ex);
       }

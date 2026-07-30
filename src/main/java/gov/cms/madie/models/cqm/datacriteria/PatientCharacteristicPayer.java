@@ -1,5 +1,7 @@
 package gov.cms.madie.models.cqm.datacriteria;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import gov.cms.madie.models.cqm.datacriteria.basetypes.DataElement;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Interval;
 import lombok.AllArgsConstructor;
@@ -18,6 +20,8 @@ public class PatientCharacteristicPayer extends DataElement {
   private String qdmCategory = "patient_characteristic";
   private String qdmStatus = "payer";
   private String qdmVersion = "5.6";
+
+  @JsonProperty("_type")
   private String _type = "QDM::PatientCharacteristicPayer";
 
   public void shiftDates(int shifted) {

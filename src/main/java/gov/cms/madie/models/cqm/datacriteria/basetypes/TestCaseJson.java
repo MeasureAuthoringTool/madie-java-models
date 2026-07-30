@@ -1,5 +1,7 @@
 package gov.cms.madie.models.cqm.datacriteria.basetypes;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.ZonedDateTime;
 import java.util.List;
 
@@ -23,7 +25,9 @@ import lombok.Setter;
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TestCaseJson {
+  @JsonProperty("_id")
   private String _id;
+
   private String qdmVersion = "5.6";
   private List<DataElement> dataElements;
 

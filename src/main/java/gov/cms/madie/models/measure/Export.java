@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
+import java.util.List;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -19,6 +21,17 @@ public class Export {
   private String measureBundleJsonWithoutWarnings;
   private String measureBundleWithoutWarningsGridFsId;
   private String humanReadable;
+  private List<ComponentHumanReadable> componentHumanReadables;
   private byte[] packageData;
   private byte[] publishablePackageData; // Elm does not include Warnings
+
+  @Data
+  @Builder
+  @NoArgsConstructor
+  @AllArgsConstructor
+  public static class ComponentHumanReadable {
+    private String componentId;
+    private String fileName;
+    private String humanReadable;
+  }
 }

@@ -27,7 +27,7 @@ public class MeasureMetaData implements Serializable {
 
   private boolean draft;
   private Instant versionDate;
-  @Valid private List<Reference> references;
+  private List<Reference> references;
   @Valid private List<Endorsement> endorsements;
   private String definition;
   private Boolean experimental;

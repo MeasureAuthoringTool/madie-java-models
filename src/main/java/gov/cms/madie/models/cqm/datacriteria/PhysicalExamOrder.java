@@ -1,5 +1,7 @@
 package gov.cms.madie.models.cqm.datacriteria;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import gov.cms.madie.models.cqm.datacriteria.basetypes.DataElement;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.LocalDateTimeFormatConstant;
 import gov.cms.madie.models.cqm.datacriteria.attributes.Entity;
@@ -40,6 +42,8 @@ public class PhysicalExamOrder extends DataElement {
   private String qdmCategory = "physical_exam";
   private String qdmStatus = "order";
   private String qdmVersion = "5.6";
+
+  @JsonProperty("_type")
   private String _type = "QDM::PhysicalExamOrder";
 
   public void shiftDates(int shifted) {

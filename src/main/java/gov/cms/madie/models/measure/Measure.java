@@ -25,8 +25,8 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import tools.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonSerialize;
 
 import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.common.Version;
@@ -50,12 +50,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
   @Type(value = FhirMeasure.class, name = VersionConstants.QICORE_6_0_0_VERSION),
   @Type(value = FhirMeasure.class, name = VersionConstants.QICORE_7_0_0_VERSION),
   @Type(value = FhirMeasure.class, name = VersionConstants.QICORE_7_0_2_VERSION),
-  @Type(value = QdmMeasure.class, name = VersionConstants.QDM_5_6_VERSION)
+  @Type(value = FhirMeasure.class, name = VersionConstants.USQUALITYCORE_0_5_0_Version),
+  @Type(value = QdmMeasure.class, name = VersionConstants.QDM_5_6_VERSION),
 })
 @ValidLibraryName
 @ValidIntendedVenue
 @ValidPurpose
 @ValidComposite
+@ValidReferences
 public class Measure implements Serializable, Cloneable {
 
   @Id private String id;
@@ -75,6 +77,7 @@ public class Measure implements Serializable, Cloneable {
   private String revisionNumber;
   private String state;
 
+  @XssFilter
   @Indexed
   @NotBlank(
       groups = {ValidationOrder1.class},
@@ -96,6 +99,7 @@ public class Measure implements Serializable, Cloneable {
       message = "eCQM Abbreviated Title cannot be more than 32 characters.")
   private String ecqmTitle;
 
+  @XssFilter
   @NotBlank(
       groups = {ValidationOrder1.class},
       message = "Measure Name is required.")
@@ -115,6 +119,7 @@ public class Measure implements Serializable, Cloneable {
   private String measureName;
 
   private boolean active = true;
+  private List<String> compositeMeasureIds;
   // TODO: determine if theres a way to set this from backend or if we should always trust user
   // input for this field
   private boolean cqlErrors;

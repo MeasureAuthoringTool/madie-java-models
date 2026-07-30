@@ -1,5 +1,7 @@
 package gov.cms.madie.models.cqm.datacriteria;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import gov.cms.madie.models.cqm.datacriteria.basetypes.DataElement;
 import gov.cms.madie.models.cqm.datacriteria.attributes.Entity;
 import gov.cms.madie.models.cqm.datacriteria.basetypes.Code;
@@ -66,6 +68,8 @@ public class LaboratoryTestPerformed extends DataElement {
   private String qdmCategory = "laboratory_test";
   private String qdmStatus = "performed";
   private String qdmVersion = "5.6";
+
+  @JsonProperty("_type")
   private String _type = "QDM::LaboratoryTestPerformed";
 
   public void shiftDates(int shifted) {

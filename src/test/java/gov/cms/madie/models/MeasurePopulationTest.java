@@ -2,15 +2,15 @@ package gov.cms.madie.models;
 
 import gov.cms.madie.models.measure.PopulationType;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class MeasurePopulationTest {
   @Test
   public void testPopulationToCode() {
-    Assert.assertEquals(PopulationType.INITIAL_POPULATION.toCode(), "initial-population");
+    Assertions.assertEquals(PopulationType.INITIAL_POPULATION.toCode(), "initial-population");
     assertEquals(PopulationType.NUMERATOR.toCode(), "numerator");
     assertEquals(PopulationType.NUMERATOR_EXCLUSION.toCode(), "numerator-exclusion");
     assertEquals(PopulationType.DENOMINATOR.toCode(), "denominator");

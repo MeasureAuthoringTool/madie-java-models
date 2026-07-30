@@ -1,5 +1,7 @@
 package gov.cms.madie.models.measure;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -61,11 +63,16 @@ public class TestCase implements Serializable, Cloneable {
   @Getter private String json;
 
   private UUID patientId;
+  private UUID testCaseSetId;
 
   private HapiOperationOutcome hapiOperationOutcome;
 
   @Valid private List<TestCaseGroupPopulation> groupPopulations;
+  @Valid private List<ComponentProfile> componentProfiles;
+
+  @JsonProperty("bundleTypeUpdated")
   private boolean isBundleTypeUpdated;
+
   private String validationStatus;
   private String validationTaskId;
 
