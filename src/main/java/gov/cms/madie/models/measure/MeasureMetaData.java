@@ -35,6 +35,7 @@ public class MeasureMetaData implements Serializable {
   private String measureSetTitle;
   private CqlMetaData cqlMetaData;
   private CodeConcept intendedVenue;
+  private Boolean telehealthEligible;
   private String purpose;
   private boolean composite;
 
