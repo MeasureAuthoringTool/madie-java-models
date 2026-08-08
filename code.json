@@ -1,0 +1,59 @@
+{
+  "name": "madie-java-models",
+  "description": "Java models for any Java project associated with MADiE",
+  "longDescription": "",
+  "status": "",
+  "permissions": {
+    "license": [
+      {
+        "name": "",
+        "URL": ""
+      }
+    ],
+    "usageType": "",
+    "exemptionText": ""
+  },
+  "organization": "",
+  "repositoryURL": "https://github.com/MeasureAuthoringTool/madie-java-models",
+  "projectURL": "",
+  "repositoryHost": "github",
+  "repositoryVisibility": "",
+  "vcs": "git",
+  "laborHours": 5992,
+  "reuseFrequency": {
+    "forks": 0,
+    "clones": 0
+  },
+  "platforms": [],
+  "categories": [],
+  "softwareType": "",
+  "languages": [
+    "Java"
+  ],
+  "maintenance": "",
+  "contractNumber": "",
+  "date": {
+    "created": "2022-04-06T16:23:09Z",
+    "lastModified": "2026-02-10T18:19:24Z",
+    "metaDataLastUpdated": "2026-03-01T00:21:28.000Z"
+  },
+  "tags": [],
+  "contact": {
+    "email": "",
+    "name": ""
+  },
+  "feedbackMechanisms": [
+    "https://github.com/MeasureAuthoringTool/madie-java-models/issues"
+  ],
+  "localisation": false,
+  "repositoryType": "",
+  "userInput": false,
+  "fismaLevel": "",
+  "group": "",
+  "projects": [],
+  "systems": [],
+  "upstream": "",
+  "subsetInHealthcare": [],
+  "userType": [],
+  "maturityModelTier": 0
+}
