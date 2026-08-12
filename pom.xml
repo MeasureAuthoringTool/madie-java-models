@@ -16,7 +16,7 @@
     <mvn.checkstyle.version>3.3.0</mvn.checkstyle.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <springboot.version>4.0.7</springboot.version>
+    <springboot.version>4.1.0</springboot.version>
   </properties>
 
   <distributionManagement>
