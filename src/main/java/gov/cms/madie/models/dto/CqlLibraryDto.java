@@ -1,5 +1,6 @@
 package gov.cms.madie.models.dto;
 
+import gov.cms.madie.models.library.LibrarySet;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +23,8 @@ public class CqlLibraryDto {
   private boolean experimental;
   private boolean draft;
   private String ownerDisplayName;
+  private String librarySetId;
+  private LibrarySet librarySet;
   private String namespacePrefix;
   private boolean external;
   private String fhirResource;
