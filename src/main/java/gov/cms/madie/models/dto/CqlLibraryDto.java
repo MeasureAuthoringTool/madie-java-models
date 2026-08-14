@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CqlLibraryDTO {
+public class CqlLibraryDto {
   private String id;
   private String cqlLibraryName;
   private String model;
