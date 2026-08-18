@@ -2,6 +2,7 @@ package gov.cms.madie.models.library;
 
 import gov.cms.madie.models.common.ReviewStatus;
 import java.io.Serializable;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,4 +21,5 @@ public class CqlLibraryReview implements Serializable {
 
   private ReviewStatus status;
   private String comment;
+  private List<String> reviewers;
 }
