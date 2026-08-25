@@ -29,4 +29,6 @@ public class TestCaseGroupPopulation implements Serializable {
   private List<TestCasePopulationValue> populationValues;
 
   private List<TestCaseStratificationValue> stratificationValues;
+
+  private CompositeScoreExpectedValue compositeScoreValues;
 }
