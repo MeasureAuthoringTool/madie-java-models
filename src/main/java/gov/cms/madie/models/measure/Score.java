@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Score implements Serializable {
-  private Double expected;
-  private Double actual;
+  private double expected;
+  private double actual;
 }
