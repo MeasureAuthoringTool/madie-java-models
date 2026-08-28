@@ -6,7 +6,7 @@
 
   <groupId>gov.cms.madie</groupId>
   <artifactId>madie-java-models</artifactId>
-  <version>0.10.17-SNAPSHOT</version>
+  <version>0.10.18-SNAPSHOT</version>
   <name>madie-java-models</name>
   <description>Java based models for MADiE microservices</description>
   <properties>
@@ -16,7 +16,7 @@
     <mvn.checkstyle.version>3.3.0</mvn.checkstyle.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <springboot.version>4.0.7</springboot.version>
+    <springboot.version>4.1.1</springboot.version>
   </properties>
 
   <distributionManagement>
