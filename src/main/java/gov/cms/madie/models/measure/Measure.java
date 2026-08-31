@@ -87,6 +87,15 @@ public class Measure implements Serializable, Cloneable {
       max = 64,
       groups = {ValidationOrder8.class},
       message = "Measure Library Name cannot be more than 64 characters.")
+  @Pattern(
+      regexp = "^[^_]+$",
+      groups = {ValidationOrder3.class},
+      message = "Measure Library Name can not contain underscores.")
+  @Pattern(
+      regexp = "^[A-Z][a-zA-Z0-9]+$",
+      groups = {ValidationOrder4.class},
+      message =
+          "Measure Library Name must start with an uppercase letter and can only contain alphanumeric characters.")
   private String cqlLibraryName;
 
   @NotBlank(
