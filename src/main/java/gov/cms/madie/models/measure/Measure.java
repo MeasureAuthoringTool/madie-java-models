@@ -93,7 +93,7 @@ public class Measure implements Serializable, Cloneable {
       message = "Measure Library Name can not contain underscores.")
   @Pattern(
       regexp = "^[A-Z][a-zA-Z0-9]+$",
-      groups = {ValidationOrder3.class},
+      groups = {ValidationOrder4.class},
       message =
           "Measure Library Name must start with an uppercase letter and can only contain alphanumeric characters.")
   private String cqlLibraryName;
