@@ -6,7 +6,7 @@
 
   <groupId>gov.cms.madie</groupId>
   <artifactId>madie-java-models</artifactId>
-  <version>0.10.19-SNAPSHOT</version>
+  <version>0.10.20-SNAPSHOT</version>
   <name>madie-java-models</name>
   <description>Java based models for MADiE microservices</description>
   <properties>
@@ -94,7 +94,7 @@
     <dependency>
       <groupId>org.jsoup</groupId>
       <artifactId>jsoup</artifactId>
-      <version>1.15.3</version>
+      <version>1.23.2</version>
     </dependency>
   </dependencies>
 
