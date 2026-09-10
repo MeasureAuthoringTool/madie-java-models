@@ -7,6 +7,7 @@ import gov.cms.madie.models.common.IncludedLibrary;
 import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.validators.EnumValidator;
 import gov.cms.madie.models.validators.ValidLibraryName;
+import gov.cms.madie.models.validators.XssFilter;
 import gov.cms.madie.models.utils.VersionJsonSerializer;
 import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.common.Version;
@@ -40,12 +41,22 @@ public class CqlLibrary {
 
   @NotNull(message = "Library name is required.")
   @NotBlank(
-      groups = {ValidationOrder1.class},
+      groups = {CqlLibrary.ValidationOrder1.class},
       message = "Library name is required.")
   @Size(
       max = 64,
-      groups = {ValidationOrder2.class},
+      groups = {CqlLibrary.ValidationOrder2.class},
       message = "Library name cannot be more than 64 characters.")
+  @Pattern(
+      regexp = "^[^_]+$",
+      groups = {CqlLibrary.ValidationOrder3.class},
+      message = "Library Name can not contain underscores.")
+  @Pattern(
+      regexp = "^[A-Z][a-zA-Z0-9]+$",
+      groups = {CqlLibrary.ValidationOrder4.class},
+      message =
+          "Library Name must start with an uppercase letter and can only contain alphanumeric characters.")
+  @XssFilter
   @Indexed
   private String cqlLibraryName;
 
@@ -73,8 +84,8 @@ public class CqlLibrary {
   private String createdBy;
   private Instant lastModifiedAt;
   private String lastModifiedBy;
-  private String publisher;
-  private String description;
+  @XssFilter private String publisher;
+  @XssFilter private String description;
   private boolean experimental;
 
   @Transient private LibrarySet librarySet;
