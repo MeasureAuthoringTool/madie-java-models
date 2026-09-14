@@ -9,7 +9,6 @@ import gov.cms.madie.models.validators.EnumValidator;
 import gov.cms.madie.models.validators.ValidLibraryName;
 import gov.cms.madie.models.validators.XssFilter;
 import gov.cms.madie.models.utils.VersionJsonSerializer;
-import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.common.Version;
 
 import java.time.Instant;
@@ -47,15 +46,6 @@ public class CqlLibrary {
       max = 64,
       groups = {CqlLibrary.ValidationOrder2.class},
       message = "Library name cannot be more than 64 characters.")
-  @Pattern(
-      regexp = "^[^_]+$",
-      groups = {CqlLibrary.ValidationOrder3.class},
-      message = "Library Name can not contain underscores.")
-  @Pattern(
-      regexp = "^[A-Z][a-zA-Z0-9]+$",
-      groups = {CqlLibrary.ValidationOrder4.class},
-      message =
-          "Library Name must start with an uppercase letter and can only contain alphanumeric characters.")
   @XssFilter
   @Indexed
   private String cqlLibraryName;
