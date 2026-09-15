@@ -13,6 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.library.CqlLibrary;
+import gov.cms.madie.models.library.CqlLibraryDraft;
 import gov.cms.madie.models.measure.Measure;
 
 @ExtendWith(SpringExtension.class)
@@ -23,6 +24,7 @@ public class ValidLibraryNameValidatorTest {
 
   private Measure measure;
   private CqlLibrary cqlLibrary;
+  private CqlLibraryDraft cqlLibraryDraft;
 
   @BeforeEach
   public void setUp() {
@@ -40,6 +42,11 @@ public class ValidLibraryNameValidatorTest {
         CqlLibrary.builder()
             .model(ModelType.QI_CORE.getValue())
             .id("testId")
+            .cqlLibraryName("TestCqlLibraryName")
+            .build();
+    cqlLibraryDraft =
+        CqlLibraryDraft.builder()
+            .model(ModelType.QI_CORE.getValue())
             .cqlLibraryName("TestCqlLibraryName")
             .build();
   }
@@ -127,6 +134,49 @@ public class ValidLibraryNameValidatorTest {
     cqlLibrary.setModel("QDM v5.6");
     cqlLibrary.setCqlLibraryName("Test$%^&*CqlLibraryName");
     boolean output = validator.isValid(cqlLibrary, validatorContext);
+    assertFalse(output);
+  }
+
+  @Test
+  public void testValidatorReturnsTrueForQiCoreLibraryDraftWithoutSpecialCharater() {
+    boolean output = validator.isValid(cqlLibraryDraft, validatorContext);
+    assertTrue(output);
+  }
+
+  @Test
+  public void testValidatorReturnsFalseFirstLetterLowerCaseForCqlLibraryDraft() {
+    cqlLibraryDraft.setCqlLibraryName("testCqlLibraryName");
+    boolean output = validator.isValid(cqlLibraryDraft, validatorContext);
+    assertFalse(output);
+  }
+
+  @Test
+  public void testValidatorReturnsFalseForQiCoreLibraryDraftWithUnderscore() {
+    cqlLibraryDraft.setCqlLibraryName("Test_CqlLibraryName");
+    boolean output = validator.isValid(cqlLibraryDraft, validatorContext);
+    assertFalse(output);
+  }
+
+  @Test
+  public void testValidatorReturnsTrueForQdmLibraryDraftWithoutSpecialCharater() {
+    cqlLibraryDraft.setModel("QDM v5.6");
+    boolean output = validator.isValid(cqlLibraryDraft, validatorContext);
+    assertTrue(output);
+  }
+
+  @Test
+  public void testValidatorReturnsTrueForQdmLibraryDraftWithSpecialCharaterUnderscore() {
+    cqlLibraryDraft.setModel("QDM v5.6");
+    cqlLibraryDraft.setCqlLibraryName("Test_CqlLibraryName");
+    boolean output = validator.isValid(cqlLibraryDraft, validatorContext);
+    assertTrue(output);
+  }
+
+  @Test
+  public void testValidatorReturnsFalseForQdmLibraryDraftWithOtherSpecialCharaters() {
+    cqlLibraryDraft.setModel("QDM v5.6");
+    cqlLibraryDraft.setCqlLibraryName("Test$%^&*CqlLibraryName");
+    boolean output = validator.isValid(cqlLibraryDraft, validatorContext);
     assertFalse(output);
   }
 

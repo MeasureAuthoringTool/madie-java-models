@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.library.CqlLibrary;
+import gov.cms.madie.models.library.CqlLibraryDraft;
 import gov.cms.madie.models.measure.Measure;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
@@ -12,8 +13,8 @@ import jakarta.validation.ConstraintValidatorContext;
 public class ValidLibraryNameValidator implements ConstraintValidator<ValidLibraryName, Object> {
   @Override
   public boolean isValid(Object object, ConstraintValidatorContext context) {
-    String model = "";
-    String cqlLibraryName = "";
+    String model;
+    String cqlLibraryName;
 
     if (object instanceof Measure) {
       Measure measure = (Measure) object;
@@ -23,6 +24,13 @@ public class ValidLibraryNameValidator implements ConstraintValidator<ValidLibra
       CqlLibrary cqlLibrary = (CqlLibrary) object;
       model = cqlLibrary.getModel();
       cqlLibraryName = cqlLibrary.getCqlLibraryName();
+    } else if (object instanceof CqlLibraryDraft) {
+      CqlLibraryDraft cqlLibraryDraft = (CqlLibraryDraft) object;
+      model = cqlLibraryDraft.getModel();
+      cqlLibraryName = cqlLibraryDraft.getCqlLibraryName();
+    } else {
+      // this validator does not apply to unrecognized types; defer to other constraints
+      return true;
     }
 
     if (ModelType.QDM_5_6.getValue().equalsIgnoreCase(model)) {
@@ -31,7 +39,7 @@ public class ValidLibraryNameValidator implements ConstraintValidator<ValidLibra
       if (!matcher.matches()) {
         return false;
       }
-    } else if (ModelType.QI_CORE.getValue().equalsIgnoreCase(model)) {
+    } else {
       Pattern pattern = Pattern.compile("^[A-Z][a-zA-Z0-9]*$");
       Matcher matcher = pattern.matcher(cqlLibraryName);
       if (!matcher.matches()) {
