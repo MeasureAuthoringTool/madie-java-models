@@ -48,8 +48,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @JsonSubTypes({
   @Type(value = FhirMeasure.class, name = VersionConstants.QICORE_4_1_1_VERSION),
   @Type(value = FhirMeasure.class, name = VersionConstants.QICORE_6_0_0_VERSION),
-  @Type(value = FhirMeasure.class, name = VersionConstants.QICORE_7_0_0_VERSION),
-  @Type(value = FhirMeasure.class, name = VersionConstants.QICORE_7_0_2_VERSION),
   @Type(value = FhirMeasure.class, name = VersionConstants.USQUALITYCORE_0_5_0_Version),
   @Type(value = QdmMeasure.class, name = VersionConstants.QDM_5_6_VERSION),
 })

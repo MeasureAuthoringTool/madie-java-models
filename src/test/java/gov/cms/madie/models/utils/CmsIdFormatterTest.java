@@ -37,8 +37,6 @@ public class CmsIdFormatterTest {
   void formatAppendsFhirSuffixForQiCoreModels() {
     assertThat(CmsIdFormatter.format(2, "QI-Core v4.1.1"), is(equalTo("0002FHIR")));
     assertThat(CmsIdFormatter.format(22, "QI-Core v6.0.0"), is(equalTo("0022FHIR")));
-    assertThat(CmsIdFormatter.format(222, "QI-Core v7.0.0"), is(equalTo("0222FHIR")));
-    assertThat(CmsIdFormatter.format(2222, "QI-Core v7.0.2"), is(equalTo("2222FHIR")));
   }
 
   @Test
