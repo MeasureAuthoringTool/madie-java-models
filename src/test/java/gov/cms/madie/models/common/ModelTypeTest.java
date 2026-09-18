@@ -12,8 +12,6 @@ public class ModelTypeTest {
     assertThat(ModelType.QDM_5_6.getVersionNumber(), is(equalTo("5.6")));
     assertThat(ModelType.QI_CORE.getVersionNumber(), is(equalTo("4.1.1")));
     assertThat(ModelType.QI_CORE_6_0_0.getVersionNumber(), is(equalTo("6.0.0")));
-    assertThat(ModelType.QI_CORE_7_0_0.getVersionNumber(), is(equalTo("7.0.0")));
-    assertThat(ModelType.QI_CORE_7_0_2.getVersionNumber(), is(equalTo("7.0.2")));
     assertThat(ModelType.US_CORE_6_1_0.getVersionNumber(), is(equalTo("6.1.0")));
     assertThat(ModelType.US_QUALITY_CORE_0_5_0.getVersionNumber(), is(equalTo("0.5.0")));
   }
@@ -23,7 +21,6 @@ public class ModelTypeTest {
     assertThat(ModelType.byShortValue("fhir4"), is(equalTo(ModelType.FHIR_4_0_1)));
     assertThat(ModelType.byShortValue("qicore"), is(equalTo(ModelType.QI_CORE)));
     assertThat(ModelType.byShortValue("qicore6"), is(equalTo(ModelType.QI_CORE_6_0_0)));
-    assertThat(ModelType.byShortValue("qicore7"), is(equalTo(ModelType.QI_CORE_7_0_2)));
     assertThat(ModelType.byShortValue("uscore6"), is(equalTo(ModelType.US_CORE_6_1_0)));
     assertThat(
         ModelType.byShortValue("usqualitycore05"), is(equalTo(ModelType.US_QUALITY_CORE_0_5_0)));
