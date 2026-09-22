@@ -15,10 +15,15 @@ public class ValidFhirGroupValidator implements ConstraintValidator<ValidFhirGro
     if (measure == null || CollectionUtils.isEmpty(measure.getGroups())) {
       return true;
     }
+
+    // measure group types are optional for composites
+    boolean isComposite =
+        measure.getMeasureMetaData() != null && measure.getMeasureMetaData().isComposite();
+
     if (measure.getGroups() != null) {
       for (int i = 0; i < measure.getGroups().size(); i++) {
         Group group = measure.getGroups().get(i);
-        if (CollectionUtils.isEmpty(group.getMeasureGroupTypes())) {
+        if (!isComposite && CollectionUtils.isEmpty(group.getMeasureGroupTypes())) {
           return false;
         }
         if (!StringUtils.hasLength(group.getPopulationBasis())) {

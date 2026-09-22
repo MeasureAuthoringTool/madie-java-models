@@ -4,6 +4,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import jakarta.validation.ConstraintValidatorContext;
 
@@ -17,6 +19,7 @@ import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.measure.FhirMeasure;
 import gov.cms.madie.models.measure.Group;
 import gov.cms.madie.models.measure.MeasureGroupTypes;
+import gov.cms.madie.models.measure.MeasureMetaData;
 import gov.cms.madie.models.measure.MeasureScoring;
 
 @ExtendWith(SpringExtension.class)
@@ -112,5 +115,34 @@ public class FhirGroupValidatorTest {
     measure.setGroups(Arrays.asList(group1, group2));
     boolean output = validator.isValid(measure, validatorContext);
     assertTrue(output);
+  }
+
+  @Test
+  public void testValidatorReturnsTrueForCompositeWithoutMeasureGroupTypes() {
+    MeasureMetaData metaData = new MeasureMetaData();
+    metaData.setComposite(true);
+    measure.setMeasureMetaData(metaData);
+    Group group =
+        Group.builder()
+            .id("testGroupId")
+            .scoring(MeasureScoring.COMPOSITE.toString())
+            .populationBasis("boolean")
+            .measureGroupTypes(Collections.emptyList())
+            .build();
+    measure.setGroups(List.of(group));
+    boolean output = validator.isValid(measure, validatorContext);
+    assertTrue(output);
+  }
+
+  @Test
+  public void testValidatorReturnsFalseForCompositeWithoutPopulationBasis() {
+    MeasureMetaData metaData = new MeasureMetaData();
+    metaData.setComposite(true);
+    measure.setMeasureMetaData(metaData);
+    Group group =
+        Group.builder().id("testGroupId").scoring(MeasureScoring.COMPOSITE.toString()).build();
+    measure.setGroups(List.of(group));
+    boolean output = validator.isValid(measure, validatorContext);
+    assertFalse(output);
   }
 }
