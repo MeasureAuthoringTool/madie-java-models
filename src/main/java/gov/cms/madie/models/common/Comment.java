@@ -21,7 +21,7 @@ public class Comment {
   private Instant createdAt;
   private String authorName;
   private boolean edited;
-  private boolean read;
+  private List<String> readByUsers;
 
   private String content;
   private String link;
