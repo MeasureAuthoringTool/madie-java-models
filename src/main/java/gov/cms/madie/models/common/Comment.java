@@ -14,18 +14,16 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Comment {
-    @Id
-    private String id;
+  @Id private String id;
 
-    private String mainSection;
-    private String subSection;
-    private Instant createdAt;
-    private String authorName;
-    private boolean edited;
-    private boolean read;
+  private String mainSection;
+  private String subSection;
+  private Instant createdAt;
+  private String authorName;
+  private boolean edited;
+  private boolean read;
 
-    private String content;
-    private String link;
-    private List<Comment> replies;
-
+  private String content;
+  private String link;
+  private List<Comment> replies;
 }
