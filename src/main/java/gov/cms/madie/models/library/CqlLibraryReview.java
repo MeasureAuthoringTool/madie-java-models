@@ -1,5 +1,6 @@
 package gov.cms.madie.models.library;
 
+import gov.cms.madie.models.common.Comment;
 import gov.cms.madie.models.common.ReviewStatus;
 import java.io.Serializable;
 import java.util.List;
@@ -20,6 +21,6 @@ public class CqlLibraryReview implements Serializable {
   private String librarySetId;
 
   private ReviewStatus status;
-  private String comment;
+  private List<Comment> comment;
   private List<String> reviewers;
 }
