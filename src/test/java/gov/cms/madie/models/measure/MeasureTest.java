@@ -64,6 +64,8 @@ public class MeasureTest {
                         .purpose("purpose")
                         .guidance("guidance")
                         .clinicalRecommendation("clinicalRecommendation")
+                        .limitations("limitations")
+                        .authoritativeSource("https://www.test.org")
                         .references(
                             List.of(
                                 Reference.builder()
@@ -93,5 +95,14 @@ public class MeasureTest {
     assertThat(measure.getMeasureMetaData().getReferences()).hasSize(1);
     assertThat(measure.getMeasureMetaData().getReferences().get(0).getReferenceText())
         .isEqualTo("reference1");
+
+    assertThat(copy.getMeasureMetaData().getLimitations()).isEqualTo("limitations");
+    assertThat(copy.getMeasureMetaData().getAuthoritativeSource()).isEqualTo("https://www.test.org");
+
+    copy.getMeasureMetaData().setLimitations("another limitation");
+    copy.getMeasureMetaData().setAuthoritativeSource("https://new.test.org");
+    assertThat(measure.getMeasureMetaData().getLimitations()).isEqualTo("limitations");
+    assertThat(measure.getMeasureMetaData().getAuthoritativeSource())
+        .isEqualTo("https://www.test.org");
   }
 }
