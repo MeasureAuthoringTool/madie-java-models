@@ -25,6 +25,7 @@ public class MeasureMetaData implements Serializable {
   private String guidance;
   private String clinicalRecommendation;
   private String limitations;
+  private String trendingIssues;
   private String authoritativeSource;
 
   private boolean draft;
