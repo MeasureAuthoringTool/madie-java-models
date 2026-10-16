@@ -65,6 +65,7 @@ public class MeasureTest {
                         .guidance("guidance")
                         .clinicalRecommendation("clinicalRecommendation")
                         .limitations("limitations")
+                        .trendingIssues("trendingIssues")
                         .authoritativeSource("https://www.test.org")
                         .references(
                             List.of(
@@ -97,11 +98,15 @@ public class MeasureTest {
         .isEqualTo("reference1");
 
     assertThat(copy.getMeasureMetaData().getLimitations()).isEqualTo("limitations");
-    assertThat(copy.getMeasureMetaData().getAuthoritativeSource()).isEqualTo("https://www.test.org");
+    assertThat(copy.getMeasureMetaData().getTrendingIssues()).isEqualTo("trendingIssues");
+    assertThat(copy.getMeasureMetaData().getAuthoritativeSource())
+        .isEqualTo("https://www.test.org");
 
     copy.getMeasureMetaData().setLimitations("another limitation");
+    copy.getMeasureMetaData().setTrendingIssues("another trending issue");
     copy.getMeasureMetaData().setAuthoritativeSource("https://new.test.org");
     assertThat(measure.getMeasureMetaData().getLimitations()).isEqualTo("limitations");
+    assertThat(measure.getMeasureMetaData().getTrendingIssues()).isEqualTo("trendingIssues");
     assertThat(measure.getMeasureMetaData().getAuthoritativeSource())
         .isEqualTo("https://www.test.org");
   }
