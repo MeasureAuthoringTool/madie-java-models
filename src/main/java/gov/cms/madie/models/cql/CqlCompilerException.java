@@ -1,10 +1,8 @@
 package gov.cms.madie.models.cql;
 
-public final class CqlCompilerException {
+public interface CqlCompilerException {
 
-  private CqlCompilerException() {}
-
-  public enum ErrorSeverity {
+  enum ErrorSeverity {
     Info,
     Warning,
     Error
