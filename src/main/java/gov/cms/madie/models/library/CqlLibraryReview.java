@@ -25,6 +25,6 @@ public class CqlLibraryReview implements Serializable {
   private List<Comment> comment;
   private List<String> reviewers;
 
-  private String readyForReviewBy;
-  private Instant readyForReviewAt;
+  private String markedForReviewBy;
+  private Instant markedForReviewAt;
 }

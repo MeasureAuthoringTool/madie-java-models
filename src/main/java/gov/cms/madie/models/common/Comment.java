@@ -17,12 +17,13 @@ public class Comment {
 
   private String mainSection;
   private String subSection;
-  private String authorId;
+  private String harpId;
   private String authorName;
   private Instant createdAt;
   private boolean edited;
   private List<String> readByUsers;
 
   private String content;
-  private List<Reply> replies;
+  private String link;
+  private List<Comment> replies;
 }
