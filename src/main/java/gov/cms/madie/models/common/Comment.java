@@ -17,6 +17,7 @@ public class Comment {
 
   private String mainSection;
   private String subSection;
+  private String subSectionId;
   private String harpId;
   private String authorName;
   private Instant createdAt;

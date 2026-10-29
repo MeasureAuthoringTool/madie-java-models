@@ -19,14 +19,14 @@ class CqlLibraryReviewTest {
             .libraryId("lib-1")
             .librarySetId("set-1")
             .status(ReviewStatus.READY_FOR_REVIEW)
-            .comment(List.of(Comment.builder().content("Looks good").build()))
+            .comments(List.of(Comment.builder().content("Looks good").build()))
             .build();
 
     assertEquals("review-1", review.getId());
     assertEquals("lib-1", review.getLibraryId());
     assertEquals("set-1", review.getLibrarySetId());
     assertEquals(ReviewStatus.READY_FOR_REVIEW, review.getStatus());
-    assertEquals("Looks good", review.getComment().get(0).getContent());
+    assertEquals("Looks good", review.getComments().get(0).getContent());
   }
 
   @Test
