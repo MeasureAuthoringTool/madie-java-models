@@ -18,7 +18,7 @@ public class DefDescPair implements Serializable {
     this.definition = definition;
     this.description = description;
   }
-
+  private String id;
   private String definition;
   private String description;
   private List<MeasureReportType> includeInReportType;
