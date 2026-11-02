@@ -22,9 +22,9 @@ public class MeasureReview implements Serializable {
   private String measureSetId;
 
   private ReviewStatus status;
-  private List<Comment> comment;
+  private List<Comment> comments;
   private List<String> reviewers;
 
-  private String readyForReviewBy;
-  private Instant readyForReviewAt;
+  private String markedForReviewBy;
+  private Instant markedForReviewAt;
 }
