@@ -48,9 +48,9 @@ public class TestCase implements Serializable, Cloneable {
   private String series;
 
   @Length(
-      max = 250,
+      max = 4000,
       groups = {ValidationOrder1.class},
-      message = "Test Case Description can not be more than 250 characters.")
+      message = "Test Case Description cannot be more than 4000 characters.")
   private String description;
 
   private Instant createdAt;
