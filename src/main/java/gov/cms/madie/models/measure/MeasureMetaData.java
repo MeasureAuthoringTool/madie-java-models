@@ -41,6 +41,7 @@ public class MeasureMetaData implements Serializable {
   private Boolean telehealthEligible;
   private String purpose;
   private boolean composite;
+  @Valid private ReportingTiming reportingTiming;
 
   @Valid private List<MeasureDefinition> measureDefinitions;
 }
