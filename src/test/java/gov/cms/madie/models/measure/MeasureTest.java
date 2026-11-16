@@ -1,7 +1,14 @@
 package gov.cms.madie.models.measure;
 
 import org.junit.jupiter.api.Test;
+import org.bson.Document;
+import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
+import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
+import org.springframework.data.mongodb.core.convert.NoOpDbRefResolver;
+import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
+import tools.jackson.databind.ObjectMapper;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +17,43 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class MeasureTest {
+  @Test
+  void reportingTimingSurvivesJsonAndDeepCopy() {
+    ReportingTiming timing =
+        ReportingTiming.builder()
+            .repeat(
+                ReportingTiming.Repeat.builder()
+                    .frequency(2)
+                    .period(new BigDecimal("1.5"))
+                    .periodUnit("d")
+                    .timeOfDay(List.of("08:30:00"))
+                    .build())
+            .build();
+    Measure measure =
+        Measure.builder()
+            .measureMetaData(MeasureMetaData.builder().reportingTiming(timing).build())
+            .build();
+    ObjectMapper mapper = new ObjectMapper();
+    MeasureMetaData restored =
+        mapper.readValue(
+            mapper.writeValueAsString(measure.getMeasureMetaData()), MeasureMetaData.class);
+
+    assertThat(restored.getReportingTiming()).isEqualTo(timing);
+    assertThat(measure.deepCopy().getMeasureMetaData().getReportingTiming()).isEqualTo(timing);
+    MongoCustomConversions conversions = MongoCustomConversions.create(adapter -> {});
+    MongoMappingContext context = new MongoMappingContext();
+    context.setSimpleTypeHolder(conversions.getSimpleTypeHolder());
+    context.afterPropertiesSet();
+    MappingMongoConverter converter =
+        new MappingMongoConverter(NoOpDbRefResolver.INSTANCE, context);
+    converter.setCustomConversions(conversions);
+    converter.afterPropertiesSet();
+    Document document = new Document();
+    converter.write(measure.getMeasureMetaData(), document);
+    assertThat(converter.read(MeasureMetaData.class, document).getReportingTiming())
+        .isEqualTo(timing);
+  }
+
   @Test
   void testEmptyDeepCopy() {
     Measure measure = new Measure();
