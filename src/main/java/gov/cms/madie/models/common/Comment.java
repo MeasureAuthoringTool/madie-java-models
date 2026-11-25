@@ -23,7 +23,7 @@ public class Comment {
   private String authorName;
   private Instant createdAt;
   private boolean edited;
-  private Set<ReadReceipt> readBy;
+  private Set<ReadStatus> readBy;
 
   private String content;
   private String link;
@@ -33,7 +33,7 @@ public class Comment {
   @Builder(toBuilder = true)
   @NoArgsConstructor
   @AllArgsConstructor
-  public static class ReadReceipt {
+  public static class ReadStatus {
     private String harpId;
     private Instant readAt;
   }
