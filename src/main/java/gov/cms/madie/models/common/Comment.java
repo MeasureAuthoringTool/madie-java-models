@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Builder(toBuilder = true)
@@ -22,9 +23,18 @@ public class Comment {
   private String authorName;
   private Instant createdAt;
   private boolean edited;
-  private List<String> readByUsers;
+  private Set<ReadStatus> readBy;
 
   private String content;
   private String link;
   private List<Comment> replies;
+
+  @Data
+  @Builder(toBuilder = true)
+  @NoArgsConstructor
+  @AllArgsConstructor
+  public static class ReadStatus {
+    private String harpId;
+    private Instant readAt;
+  }
 }
